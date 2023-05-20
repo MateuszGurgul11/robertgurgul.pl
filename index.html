@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesjonalne Doradztwo Zootechniczne</title>
+    <link rel="stylesheet" href="styl.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+        <h1>Profesjonalne Doradztwo Zootechniczne</h1>
+        
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="oferta.html">Oferta</a></li>
+                <li><a href="dokumentacja.html">Dokumentacja</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="video.html">Video</a></li>
+            </ul>
+        <button class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </button>
+    </nav>
+    </header>
+    
+    <section class="naglowek">
+        <!-- fota zaokraglonana gorze strony zrobiona animacja -->
+        <img src="obraz1.jpg">
+        <h1>Robert Gurgul</h1>
+        <p>Profesjonalne doradztwo żywieniowe i zootechniczne dla ferm drobiu</p>
+    </section>
+    <section class="oferta">
+            <div id="cf2" class="shadow">
+                <h2>OFERTA</h2>
+                <!-- zdjecia przechodzace od lewej do prawej (jedno na srodku i z dwoch stron przyciemnione i pomniejszone) -->
+                <img class="bottom" src="logo.png" alt="fota">
+                <img class="top" src="obraz1.jpg" alt="obraz">
+            </div>
+            <span id="cf_onclick">Kliknij aby zobaczyć więcej</span>
+    </section>
+    <section class="o-firmie">
+        <h2>O FIRMIE</h2>
+        <p>Posiadam wieloletnie doświadczenie w zakresie hodowli drobiu. Profesjonalizm w
+            podejściu do prowadzenia fermy pomaga mi spełnić wszelkie jakościowe wymogi oraz
+            europejskie standardy.
+            Z perspektywy wielu lat współpracy z profesjonalnymi fermami drobiu cieszę się ich
+            uznaniem oraz prowadzę także długoletnią współpracą z innych specjalistami w swojej
+            branży. Nie tylko świadczę swoje usługi na najwyższym poziomie, ale również służę
+            profesjonalnym wsparciem oraz fachowym doradztwem z zakresu branży drobiarskiej.
+            Hodowla kurcząt rzeźnych, kur niosek czy kaczek piżmowych (Barbarie),
+            zdecydowanie należy do bardzo wymagających, dlatego w przypadku tego typu ferm
+            warto postawić wyłącznie na rozwiązania ekologiczne.
+            Niestety wielu hodowców często nie stosuje się do wymogów, które należy spełnić, aby
+            w sposób należyty prowadzić fermę drobiu. Tego rodzaju hodowla wymaga zachowania
+            najwyższych norm jakościowych pod każdym względem.
+            Obecnie nowe obiekty hodowlane coraz częściej zaopatrywane są w coraz to lepsze
+            innowacyjne urządzenia, które wydzielają mniej szkodliwych substancji dla środowiska
+            oraz pozwalają zapewnić ptakom bardzo dobre warunki bytowe. Moja rola polega na
+            pomocy hodowcą w ich wykorzystywaniu w jak największym zakresie w codziennej
+            produkcji.
+            Takie działania mają ogromne znaczenie w prowadzeniu ferm drobiu, gdzie specyfika
+            hodowli wymaga zachowania wysokich norm jakościowych, ze względu na emitowane
+            substancje do środowiska oraz na jakość mięsa na fermie.</p>
+    </section>
+
+    <section class="gallery-container">
+        <div class="kontakt">
+        <h1>KONTAKT</h1>
+        <a href="https://www.facebook.com/robert.gurgul.23"><img src="facebook.png"></a>
+        <p>Robert Gurgul</p>
+        <p>tel. +48 502592194</p>
+        <p>mail:</p><a href="mailto:r.gurgul@interia.pl">r.gurgul@interia.pl</a>
+        </div>
+      <div class="slideshow">
+        <h1>Partnerzy</h1>
+        <img src="loga/logo1.png" class="slide">
+        <img src="loga/logo2.png" class="slide">
+        <img src="loga/logo3.png" class="slide">
+        <img src="loga/logo4.png" class="slide">
+        <img src="loga/logo5.png" class="slide">
+        <img src="loga/logo6.png" class="slide">
+        <img src="loga/logo7.png" class="slide">
+        <img src="loga/logo8.png" class="slide">
+        <img src="loga/logo9.png" class="slide">
+        <img src="loga/logo10.png" class="slide">
+        <img src="loga/logo11.png" class="slide">
+        <img src="loga/logo12.png" class="slide">
+        <img src="loga/logo13.png" class="slide">
+        <img src="loga/logo14.png" class="slide">
+        <img src="loga/logo15.png" class="slide">
+        <button class="prev" onclick="prevSlide()"><b>←</b></button>
+        <button class="next" onclick="nextSlide()"><b>→</b></button>
+    </section>
+   
+    <section class="stopka">
+        <h6>Designed by <a href="mailto:mateusz.gurgul.2003@gmail.com">Mateusz Gurgul</a></h6>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+          $("#cf_onclick, #cf2 img.top").click(function() {
+            $("#cf2 img.top").toggleClass("transparent");
+          });
+        });
+      </script>
+    
+    <script src="skrypt.js"></script>
+</body>
+</html>
