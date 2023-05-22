@@ -8,7 +8,7 @@
     })
 
 
-//galeria
+//galeria sponsorow
 let index = 0;
 const slides = document.querySelectorAll('.slide');
 
@@ -56,28 +56,72 @@ function showSlides() {
 
 setInterval(showSlides, 2000);
 
-//mapa
- // Funkcja inicjalizująca mapę
- function initMap() {
-  // Współrzędne lokalizacji
-  var location = { lat: 52.08556132599441, lng: 17.459865584801666 };
-  
-  // Tworzenie mapy
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12, // Poziom przybliżenia mapy
-    center: location // Wyśrodkowanie mapy na danej lokalizacji
-  });
-  
-  // Tworzenie znacznika na mapie
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map,
-    title: 'Moja lokalizacja'
-  });
+//galeria zdjec
+const thumbnails = document.querySelectorAll(".thumbnail img");
+const popup = document.querySelector(".popup");
+const popup_close = document.querySelector(".popup__close");
+const popup_img = document.querySelector(".popup__img");
+const arrow_left = document.querySelector(".popup__arrow--left");
+const arrow_right = document.querySelector(".popup__arrow--right");
+
+let currentImgIndex;
+
+const showNextImg = () => {
+  if(currentImgIndex === thumbnails.length - 1){
+    currentImgIndex = 0;
+  }
+  else
+  {
+    currentImgIndex = currentImgIndex +1;
+  }
+  popup_img.src = thumbnails[currentImgIndex].src;
 }
-// oferta
-$(document).ready(function(){
-  $("#cf_onclick, #cf2 img.top").click(function(){
-    $("#cf2 img.top").toggleClass("transparent");
+const showPrevImg = () => {
+  if(currentImgIndex === 0){
+    currentImgIndex = thumbnails.length -1;
+  }
+  else
+  {
+    currentImgIndex = currentImgIndex -1;
+  }
+  popup_img.src = thumbnails[currentImgIndex].src;
+}
+const closePopup = () => {
+  popup.classList.add("hidden");
+}
+
+thumbnails.forEach((thumbnail, index) => {
+  thumbnail.addEventListener("click", (e) => {popup.classList.remove("hidden");
+  popup_img.src = e.target.src;
+  currentImgIndex = index; 
+  
   });
+});
+
+popup_close.addEventListener("click", closePopup);
+
+arrow_right.addEventListener("click", showNextImg);
+
+arrow_left.addEventListener("click", showPrevImg);
+
+document.addEventListener("keydown", (e) => {
+  if(!popup.classList.contains("hidden")){    
+    if(e.code === "arrowRight" || e.keyCode === 39 ){
+      showNextImg();
+    }
+
+    if(e.code === "arrowLeft" || e.keyCode === 37){
+      showPrevImg();
+    }
+
+    if(e.code === "escape" || e.keyCode === 27){
+      closePopup();
+    }
+  }
+});
+
+popup.addEventListener("click", (e) => {
+  if(e.target === popup){
+    closePopup();
+  }
 });
