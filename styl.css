@@ -33,7 +33,7 @@ section
     color: white;
     font-size: 4em;
     background-color: #333;
-    max-width: 1000vh;
+    max-width: 1000vw;
     width: 100%;
 }
 .gallery-list
@@ -137,10 +137,14 @@ section
 /* video */
 .video
 {
-    max-height:100% ;
-    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    height: 90vh;
+    flex-direction: column;
 }
-.video h2
+.h2-video
 {
     color: white;
     flex-direction: column;
@@ -152,11 +156,14 @@ section
 }
 .video video
 {
+    display: flex;
     border: 3px solid transparent;
     border-radius: 50px;
     text-align: center;
-    justify-content:center ;
+    justify-content:space-around ;
     align-items: center;
+    position: relative;
+
 }
 /* menu */
 nav
@@ -294,6 +301,24 @@ nav
     {
         opacity: 0;
     }
+    .dokumentacja-pdf
+    {
+        padding-right: 100%;
+    }
+    .dokumentacja-img
+    {
+        padding-left: 100%;
+        padding-right: 100%;
+    }
+    .kolumna
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: auto;
+    }
+
 }
 @media  screen and (max-width: 760px)
 {
@@ -335,6 +360,32 @@ nav
     .prev, .next
     {
         opacity: 0;
+    }
+    .dokumentacja-img 
+    {
+        width: 1;
+    }
+    .dokumentacja-pdf 
+    {
+        padding-right: 400px;
+        height: auto;
+    }
+    .dokumentacja-pdf img
+    {
+        width: 70px;
+    }
+    .kolumna
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: auto;
+    }
+    .video video
+    {
+        width: 500px;
+        float: left;
     }
 }
 /* podzial strony */
@@ -478,6 +529,8 @@ header h1
 }
 .o-firmie p
 {   
+    padding-right: 5%;
+    padding-left: 5%;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -586,33 +639,45 @@ header h1
   opacity: 1;
 }
 
-.dokumentacja
-{
-    background-color: #07a1fa9d;
-    max-height:100%;
-    height: auto;
-}
-.dokumentacja h2
+.naglowek-dokumentacja
 {
     color: white;
-    flex-direction: column;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #333;
     font-size: 3em;
-}
-.dokumentacja a
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.dokumentacja img
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #333;
     text-align: center;
+}
+.dokumentacja-pdf
+{
+    display:flex ;
+    flex-wrap: wrap;
+    background-color: #07a1fa9d;
+    max-height: 100%;
+    height:100vh;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 50%;
+    float: left;
+    line-height: 30px;
+}
+.dokumentacja-pdf li
+{
+    display: flex;
+    list-style-type: none;
+    font-size: 2em;
+    align-items: flex-start;
+}
+.dokumentacja-img  
+{
+    float: left;
+    width: 50%;
+    height: auto;
+    background-color: #07a1fa9d;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.kolumna
+{
+    height: auto;
 }
