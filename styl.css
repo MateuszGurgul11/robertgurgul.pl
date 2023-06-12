@@ -462,14 +462,13 @@ header h1
 .opis
 {
     background-color: #07a1fa9d;
-    height: auto;
+    height:auto ;
     flex-direction: column;
 }
 .opis img
 {
    display: block;
    margin: 0 auto;
-
 }
 .opis p
 {
