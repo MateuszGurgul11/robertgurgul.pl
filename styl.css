@@ -141,7 +141,7 @@ section
     justify-content: center;
     align-items: center;
     object-fit: cover;
-    height: 90vh;
+    height: auto;
     flex-direction: column;
 }
 .h2-video
@@ -353,10 +353,6 @@ nav
         
         font-size: 0.7em;  
     }
-    .opis p
-    {
-        font-size: 0.5em;
-    }
     .prev, .next
     {
         opacity: 0;
@@ -466,17 +462,26 @@ header h1
 .opis
 {
     background-color: #07a1fa9d;
-    height: 50vh;
+    height: auto;
+    flex-direction: column;
+}
+.opis img
+{
+   display: block;
+   margin: 0 auto;
+
 }
 .opis p
 {
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: justify;
-    margin-top: 10px;
+    margin-top: 10px;    
+    padding-left: 5%;
+    padding-right: 5%;
 }
 .opis h2
 {
@@ -580,7 +585,7 @@ header h1
 {
     height: auto;
     position:absolute ;
-    top: 0.5%;
+    bottom: 82%;
 }
 .slideshow 
 {
