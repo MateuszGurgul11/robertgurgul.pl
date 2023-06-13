@@ -11,6 +11,7 @@ html, body
     font-size: 62.5%;
     overflow-x: hidden;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #07a1fa9d;
 }
 section
 {
@@ -403,7 +404,7 @@ header h1
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    background-color: #07a1fa9d;
+
 }
 .oferta-container
 {
@@ -461,7 +462,7 @@ header h1
 }
 .opis
 {
-    background-color: #07a1fa9d;
+    
     height: auto;
     flex-direction: column;
 }
@@ -469,7 +470,16 @@ header h1
 {
    display: block;
    margin: 0 auto;
-
+   padding-top: 20px;
+   padding-bottom: 20px;
+   object-fit: cover;
+}
+@media screen and (max-width: 760px) 
+{
+    .opis img
+    {
+        width: 350px;
+    }    
 }
 .opis p
 {
@@ -517,8 +527,6 @@ header h1
 }
 .o-firmie
 {   
-
-    background-color: #07a1fa9d;
     height: 50vh;
     display: flex;
     justify-content:center;
@@ -576,6 +584,7 @@ header h1
 /*galeria*/
 .gallery-container
 {
+    background-color: white;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -650,7 +659,6 @@ header h1
 {
     display:flex ;
     flex-wrap: wrap;
-    background-color: #07a1fa9d;
     height:auto;
     flex-direction: row;
     justify-content: flex-start;
@@ -671,7 +679,6 @@ header h1
     float: left;
     width: 50%;
     height: auto;
-    background-color: #07a1fa9d;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
