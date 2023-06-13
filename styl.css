@@ -666,7 +666,6 @@ header h1
     justify-content: flex-start;
     width: 50%;
     float: left;
-    line-height: 90px;
 }
 .dokumentacja-pdf li
 {
@@ -674,7 +673,7 @@ header h1
     list-style-type: none;
     font-size: 2em;
     align-items: flex-start;
-    padding-top: 30.5px;
+    padding-top: 50px;
 }
 .dokumentacja-img  
 {
