@@ -147,6 +147,8 @@ section
 }
 .h2-video
 {
+    margin-top: 20px;
+    margin-bottom: 20px;
     color: white;
     flex-direction: column;
     text-align: center;
@@ -154,6 +156,7 @@ section
     flex-wrap: wrap;
     justify-content: center;
     background-color: #333;
+    font-size: 25px;
 }
 .video video
 {
@@ -387,7 +390,6 @@ header h1
 }
 .naglowek p
 {
-    padding-bottom: 20px;
     font-weight: bold;
 }
 .naglowek img
@@ -398,6 +400,7 @@ header h1
 .naglowek
 {
     padding-top: 20px;
+    padding-bottom: 20px;
     display: fixed;
     color: black;
     align-items: center;
@@ -593,7 +596,7 @@ header h1
 {
     height: auto;
     position:absolute ;
-    bottom: 82%;
+    bottom: 83%;
 }
 .slideshow 
 {
