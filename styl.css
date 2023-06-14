@@ -141,33 +141,40 @@ section
     display: flex;
     justify-content: center;
     align-items: center;
-    object-fit: cover;
-    height: auto;
     flex-direction: column;
 }
-.h2-video
+.video-list
 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: white;
-    flex-direction: column;
-    text-align: center;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding: 20px;
+}
+.video h1 
+{
+    display: flex;
     justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4em;
     background-color: #333;
-    font-size: 25px;
+    max-width: 1000vw;
+    width: 100%;
 }
 .video video
 {
     display: flex;
-    border: 3px solid transparent;
-    border-radius: 50px;
     text-align: center;
-    justify-content:space-around ;
+    justify-content:space-evenly ;
     align-items: center;
     position: relative;
-
+    padding: 20px;
+    transition:transform .3s ease-in-out;
+}
+.video video:hover
+{
+    transform: scale(1.2);
 }
 /* menu */
 nav
@@ -177,19 +184,38 @@ nav
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 7vh;
     padding: 2em 4em 2em 4em;
     position: relative;
 }
 .menu
 {
+    text-align: center;
+    float: left;
     list-style-type: none;
     display: flex;
-    width: 70%;
+    width: 100%;
     justify-content: space-between;
+}
+.menu-rozwijane
+{
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    position: relative;
+    font-weight: bold;
+    padding: .3em;
+    text-align: center;
+    display: none;
+    background-color: #333;
+}
+nav > ul > li:hover > ul
+{
+    display: block;
 }
 .menu a
 {
+    display: block;
     color: white;
     text-decoration: none;
     font-size: 2rem;
@@ -255,7 +281,7 @@ nav
         border-top: black 1px solid;
         position: absolute;
         right: 0;
-        top: 7vh;
+        top: 100%;
         line-height: 80px;
         padding-top:20px ;
         padding-bottom: 20px;
@@ -321,10 +347,21 @@ nav
         flex-direction: column;
         width: auto;
     }
-
+    .video 
+    {
+        flex-direction: column;
+    }
+    .video video
+    {
+        width: 500px;
+    }
 }
 @media  screen and (max-width: 760px)
 {
+    .menu
+    {
+        top: 100%;
+    }
     header h1
     {
         font-size:1em ;
@@ -378,8 +415,14 @@ nav
     }
     .video video
     {
-        width: 500px;
+        width: 350px;
         float: left;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .video 
+    {
+        flex-direction: column;
     }
 }
 /* podzial strony */
@@ -662,9 +705,8 @@ header h1
     display:flex ;
     flex-wrap: wrap;
     height:auto;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 50%;
+    justify-content: center;
+    width: 100%;
     float: left;
 }
 .dokumentacja-pdf li
@@ -678,10 +720,10 @@ header h1
 .dokumentacja-img  
 {
     float: left;
-    width: 50%;
+    width:100%;
     height: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
