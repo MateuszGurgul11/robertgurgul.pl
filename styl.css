@@ -330,15 +330,6 @@ nav > ul > li:hover > ul
     {
         opacity: 0;
     }
-    .dokumentacja-pdf
-    {
-        padding-right: 100%;
-    }
-    .dokumentacja-img
-    {
-        padding-left: 100%;
-        padding-right: 100%;
-    }
     .kolumna
     {
         display: flex;
@@ -397,14 +388,7 @@ nav > ul > li:hover > ul
     {
         opacity: 0;
     }
-    .dokumentacja-img 
-    {
-        width: 1;
-    }
-    .dokumentacja-pdf 
-    {
-        padding-right: 400px;
-    }
+
     .kolumna
     {
         display: flex;
