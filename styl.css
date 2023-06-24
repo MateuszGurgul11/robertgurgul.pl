@@ -686,9 +686,9 @@ header h1
     background-color: #333;
     text-align: center;
 }
-.dokumentacja-pdf
+.dokumentacjaPdf
 {
-    display:flex ;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     height:auto;   
@@ -697,7 +697,6 @@ header h1
 }
 .pdf-list
 {
-
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -705,7 +704,7 @@ header h1
     width: 85%;
     padding: 40px;
 }
-.dokumentacja-pdf li
+.dokumentacjaPdf li
 {
     display: flex;
     list-style-type: none;
@@ -722,4 +721,46 @@ header h1
 .dokumentacja-img img
 {
     padding: 20px;
+}
+
+.passwordForm
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    min-height: 50vh;
+}
+.passwordForm span
+{
+    font-size: 5em;
+    font-weight: bold;
+    margin: 20px;
+}
+.passwordForm input
+{
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 3px solid black;
+    margin: 20px;
+    width: 30%;
+    text-align: center;
+    font-size: 7em;
+}
+.passwordForm button
+{
+    margin: 20px;
+    padding: 10px;
+    font-size: 5em;
+    background-color: #333;
+    color: #fff;
+    border-radius: 15px;
+    outline: 4px solid #333;
+    transition: .3s ease-in-out;
+}
+.passwordForm button:hover
+{
+    outline-offset: 8px;
 }
