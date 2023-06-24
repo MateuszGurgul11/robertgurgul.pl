@@ -125,3 +125,19 @@ popup.addEventListener("click", (e) => {
     closePopup();
   }
 });
+
+// panel haslo
+function checkPassword() {
+  var password = document.getElementById("password").value;
+  var correctPassword = "123";
+
+  if (password === correctPassword) {
+    var passwordForm = document.querySelector(".passwordForm");
+    var dokumentacjaPdf = document.querySelector(".dokumentacjaPdf");
+
+    passwordForm.style.display = "none";
+    dokumentacjaPdf.style.display = "flex";
+  } else {
+    alert("Niepoprawne hasło. Spróbuj ponownie.");
+  }
+}
