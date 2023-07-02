@@ -493,7 +493,6 @@ header h1
 }
 .opis
 {
-    
     height: auto;
     flex-direction: column;
 }
@@ -504,6 +503,7 @@ header h1
    padding-top: 20px;
    padding-bottom: 20px;
    object-fit: cover;
+    max-width: 400px;
 }
 @media screen and (max-width: 760px) 
 {
