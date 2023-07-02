@@ -129,7 +129,7 @@ popup.addEventListener("click", (e) => {
 // panel haslo
 function checkPassword() {
   var password = document.getElementById("password").value;
-  var correctPassword = "123";
+  var correctPassword = "Kogutki123";
 
   if (password === correctPassword) {
     var passwordForm = document.querySelector(".passwordForm");
