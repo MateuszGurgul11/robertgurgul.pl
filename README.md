@@ -20,3 +20,9 @@ Strona jest hostowana na GitHub Pages i dostępna pod adresem [robertgurgul.pl](
 ## Lokalne uruchomienie
 Aby uruchomić stronę lokalnie, należy sklonować repozytorium i otworzyć plik `index.html` w przeglądarce.
 
+
+
+
+
+
+# Strona w trakcie przebudowy!
