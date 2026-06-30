@@ -1,0 +1,41 @@
+# Frontend (Next.js)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/.env*.local
+frontend/npm-debug.log*
+
+# Backend (Python)
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.egg-info/
+backend/.pytest_cache/
+backend/.env
+backend/.env.local*
+backend/firebase-debug.log
+backend/*-firebase-adminsdk-*.json
+backend/robertgurgul-2da28-firebase-adminsdk-fbsvc-e2c663172e.json
+
+# Firebase
+firebase/.firebaserc
+firebase/firebase-debug.log
+firebase/firestore-debug.log
+firebase/storage-debug.log
+firebase/ui-debug.log
+firebase/.emulator-data/
+
+# OS / editor
+.DS_Store
+*.swp
+
+# Claude / tooling (local only)
+.claude/
+**/__pycache__/
+*.pyc
+
+# Env (never commit)
+.env
+.env.local
+.env.*.local

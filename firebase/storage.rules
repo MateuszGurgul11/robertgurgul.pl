@@ -1,0 +1,12 @@
+rules_version = '2';
+
+// Storage is accessed exclusively by the backend via the Admin SDK (uploads,
+// signed URLs), which bypasses these rules entirely. No client (browser)
+// uploads or reads directly, so this is intentionally locked down.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
