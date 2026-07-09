@@ -21,7 +21,7 @@ export function ContactSection() {
         <SectionHeader
           eyebrow="Kontakt"
           title="Skontaktuj się ze mną"
-          subtitle="Masz pytanie o żywienie, mikroklimat albo po prostu chcesz pogadać o swojej fermie? Napisz — odpowiadam osobiście."
+          subtitle="Masz pytanie o żywienie, mikroklimat albo po prostu chcesz pogadać o swojej fermie? Napisz - odpowiadam osobiście."
           align="left"
           tone="light"
         />

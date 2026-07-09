@@ -11,13 +11,13 @@ const STEPS = [
     icon: SearchCheck,
     title: "Audyt fermy",
     description:
-      "Zaczynam od wizyty na miejscu — budynki, sprzęt, stado, dokumentacja. Bez tego nie ma dobrej diagnozy, tylko domysły.",
+      "Zaczynam od wizyty na miejscu - budynki, sprzęt, stado, dokumentacja. Bez tego nie ma dobrej diagnozy, tylko domysły.",
   },
   {
     icon: Route,
     title: "Plan żywienia i zootechniki",
     description:
-      "Konkretny plan żywienia, mikroklimatu i opieki nad stadem dopasowany do Twojej fermy — nie kopia z szablonu.",
+      "Konkretny plan żywienia, mikroklimatu i opieki nad stadem dopasowany do Twojej fermy - nie kopia z szablonu.",
   },
   {
     icon: Users,
@@ -29,7 +29,7 @@ const STEPS = [
     icon: HeartHandshake,
     title: "Stałe wsparcie",
     description:
-      "Zostaję w kontakcie po wdrożeniu — reaguję, gdy coś się zmienia na fermie, zanim zmieni się w problem.",
+      "Zostaję w kontakcie po wdrożeniu - reaguję, gdy coś się zmienia na fermie, zanim zmieni się w problem.",
   },
 ] as const;
 

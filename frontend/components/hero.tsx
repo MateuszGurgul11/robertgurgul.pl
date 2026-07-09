@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { HeroIllustration } from "@/components/illustrations";
@@ -35,8 +34,6 @@ const VIDEO_SOURCES = [
 const FILM_UNITS = 1.5;
 const SHRINK_UNITS = 0.8;
 const FILM_TEXT_SCALE_END = 0.52;
-
-const HERO_TITLE_SRC = "/hero/title.png";
 
 const META = [
   { k: "Żywienie", v: "Receptury i pasza" },
@@ -228,7 +225,7 @@ export function Hero() {
       {/* Vertical-halftone silhouettes that surround the frame once it shrinks. */}
       <div
         ref={mountainRef}
-        className="pointer-events-none absolute bottom-0 left-0 z-0 text-navy-deep/55"
+        className="pointer-events-none absolute bottom-0 left-0 z-0 text-gold-deep mix-blend-multiply [mask-image:linear-gradient(to_bottom,black_45%,transparent)]"
         aria-hidden="true"
       >
         <VerticalHalftoneSilhouette
@@ -238,7 +235,7 @@ export function Hero() {
       </div>
       <div
         ref={treeRef}
-        className="pointer-events-none absolute right-0 bottom-0 z-0 text-navy-deep/55"
+        className="pointer-events-none absolute right-0 bottom-0 z-0 text-gold-deep mix-blend-multiply [mask-image:linear-gradient(to_bottom,black_45%,transparent)]"
         aria-hidden="true"
       >
         <VerticalHalftoneSilhouette
@@ -288,19 +285,15 @@ export function Hero() {
               Profesjonalne doradztwo zootechniczne
             </span>
 
-            <h1 ref={headingRef} className="relative mx-auto w-full max-w-[min(100%,48rem)]">
-              <Image
-                src={HERO_TITLE_SRC}
-                alt="Robert Gurgul"
-                width={1024}
-                height={125}
-                priority
-                className="h-auto w-full max-w-[min(100%,48rem)] object-contain drop-shadow-[0_8px_40px_rgba(0,0,0,0.45)]"
-              />
+            <h1
+              ref={headingRef}
+              className="relative mx-auto w-full max-w-[min(100%,48rem)] font-heading text-[clamp(2.75rem,9vw,6rem)] font-bold uppercase leading-[0.95] tracking-[0.02em] text-white drop-shadow-[0_8px_40px_rgba(0,0,0,0.45)]"
+            >
+              Robert Gurgul
             </h1>
 
             <p className="max-w-xl text-balance text-base leading-relaxed text-offwhite/85 sm:text-lg">
-              Zdrowe stado i spokojna głowa zaczynają się od dobrego planu —
+              Zdrowe stado i spokojna głowa zaczynają się od dobrego planu -
               żywienie, mikroklimat i codzienna obserwacja w jednej strategii.
             </p>
           </div>

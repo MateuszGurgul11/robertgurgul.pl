@@ -48,7 +48,7 @@ export default function AdminLoginPage() {
             Panel CMS
           </h1>
           <p className="text-sm text-slate-muted">
-            Robert Gurgul — zaloguj się, aby zarządzać treścią
+            Robert Gurgul - zaloguj się, aby zarządzać treścią
           </p>
         </div>
 

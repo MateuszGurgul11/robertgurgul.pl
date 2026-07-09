@@ -21,7 +21,7 @@ export function PlaceholderArt({
         className
       )}
       role="img"
-      aria-label={label ?? "Grafika zastępcza — zdjęcie zostanie dodane przez CMS"}
+      aria-label={label ?? "Grafika zastępcza - zdjęcie zostanie dodane przez CMS"}
     >
       <Icon
         aria-hidden

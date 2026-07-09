@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Optional
 
 from app.firebase_admin_init import get_firestore_client
 
@@ -13,11 +13,11 @@ class FirestoreRepo:
     def _col(self):
         return get_firestore_client().collection(self.collection)
 
-    def list_all(self, order_by: str | None = "order") -> list[dict[str, Any]]:
+    def list_all(self, order_by: Optional[str] = "order") -> list[dict[str, Any]]:
         query = self._col.order_by(order_by) if order_by else self._col
         return [{"id": doc.id, **doc.to_dict()} for doc in query.stream()]
 
-    def get(self, doc_id: str) -> dict[str, Any] | None:
+    def get(self, doc_id: str) -> Optional[dict[str, Any]]:
         snap = self._col.document(doc_id).get()
         return {"id": snap.id, **snap.to_dict()} if snap.exists else None
 
@@ -26,7 +26,7 @@ class FirestoreRepo:
         ref.set(data)
         return {"id": ref.id, **data}
 
-    def update(self, doc_id: str, data: dict[str, Any]) -> dict[str, Any] | None:
+    def update(self, doc_id: str, data: dict[str, Any]) -> Optional[dict[str, Any]]:
         ref = self._col.document(doc_id)
         if not ref.get().exists:
             return None

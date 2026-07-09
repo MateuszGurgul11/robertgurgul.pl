@@ -50,7 +50,7 @@ export function ParallaxBand() {
       <img
         ref={imageRef}
         src="/hero/ferma-band.jpg"
-        alt="Ferma drobiu — kurniki, silosy paszowe i droga technologiczna"
+        alt="Ferma drobiu - kurniki, silosy paszowe i droga technologiczna"
         className="pointer-events-none absolute inset-x-0 top-[-12%] h-[124%] w-full object-cover"
         loading="lazy"
         decoding="async"
@@ -72,7 +72,7 @@ export function ParallaxBand() {
           </span>
           <p className="mt-5 font-heading text-[clamp(1.7rem,4vw,3rem)] font-bold leading-[1.08] text-offwhite drop-shadow-[0_6px_30px_rgba(0,0,0,0.5)]">
             Decyzje podejmowane{" "}
-            <span className="text-gold-light">przy stadzie</span> — nie nad
+            <span className="text-gold-light">przy stadzie</span> - nie nad
             katalogiem.
           </p>
         </div>

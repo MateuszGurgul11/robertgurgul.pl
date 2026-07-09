@@ -8,17 +8,17 @@ const DEFAULT_OFFER: { title: string; description: string }[] = [
   {
     title: "Kompleksowe wyposażenie ferm drobiu",
     description:
-      "Od linii pojenia po sterowniki klimatu — komplet urządzeń dobranych tak, by działały jako jeden system, nie zestaw przypadkowych elementów.",
+      "Od linii pojenia po sterowniki klimatu - komplet urządzeń dobranych tak, by działały jako jeden system, nie zestaw przypadkowych elementów.",
   },
   {
     title: "Usługa zootechniczna",
     description:
-      "Stałe wsparcie na każdym etapie odchowu — od pierwszego dnia piskląt do dnia, w którym stado opuszcza fermę.",
+      "Stałe wsparcie na każdym etapie odchowu - od pierwszego dnia piskląt do dnia, w którym stado opuszcza fermę.",
   },
   {
     title: "Sprzedaż urządzeń drobiarskich",
     description:
-      "Sprzęt dobrany do skali i profilu Twojej fermy, z fachowym wdrożeniem — nie tylko do specyfikacji w katalogu.",
+      "Sprzęt dobrany do skali i profilu Twojej fermy, z fachowym wdrożeniem - nie tylko do specyfikacji w katalogu.",
   },
   {
     title: "Odchów kur niosek",
@@ -28,7 +28,7 @@ const DEFAULT_OFFER: { title: string; description: string }[] = [
   {
     title: "Sterowanie mikroklimatem",
     description:
-      "Temperatura, wilgotność i wymiana powietrza dopasowane do cyklu odchowu — mikroklimat, który chroni ptaki i wynik fermy.",
+      "Temperatura, wilgotność i wymiana powietrza dopasowane do cyklu odchowu - mikroklimat, który chroni ptaki i wynik fermy.",
   },
   {
     title: "Sprzedaż kur niosek",
@@ -38,12 +38,12 @@ const DEFAULT_OFFER: { title: string; description: string }[] = [
   {
     title: "Ocena jakości drobiu",
     description:
-      "Niezależny przegląd stada i warunków hodowli — jasny obraz tego, co działa, a co wymaga zmiany.",
+      "Niezależny przegląd stada i warunków hodowli - jasny obraz tego, co działa, a co wymaga zmiany.",
   },
   {
     title: "Tucz kogutów",
     description:
-      "Program tuczu dopasowany do tempa wzrostu i celu produkcyjnego — bez zgadywania i bez strat na końcu cyklu.",
+      "Program tuczu dopasowany do tempa wzrostu i celu produkcyjnego - bez zgadywania i bez strat na końcu cyklu.",
   },
 ];
 

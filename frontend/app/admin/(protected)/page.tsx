@@ -75,7 +75,7 @@ export default function AdminDashboardPage() {
               <Icon className="h-5 w-5" />
             </span>
             <p className="text-2xl font-semibold text-slate-800">
-              {count ?? "—"}
+              {count ?? "-"}
             </p>
             <p className="text-sm text-slate-500">{label}</p>
           </Link>
@@ -91,7 +91,7 @@ export default function AdminDashboardPage() {
         </span>
         <div>
           <p className="font-heading text-base font-semibold text-slate-800">
-            {unread === null ? "—" : unread} nieprzeczytanych wiadomości
+            {unread === null ? "-" : unread} nieprzeczytanych wiadomości
           </p>
           <p className="text-sm text-slate-500">
             Przejdź do skrzynki wiadomości z formularza kontaktowego

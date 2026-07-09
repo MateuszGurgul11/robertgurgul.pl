@@ -19,9 +19,9 @@ import { cn } from "@/lib/utils";
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/offer", label: "Oferta", icon: ListChecks },
-  { href: "/admin/gallery/photos", label: "Galeria — Zdjęcia", icon: Images },
-  { href: "/admin/gallery/videos", label: "Galeria — Filmy", icon: PlayCircle },
-  { href: "/admin/gallery/docs", label: "Galeria — Dokumenty PDF", icon: FileText },
+  { href: "/admin/gallery/photos", label: "Galeria - Zdjęcia", icon: Images },
+  { href: "/admin/gallery/videos", label: "Galeria - Filmy", icon: PlayCircle },
+  { href: "/admin/gallery/docs", label: "Galeria - Dokumenty PDF", icon: FileText },
   { href: "/admin/messages", label: "Wiadomości", icon: Mail },
 ];
 

@@ -6,8 +6,8 @@ import { AboutIllustration } from "@/components/illustrations";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 const PARAGRAPHS = [
-  "Pracuję z fermami kurczaków rzeźnych, kur niosek i kaczek piżmowych (Barbarie) — hodowlami, które należą do najbardziej wymagających w branży. Moja rola nie polega na sprzedaniu jednego rozwiązania, ale na dopasowaniu żywienia, mikroklimatu i opieki zootechnicznej do konkretnej fermy, jej budynków i celu produkcyjnego.",
-  "Nowe obiekty hodowlane są dziś wyposażane w coraz lepsze, mniej obciążające środowisko urządzenia — moim zadaniem jest pomóc wykorzystać je w pełni w codziennej produkcji. To, co robię, ma znaczenie tam, gdzie liczy się jednocześnie dobrostan ptaków, jakość mięsa i odpowiedzialność za środowisko.",
+  "Pracuję z fermami kurczaków rzeźnych, kur niosek i kaczek piżmowych (Barbarie) - hodowlami, które należą do najbardziej wymagających w branży. Moja rola nie polega na sprzedaniu jednego rozwiązania, ale na dopasowaniu żywienia, mikroklimatu i opieki zootechnicznej do konkretnej fermy, jej budynków i celu produkcyjnego.",
+  "Nowe obiekty hodowlane są dziś wyposażane w coraz lepsze, mniej obciążające środowisko urządzenia - moim zadaniem jest pomóc wykorzystać je w pełni w codziennej produkcji. To, co robię, ma znaczenie tam, gdzie liczy się jednocześnie dobrostan ptaków, jakość mięsa i odpowiedzialność za środowisko.",
 ];
 
 const PRINCIPLES = [
@@ -17,11 +17,11 @@ const PRINCIPLES = [
   },
   {
     title: "Środowisko",
-    description: "Mniej emisji, lepsze wykorzystanie zasobów — bez kompromisu w produkcji.",
+    description: "Mniej emisji, lepsze wykorzystanie zasobów - bez kompromisu w produkcji.",
   },
   {
     title: "Partnerstwo",
-    description: "Jestem na fermie wtedy, kiedy jest taka potrzeba — nie tylko przy podpisywaniu umowy.",
+    description: "Jestem na fermie wtedy, kiedy jest taka potrzeba - nie tylko przy podpisywaniu umowy.",
   },
 ];
 
@@ -133,7 +133,7 @@ export function AboutSection() {
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center sm:text-left">
                 <p className="inline-block border-b border-dashed border-gold-deep/40 font-heading text-3xl font-bold text-navy-deep/40 sm:text-4xl">
-                  —
+                  -
                 </p>
                 <p className="mt-1 text-sm text-navy-mid/70">{stat.label}</p>
               </div>

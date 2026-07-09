@@ -71,7 +71,7 @@ export function LocationSection() {
                 tone="dark"
               />
               <p className="max-w-md text-base leading-relaxed text-slate-muted">
-                Spotkajmy się na miejscu — obejrzę fermę i porozmawiamy o
+                Spotkajmy się na miejscu - obejrzę fermę i porozmawiamy o
                 planie działania bez zobowiązań.
               </p>
               <div className="flex flex-col gap-1">
@@ -101,7 +101,7 @@ export function LocationSection() {
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.4rem] sm:aspect-[16/10]">
                 <iframe
-                  title="Mapa — lokalizacja Verkap Plus, Wolica Kozia 48"
+                  title="Mapa - lokalizacja Verkap Plus, Wolica Kozia 48"
                   src={MAP_SRC}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

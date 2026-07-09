@@ -67,10 +67,10 @@ export default function AdminDocsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-heading text-2xl font-semibold text-slate-800">
-            Galeria — Dokumenty PDF
+            Galeria - Dokumenty PDF
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Dokumenty widoczne na podstronie /docs — plik PDF lub link zewnętrzny.
+            Dokumenty widoczne na podstronie /docs - plik PDF lub link zewnętrzny.
           </p>
         </div>
         <Button onClick={openCreate} className="gap-2 bg-navy-deep text-offwhite hover:bg-navy-mid">

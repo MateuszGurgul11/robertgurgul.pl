@@ -61,7 +61,7 @@ export default function AdminVideosPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-heading text-2xl font-semibold text-slate-800">
-            Galeria — Filmy
+            Galeria - Filmy
           </h1>
           <p className="mt-1 text-sm text-slate-500">
             Filmy widoczne na podstronie /videos (YouTube, Vimeo lub plik wideo).

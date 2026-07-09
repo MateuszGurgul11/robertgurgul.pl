@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -79,13 +80,26 @@ function ServiceRow({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="flex items-start gap-4 pb-6">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/10">
-              <ServiceIcon title={service.title} className="h-5 w-5 text-gold" />
-            </span>
-            <p className="text-sm leading-relaxed text-slate-muted">
-              {service.description}
-            </p>
+          <div className="flex flex-col gap-4 pb-6">
+            {service.imageUrl ? (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-gold/15 bg-navy-deep">
+                <Image
+                  src={service.imageUrl}
+                  alt={service.title}
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              </div>
+            ) : null}
+            <div className="flex items-start gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/10">
+                <ServiceIcon title={service.title} className="h-5 w-5 text-gold" />
+              </span>
+              <p className="text-sm leading-relaxed text-slate-muted">
+                {service.description}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -104,6 +118,18 @@ function DetailPanel({ service, index }: { service: Service; index: number }) {
         transition={{ duration: 0.25, ease: "easeOut" }}
         className="flex flex-col gap-6 rounded-[1.75rem] border border-gold/15 bg-navy-deepest/60 p-8"
       >
+        {service.imageUrl ? (
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gold/15 bg-navy-deep">
+            <Image
+              src={service.imageUrl}
+              alt={service.title}
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover"
+            />
+          </div>
+        ) : null}
+
         <div className="flex items-center justify-between">
           <span className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/40 bg-gold/10">
             <ServiceIcon title={service.title} className="h-6 w-6 text-gold" />
@@ -145,7 +171,7 @@ export function OfferRail({ services }: { services: Service[] }) {
         <SectionHeader
           eyebrow="Robert Gurgul"
           title="Oferta"
-          subtitle="Osiem obszarów wsparcia, które realnie przekładają się na wynik fermy — od doboru sprzętu po codzienną opiekę nad stadem."
+          subtitle="Osiem obszarów wsparcia, które realnie przekładają się na wynik fermy - od doboru sprzętu po codzienną opiekę nad stadem."
           align="left"
           tone="dark"
         />

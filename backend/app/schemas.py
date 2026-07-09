@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import BaseModel, EmailStr, Field
 
@@ -9,8 +9,8 @@ GalleryDocType = Literal["file", "link"]
 
 class ServiceBase(BaseModel):
     title: str
-    description: str | None = None
-    imageUrl: str | None = None
+    description: Optional[str] = None
+    imageUrl: Optional[str] = None
     order: int = 0
 
 
@@ -19,10 +19,10 @@ class ServiceCreate(ServiceBase):
 
 
 class ServiceUpdate(BaseModel):
-    title: str | None = None
-    description: str | None = None
-    imageUrl: str | None = None
-    order: int | None = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    imageUrl: Optional[str] = None
+    order: Optional[int] = None
 
 
 class Service(ServiceBase):
@@ -40,9 +40,9 @@ class GalleryPhotoCreate(GalleryPhotoBase):
 
 
 class GalleryPhotoUpdate(BaseModel):
-    imageUrl: str | None = None
-    alt: str | None = None
-    order: int | None = None
+    imageUrl: Optional[str] = None
+    alt: Optional[str] = None
+    order: Optional[int] = None
 
 
 class GalleryPhoto(GalleryPhotoBase):
@@ -52,7 +52,7 @@ class GalleryPhoto(GalleryPhotoBase):
 class GalleryVideoBase(BaseModel):
     title: str
     videoUrl: str
-    thumbnailUrl: str | None = None
+    thumbnailUrl: Optional[str] = None
     order: int = 0
 
 
@@ -61,10 +61,10 @@ class GalleryVideoCreate(GalleryVideoBase):
 
 
 class GalleryVideoUpdate(BaseModel):
-    title: str | None = None
-    videoUrl: str | None = None
-    thumbnailUrl: str | None = None
-    order: int | None = None
+    title: Optional[str] = None
+    videoUrl: Optional[str] = None
+    thumbnailUrl: Optional[str] = None
+    order: Optional[int] = None
 
 
 class GalleryVideo(GalleryVideoBase):
@@ -83,10 +83,10 @@ class GalleryDocCreate(GalleryDocBase):
 
 
 class GalleryDocUpdate(BaseModel):
-    title: str | None = None
-    type: GalleryDocType | None = None
-    url: str | None = None
-    order: int | None = None
+    title: Optional[str] = None
+    type: Optional[GalleryDocType] = None
+    url: Optional[str] = None
+    order: Optional[int] = None
 
 
 class GalleryDoc(GalleryDocBase):

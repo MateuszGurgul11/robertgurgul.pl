@@ -5,7 +5,7 @@ import { Reveal } from "@/components/reveal";
 import { VerticalHalftoneSilhouette, forestProfile } from "@/components/pixel-silhouette";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
-const QUOTE = "Drób nie wybacza przypadkowych decyzji — od lat pomagam fermom ich nie podejmować.";
+const QUOTE = "Drób nie wybacza przypadkowych decyzji - od lat pomagam fermom ich nie podejmować.";
 
 export function QuoteSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
