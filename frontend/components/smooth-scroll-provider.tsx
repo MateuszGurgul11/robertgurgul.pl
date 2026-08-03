@@ -57,22 +57,32 @@ export function SmoothScrollProvider({
       gsap.ticker.remove(raf);
       lenis.destroy();
       lenisRef.current = null;
-      ScrollTrigger.scrollerProxy(root, {});
-      ScrollTrigger.refresh();
+      try {
+        ScrollTrigger.scrollerProxy(root, {});
+      } catch {
+        // ignore
+      }
     };
   }, []);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      const lenis = lenisRef.current;
-      if (lenis) {
-        lenis.scrollTo(0, { immediate: true });
-      } else {
-        window.scrollTo(0, 0);
+    // Defer past React commit so Lenis/ScrollTrigger don't touch nodes
+    // mid-unmount (soft nav → removeChild / blank "couldn't load" page).
+    const id = window.setTimeout(() => {
+      try {
+        const lenis = lenisRef.current;
+        if (lenis) {
+          lenis.resize();
+          lenis.scrollTo(0, { immediate: true });
+        } else {
+          window.scrollTo(0, 0);
+        }
+        ScrollTrigger.refresh();
+      } catch {
+        // Ignore DOM races during App Router transitions.
       }
-      ScrollTrigger.refresh();
-    });
-    return () => cancelAnimationFrame(frame);
+    }, 50);
+    return () => window.clearTimeout(id);
   }, [pathname]);
 
   return <>{children}</>;

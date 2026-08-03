@@ -16,6 +16,16 @@ export function Preloader() {
       return;
     }
 
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      setHidden(true);
+    };
+
+    // If GSAP stalls (soft nav / ticker races), never block the site.
+    const failsafe = window.setTimeout(finish, 2500);
+
     const obj = { value: 0 };
     const tween = gsap.to(obj, {
       value: 100,
@@ -23,16 +33,22 @@ export function Preloader() {
       ease: "power2.inOut",
       onUpdate: () => setPercent(Math.round(obj.value)),
       onComplete: () => {
-        gsap.to(overlayRef.current, {
+        const el = overlayRef.current;
+        if (!el) {
+          finish();
+          return;
+        }
+        gsap.to(el, {
           opacity: 0,
           duration: 0.5,
           delay: 0.15,
-          onComplete: () => setHidden(true),
+          onComplete: finish,
         });
       },
     });
 
     return () => {
+      window.clearTimeout(failsafe);
       tween.kill();
     };
   }, []);
