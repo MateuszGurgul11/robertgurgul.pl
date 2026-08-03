@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { VerticalHalftoneSilhouette, forestProfile } from "@/components/pixel-silhouette";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
+import { killScrollTriggersIn } from "@/lib/kill-scroll-triggers";
 
 /**
  * Invisible film connector between the Hero and the QuoteSection.
@@ -56,7 +57,14 @@ export function HalftoneBand() {
     }, sectionRef);
 
     ScrollTrigger.refresh();
-    return () => ctx.revert();
+    return () => {
+      killScrollTriggersIn(sectionRef.current);
+      try {
+        ctx.revert();
+      } catch {
+        /* soft-nav race */
+      }
+    };
   }, []);
 
   return (
@@ -72,7 +80,7 @@ export function HalftoneBand() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         poster="/hero/connector.jpg"
         aria-hidden="true"
       >

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
+import { SoftNavLink } from "@/components/soft-nav-link";
 
 const QUICK_LINKS = [
   { label: "Strona główna", href: "/#home" },
@@ -57,12 +58,12 @@ function FooterContent() {
             <ul className="mt-4 flex flex-col gap-2.5">
               {QUICK_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <SoftNavLink
                     href={link.href}
                     className="text-sm text-slate-muted transition-colors duration-200 hover:text-gold-light"
                   >
                     {link.label}
-                  </Link>
+                  </SoftNavLink>
                 </li>
               ))}
             </ul>

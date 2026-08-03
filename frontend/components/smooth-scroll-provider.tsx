@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
+import { hasPinSpacers } from "@/lib/kill-scroll-triggers";
 
 export function SmoothScrollProvider({
   children,
@@ -66,9 +67,19 @@ export function SmoothScrollProvider({
   }, []);
 
   useEffect(() => {
-    // Defer past React commit so Lenis/ScrollTrigger don't touch nodes
-    // mid-unmount (soft nav → removeChild / blank "couldn't load" page).
-    const id = window.setTimeout(() => {
+    // Defer past React commit + pin cleanup so Lenis/ScrollTrigger don't
+    // touch nodes mid-unmount (soft nav → removeChild crash).
+    let cancelled = false;
+    let attempts = 0;
+
+    const run = () => {
+      if (cancelled) return;
+      attempts += 1;
+      // Wait until previous page pin-spacers are gone (Hero cleanup).
+      if (hasPinSpacers() && attempts < 12) {
+        window.setTimeout(run, 40);
+        return;
+      }
       try {
         const lenis = lenisRef.current;
         if (lenis) {
@@ -81,8 +92,13 @@ export function SmoothScrollProvider({
       } catch {
         // Ignore DOM races during App Router transitions.
       }
-    }, 50);
-    return () => window.clearTimeout(id);
+    };
+
+    const id = window.setTimeout(run, 120);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(id);
+    };
   }, [pathname]);
 
   return <>{children}</>;

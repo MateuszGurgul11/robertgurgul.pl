@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
+import { SoftNavLink } from "@/components/soft-nav-link";
 import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
 
@@ -117,7 +118,7 @@ export function MenuOverlay({ open, onClose }: MenuOverlayProps) {
 
       <nav className="flex flex-1 flex-col items-center justify-center gap-4 px-6 sm:gap-5 lg:gap-6">
         {NAV_LINKS.map((item, i) => (
-          <Link
+          <SoftNavLink
             key={item.href}
             href={item.href}
             onClick={onClose}
@@ -125,7 +126,7 @@ export function MenuOverlay({ open, onClose }: MenuOverlayProps) {
             style={{ animationDelay: `${80 + i * 40}ms` }}
           >
             {item.label}
-          </Link>
+          </SoftNavLink>
         ))}
       </nav>
 

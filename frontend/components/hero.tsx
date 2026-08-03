@@ -10,6 +10,7 @@ import {
   treeProfile,
 } from "@/components/pixel-silhouette";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
+import { killScrollTriggersIn } from "@/lib/kill-scroll-triggers";
 
 /**
  * Scroll-scrubbed hero. The section is *pinned* to the screen (GSAP ScrollTrigger
@@ -21,12 +22,13 @@ import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
  *                            scales down from its centre into a small window and
  *                            the next section slides up to cover it.
  *
- * Drop the footage at `public/hero/ferma.{webm,mp4}` (+ optional `ferma.jpg`
- * poster); hero title lockup at `public/hero/title.png` (transparent PNG). The pin distance is
- * exactly FILM + SHRINK viewport-heights, so there is no dead scroll.
+ * Drop the footage at `public/hero/ferma.mp4` (+ optional `ferma.webm` /
+ * `ferma.jpg` poster). The pin distance is exactly FILM + SHRINK viewport-heights,
+ * so there is no dead scroll.
  */
 const VIDEO_SOURCES = [
-  { src: "/hero/ferma.webm", type: "video/webm" },
+  // webm only when the file exists in public/hero/ — missing source causes a
+  // cold-load 404 that delays the first painted frame.
   { src: "/hero/ferma.mp4", type: "video/mp4" },
 ];
 
@@ -53,6 +55,7 @@ export function Hero() {
   const treeRef = useRef<HTMLDivElement>(null);
 
   const [videoFailed, setVideoFailed] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
   const mountainProfileData = useMemo(() => mountainProfile(46, 13, 2), []);
   const treeProfileData = useMemo(() => treeProfile(16, 11), []);
@@ -95,7 +98,13 @@ export function Hero() {
         }
       }
     });
-    return () => ctx.revert();
+    return () => {
+      try {
+        ctx.revert();
+      } catch {
+        /* soft-nav race */
+      }
+    };
   }, []);
 
   // Pinned scrub timeline: film, then shrink. Built once we know whether the
@@ -103,10 +112,31 @@ export function Hero() {
   useEffect(() => {
     if (prefersReducedMotion() || !sectionRef.current) return;
     const video = videoRef.current;
+    const section = sectionRef.current;
 
-    let cleanup = () => {};
+    let cancelled = false;
+    let ctx: ReturnType<typeof gsap.context> | null = null;
+    let fallbackId: number | undefined;
+    let onLoadedData: (() => void) | undefined;
+
+    const safeCleanup = () => {
+      if (ctx) {
+        try {
+          ctx.revert();
+        } catch {
+          /* soft-nav race — SoftNavLink may have already killed pins */
+        }
+        ctx = null;
+      } else {
+        killScrollTriggersIn(section);
+      }
+    };
 
     const build = () => {
+      if (cancelled || !sectionRef.current || ctx) return;
+      // Rebuild: drop previous pin before creating a new one.
+      safeCleanup();
+
       const usableVideo =
         !videoFailed &&
         video &&
@@ -116,9 +146,24 @@ export function Hero() {
           : null;
 
       // Prime decoding so seeking renders frames (required on iOS/Safari).
-      if (usableVideo) usableVideo.play().then(() => usableVideo.pause()).catch(() => {});
+      if (usableVideo) {
+        usableVideo
+          .play()
+          .then(() => {
+            usableVideo.pause();
+            try {
+              usableVideo.currentTime = 0.001;
+            } catch {
+              /* seek not ready */
+            }
+            setVideoReady(true);
+          })
+          .catch(() => {
+            setVideoReady(true);
+          });
+      }
 
-      const ctx = gsap.context(() => {
+      ctx = gsap.context(() => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -203,17 +248,39 @@ export function Hero() {
       }, sectionRef);
 
       ScrollTrigger.refresh();
-      cleanup = () => ctx.revert();
     };
 
-    if (!video || videoFailed || video.readyState >= 1) {
+    if (!video || videoFailed) {
+      build();
+    } else if (video.readyState >= 2) {
+      setVideoReady(true);
       build();
     } else {
-      video.addEventListener("loadedmetadata", build, { once: true });
-      cleanup = () => video.removeEventListener("loadedmetadata", build);
+      onLoadedData = () => {
+        if (cancelled) return;
+        if (fallbackId !== undefined) window.clearTimeout(fallbackId);
+        setVideoReady(true);
+        build();
+      };
+      video.addEventListener("loadeddata", onLoadedData, { once: true });
+      // Fallback when the event already fired between the check and listener.
+      fallbackId = window.setTimeout(() => {
+        if (cancelled) return;
+        if (video.readyState >= 1) {
+          setVideoReady(true);
+        }
+        build();
+      }, 50);
     }
 
-    return () => cleanup();
+    return () => {
+      cancelled = true;
+      if (fallbackId !== undefined) window.clearTimeout(fallbackId);
+      if (video && onLoadedData) {
+        video.removeEventListener("loadeddata", onLoadedData);
+      }
+      safeCleanup();
+    };
   }, [videoFailed]);
 
   return (
@@ -255,11 +322,14 @@ export function Hero() {
         {!videoFailed && (
           <video
             ref={videoRef}
-            className="absolute inset-0 h-full w-full object-cover"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+              videoReady ? "opacity-100" : "opacity-0"
+            }`}
             muted
             playsInline
             preload="auto"
             poster="/hero/ferma.jpg"
+            onLoadedData={() => setVideoReady(true)}
             onError={() => setVideoFailed(true)}
             aria-hidden="true"
           >
