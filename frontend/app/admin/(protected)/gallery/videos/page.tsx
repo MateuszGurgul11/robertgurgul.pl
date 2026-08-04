@@ -133,12 +133,12 @@ export default function AdminVideosPage() {
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md overflow-hidden">
           <DialogHeader>
             <DialogTitle>{editing ? "Edytuj film" : "Nowy film"}</DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-1.5">
+          <div className="flex min-w-0 flex-col gap-4">
+            <div className="flex min-w-0 flex-col gap-1.5">
               <Label htmlFor="video-title">Tytuł</Label>
               <Input
                 id="video-title"
@@ -146,16 +146,17 @@ export default function AdminVideosPage() {
                 onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
               />
             </div>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex min-w-0 flex-col gap-1.5">
               <Label htmlFor="video-url">Adres URL (YouTube, Vimeo lub plik wideo)</Label>
               <Input
                 id="video-url"
                 value={form.videoUrl}
                 onChange={(e) => setForm((f) => ({ ...f, videoUrl: e.target.value }))}
                 placeholder="https://www.youtube.com/watch?v=..."
+                className="min-w-0"
               />
             </div>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex min-w-0 flex-col gap-1.5">
               <Label>Miniatura (opcjonalnie)</Label>
               <UploadDropzone
                 value={form.thumbnailUrl}
