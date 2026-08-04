@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/contact-form";
 import { ConnectIllustration } from "@/components/illustrations";
 import { VerticalHalftoneSilhouette, treeProfile } from "@/components/pixel-silhouette";
 import { Reveal } from "@/components/reveal";
+import { SITE_CONTACT } from "@/lib/site-contact";
 
 const TREE_PROFILE = treeProfile(14, 10);
 
@@ -47,9 +48,12 @@ export function ContactSection() {
                     <p className="text-xs font-semibold uppercase tracking-wide text-navy-mid/60">
                       Telefon
                     </p>
-                    <p className="border-b border-dashed border-gold-deep/40 text-sm text-navy-deep/50">
-                      dane uzupełnione wkrótce
-                    </p>
+                    <a
+                      href={`tel:${SITE_CONTACT.phoneTel}`}
+                      className="text-sm text-navy-deep transition-colors hover:text-gold-deep"
+                    >
+                      {SITE_CONTACT.phoneDisplay}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -60,9 +64,12 @@ export function ContactSection() {
                     <p className="text-xs font-semibold uppercase tracking-wide text-navy-mid/60">
                       E-mail
                     </p>
-                    <p className="border-b border-dashed border-gold-deep/40 text-sm text-navy-deep/50">
-                      dane uzupełnione wkrótce
-                    </p>
+                    <a
+                      href={`mailto:${SITE_CONTACT.email}`}
+                      className="text-sm text-navy-deep transition-colors hover:text-gold-deep"
+                    >
+                      {SITE_CONTACT.email}
+                    </a>
                   </div>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { SoftNavLink } from "@/components/soft-nav-link";
+import { SITE_CONTACT } from "@/lib/site-contact";
 
 const QUICK_LINKS = [
   { label: "Strona główna", href: "/#home" },
@@ -74,10 +75,23 @@ function FooterContent() {
               Kontakt
             </p>
             <ul className="mt-4 flex flex-col gap-2.5 text-sm text-slate-muted">
-              <li>Verkap Plus, Wolica Kozia 48</li>
-              <li>63-040 Nowe Miasto nad Wartą</li>
-              <li className="pt-1 text-slate-muted/60">
-                telefon i e-mail dostępne wkrótce
+              <li>{SITE_CONTACT.addressLine1}</li>
+              <li>{SITE_CONTACT.addressLine2}</li>
+              <li className="pt-1">
+                <a
+                  href={`tel:${SITE_CONTACT.phoneTel}`}
+                  className="transition-colors hover:text-gold-light"
+                >
+                  {SITE_CONTACT.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${SITE_CONTACT.email}`}
+                  className="transition-colors hover:text-gold-light"
+                >
+                  {SITE_CONTACT.email}
+                </a>
               </li>
             </ul>
           </div>

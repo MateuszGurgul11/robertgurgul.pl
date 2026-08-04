@@ -7,8 +7,9 @@ import { SectionHeader } from "@/components/section-header";
 import { Reveal } from "@/components/reveal";
 import { VerticalHalftoneSilhouette, mountainProfile } from "@/components/pixel-silhouette";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
+import { SITE_CONTACT } from "@/lib/site-contact";
 
-const ADDRESS = "Verkap Plus, Wolica Kozia 48, 63-040 Nowe Miasto nad Wartą";
+const ADDRESS = SITE_CONTACT.addressFull;
 const MAP_SRC = `https://www.google.com/maps?q=${encodeURIComponent(
   ADDRESS
 )}&output=embed`;
@@ -76,10 +77,10 @@ export function LocationSection() {
               </p>
               <div className="flex flex-col gap-1">
                 <p className="font-heading text-lg font-semibold text-offwhite">
-                  Verkap Plus
+                  {SITE_CONTACT.company}
                 </p>
                 <p className="text-sm text-slate-muted">
-                  Wolica Kozia 48, 63-040 Nowe Miasto nad Wartą
+                  {SITE_CONTACT.street}, {SITE_CONTACT.city}
                 </p>
               </div>
               <Link
