@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { PlayCircle } from "lucide-react";
-import { PlaceholderArt } from "@/components/placeholder-art";
+import { Play } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import type { GalleryVideo } from "@/lib/types";
 
@@ -25,12 +24,57 @@ function getEmbed(url: string): { type: "iframe" | "video"; src: string } {
   return { type: "video", src: url };
 }
 
+function isHostedFile(url: string) {
+  return (
+    !url.includes("youtube.com") &&
+    !url.includes("youtu.be") &&
+    !url.includes("vimeo.com")
+  );
+}
+
+function VideoPoster({ video }: { video: GalleryVideo }) {
+  if (video.thumbnailUrl) {
+    return (
+      <Image
+        src={video.thumbnailUrl}
+        alt=""
+        fill
+        sizes="(max-width: 768px) 100vw, 33vw"
+        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+      />
+    );
+  }
+
+  if (isHostedFile(video.videoUrl)) {
+    return (
+      <video
+        src={video.videoUrl}
+        muted
+        playsInline
+        preload="metadata"
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+      />
+    );
+  }
+
+  return (
+    <div
+      className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy-mid to-navy-deepest bg-dot-grid"
+      aria-hidden
+    >
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-deepest/80 via-transparent to-navy-deepest/30" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-gold/10 to-transparent" />
+    </div>
+  );
+}
+
 function VideoTile({ video }: { video: GalleryVideo }) {
   const [playing, setPlaying] = useState(false);
   const embed = playing ? getEmbed(video.videoUrl) : null;
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-gold/15 bg-navy-deep/40">
+    <article className="group relative overflow-hidden rounded-2xl border border-gold/15 bg-navy-deepest shadow-[0_20px_50px_-30px_rgba(0,0,0,0.8)]">
       <div className="relative aspect-video w-full">
         {embed ? (
           embed.type === "iframe" ? (
@@ -46,7 +90,8 @@ function VideoTile({ video }: { video: GalleryVideo }) {
               src={embed.src}
               controls
               autoPlay
-              className="absolute inset-0 h-full w-full bg-black"
+              playsInline
+              className="absolute inset-0 h-full w-full bg-black object-contain"
             />
           )
         ) : (
@@ -54,41 +99,40 @@ function VideoTile({ video }: { video: GalleryVideo }) {
             type="button"
             onClick={() => setPlaying(true)}
             aria-label={`Odtwórz: ${video.title}`}
-            className="group absolute inset-0 flex h-full w-full cursor-pointer items-center justify-center"
+            className="absolute inset-0 flex h-full w-full cursor-pointer items-center justify-center text-left"
           >
-            {video.thumbnailUrl ? (
-              <Image
-                src={video.thumbnailUrl}
-                alt={video.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-            ) : (
-              <PlaceholderArt
-                icon={PlayCircle}
-                label={video.title}
-                className="h-full w-full"
-              />
-            )}
-            <span className="absolute inset-0 bg-navy-deepest/30 transition-colors duration-300 group-hover:bg-navy-deepest/10" />
-            <span className="relative flex h-16 w-16 items-center justify-center rounded-full border border-gold bg-navy-deep/70 text-gold transition-transform duration-300 group-hover:scale-110">
-              <PlayCircle className="h-8 w-8" strokeWidth={1.5} />
+            <VideoPoster video={video} />
+
+            <span className="absolute inset-0 bg-gradient-to-t from-navy-deepest via-navy-deepest/25 to-navy-deepest/20 transition-opacity duration-300 group-hover:from-navy-deepest/90" />
+
+            <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-gold/70 bg-navy-deepest/55 text-gold backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold/15 sm:h-16 sm:w-16">
+              <Play className="ml-0.5 h-6 w-6 fill-current sm:h-7 sm:w-7" strokeWidth={0} />
+            </span>
+
+            <span className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5">
+              <span className="block font-heading text-base font-semibold uppercase tracking-[0.04em] text-offwhite sm:text-lg">
+                {video.title}
+              </span>
             </span>
           </button>
         )}
       </div>
-      <div className="px-5 py-4">
-        <p className="font-heading text-base font-semibold text-offwhite">
-          {video.title}
-        </p>
-        {!playing ? (
-          <p className="mt-1 text-xs text-slate-muted">
-            Kliknij, aby załadować wideo
+
+      {playing ? (
+        <div className="flex items-center justify-between gap-3 border-t border-gold/10 px-4 py-3 sm:px-5">
+          <p className="min-w-0 truncate font-heading text-sm font-semibold text-offwhite">
+            {video.title}
           </p>
-        ) : null}
-      </div>
-    </div>
+          <button
+            type="button"
+            onClick={() => setPlaying(false)}
+            className="shrink-0 cursor-pointer font-body text-[11px] font-medium uppercase tracking-[0.18em] text-gold-light transition-colors hover:text-gold"
+          >
+            Zamknij
+          </button>
+        </div>
+      ) : null}
+    </article>
   );
 }
 

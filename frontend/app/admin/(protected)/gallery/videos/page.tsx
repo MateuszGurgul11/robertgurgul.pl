@@ -64,7 +64,7 @@ export default function AdminVideosPage() {
             Galeria - Filmy
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Filmy widoczne na podstronie /videos (YouTube, Vimeo lub plik wideo).
+            Filmy widoczne na podstronie /videos — wgraj MP4/WebM albo wklej link YouTube/Vimeo.
           </p>
         </div>
         <Button onClick={openCreate} className="gap-2 bg-navy-deep text-offwhite hover:bg-navy-mid">
@@ -147,7 +147,16 @@ export default function AdminVideosPage() {
               />
             </div>
             <div className="flex min-w-0 flex-col gap-1.5">
-              <Label htmlFor="video-url">Adres URL (YouTube, Vimeo lub plik wideo)</Label>
+              <Label>Plik wideo (MP4 / WebM / MOV, max 50 MB)</Label>
+              <UploadDropzone
+                accept="video/mp4,video/webm,video/quicktime"
+                value={form.videoUrl}
+                label="Wgraj plik wideo"
+                onUploaded={(url) => setForm((f) => ({ ...f, videoUrl: url }))}
+              />
+            </div>
+            <div className="flex min-w-0 flex-col gap-1.5">
+              <Label htmlFor="video-url">albo adres URL (YouTube / Vimeo / link do pliku)</Label>
               <Input
                 id="video-url"
                 value={form.videoUrl}

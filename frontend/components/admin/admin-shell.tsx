@@ -64,14 +64,18 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen">
       <aside className="hidden w-64 flex-col border-r border-slate-200 bg-white px-4 py-6 lg:flex">
-        <div className="mb-8 flex items-center gap-2.5 px-2">
+        <Link
+          href="/"
+          className="mb-8 flex items-center gap-2.5 rounded-lg px-2 py-1 transition-opacity hover:opacity-80"
+          title="Przejdź do strony głównej"
+        >
           <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold-deep bg-navy-deep font-heading text-sm font-bold text-gold">
             RG
           </span>
           <span className="font-heading text-sm font-semibold text-slate-800">
             Panel CMS
           </span>
-        </div>
+        </Link>
         <NavLinks pathname={pathname} />
         <div className="mt-auto flex flex-col gap-2 px-2 pt-6">
           <p className="truncate text-xs text-slate-400">{user?.email}</p>
@@ -88,9 +92,13 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
       <div className="flex flex-1 flex-col">
         <header className="flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 lg:hidden">
-          <span className="font-heading text-sm font-semibold text-slate-800">
+          <Link
+            href="/"
+            className="font-heading text-sm font-semibold text-slate-800 transition-opacity hover:opacity-80"
+            title="Przejdź do strony głównej"
+          >
             Panel CMS
-          </span>
+          </Link>
           <Sheet>
             <SheetTrigger
               aria-label="Otwórz menu"
