@@ -9,8 +9,8 @@ import { useIsMobile } from "@/lib/use-is-mobile";
 
 /**
  * Film connector between Hero and QuoteSection.
- * Mobile: static poster only (no ~43 MB download).
- * Desktop: mount video when the section enters the viewport.
+ * Poster shows immediately; MP4 mounts when the section nears the viewport.
+ * Scrub parallax only on desktop.
  */
 const VIDEO_SRC = "/hero/connector.mp4";
 const POSTER_SRC = "/hero/connector.jpg";
@@ -22,11 +22,10 @@ export function HalftoneBand() {
   const [loadVideo, setLoadVideo] = useState(false);
   const forestData = useMemo(() => forestProfile(40, 6, 14), []);
 
-  // Desktop: start downloading the heavy MP4 only when near/in viewport.
   useEffect(() => {
-    if (isMobile || !sectionRef.current) return;
-
     const el = sectionRef.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
@@ -38,22 +37,26 @@ export function HalftoneBand() {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [isMobile]);
+  }, []);
 
   useEffect(() => {
-    if (isMobile) return;
+    if (!loadVideo) return;
 
     const media = videoRef.current;
+    if (!media) return;
+
     const reduce = prefersReducedMotion();
+    if (!reduce) {
+      media.play().catch(() => {});
+    }
 
-    if (media && !reduce) media.play().catch(() => {});
-    if (reduce || !sectionRef.current || !media) return;
-
-    const target = media;
+    if (isMobile || reduce || !sectionRef.current) {
+      return;
+    }
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        target,
+        media,
         { yPercent: -6 },
         {
           yPercent: 6,
@@ -86,7 +89,7 @@ export function HalftoneBand() {
       aria-label="Film z fermy łączący sekcje"
       className="relative z-20 -mt-px h-[70vh] min-h-[22rem] overflow-hidden bg-navy-deep md:h-[88vh] md:min-h-[28rem]"
     >
-      {isMobile || !loadVideo ? (
+      {!loadVideo ? (
         <Image
           src={POSTER_SRC}
           alt=""
@@ -102,6 +105,7 @@ export function HalftoneBand() {
           muted
           loop
           playsInline
+          autoPlay
           preload="none"
           poster={POSTER_SRC}
           aria-hidden="true"

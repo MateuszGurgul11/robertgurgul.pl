@@ -15,8 +15,8 @@ import { killScrollTriggersIn } from "@/lib/kill-scroll-triggers";
 import { useIsMobile } from "@/lib/use-is-mobile";
 
 /**
- * Scroll-scrubbed hero on desktop (pin + scrub + shrink). On mobile (< md):
- * static `ferma.jpg`, no video download, no pin/shrink.
+ * Desktop: scroll-scrubbed hero (pin + scrub + shrink).
+ * Mobile: autoplay muted loop over `ferma.jpg` poster — no pin/shrink.
  */
 const VIDEO_SOURCES = [{ src: "/hero/ferma.mp4", type: "video/mp4" }];
 
@@ -112,6 +112,7 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const copyRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
@@ -121,6 +122,7 @@ export function Hero() {
 
   const [videoFailed, setVideoFailed] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
+  const [mobileVideoReady, setMobileVideoReady] = useState(false);
 
   const mountainProfileData = useMemo(() => mountainProfile(46, 13, 2), []);
   const treeProfileData = useMemo(() => treeProfile(16, 11), []);
@@ -170,6 +172,22 @@ export function Hero() {
         /* soft-nav race */
       }
     };
+  }, [isMobile]);
+
+  // Mobile: simple autoplay loop (no pin / scrub / shrink).
+  useEffect(() => {
+    if (!isMobile || prefersReducedMotion()) return;
+    const video = mobileVideoRef.current;
+    if (!video) return;
+
+    const play = () => {
+      video.play().then(() => setMobileVideoReady(true)).catch(() => {});
+    };
+
+    if (video.readyState >= 2) play();
+    else video.addEventListener("loadeddata", play, { once: true });
+
+    return () => video.removeEventListener("loadeddata", play);
   }, [isMobile]);
 
   // Desktop-only: pinned scrub timeline.
@@ -378,14 +396,42 @@ export function Hero() {
         className="absolute inset-0 z-10 origin-center overflow-hidden will-change-transform"
       >
         {isMobile ? (
-          <Image
-            src="/hero/ferma.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          <>
+            <Image
+              src="/hero/ferma.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            {!prefersReducedMotion() ? (
+              <video
+                ref={mobileVideoRef}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                  mobileVideoReady ? "opacity-100" : "opacity-0"
+                }`}
+                muted
+                loop
+                playsInline
+                autoPlay
+                preload="metadata"
+                poster="/hero/ferma.jpg"
+                onLoadedData={() => {
+                  mobileVideoRef.current
+                    ?.play()
+                    .then(() => setMobileVideoReady(true))
+                    .catch(() => {});
+                }}
+                onError={() => setMobileVideoReady(false)}
+                aria-hidden="true"
+              >
+                {VIDEO_SOURCES.map((s) => (
+                  <source key={s.src} src={s.src} type={s.type} />
+                ))}
+              </video>
+            ) : null}
+          </>
         ) : (
           <>
             <HeroIllustration className="absolute inset-0 h-full w-full" />
