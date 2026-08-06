@@ -3,15 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { GoldBarsCanvas } from "@/components/gold-bars-canvas";
+import { useIsMobile } from "@/lib/use-is-mobile";
 
 export function Preloader() {
+  const isMobile = useIsMobile();
   const [hidden, setHidden] = useState(false);
   const [percent, setPercent] = useState(0);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion()) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing from OS-level media query
+    // Mobile / reduced motion: never block LCP with the splash.
+    if (prefersReducedMotion() || isMobile) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing from media queries
       setHidden(true);
       return;
     }
@@ -23,7 +26,6 @@ export function Preloader() {
       setHidden(true);
     };
 
-    // If GSAP stalls (soft nav / ticker races), never block the site.
     const failsafe = window.setTimeout(finish, 2500);
 
     const obj = { value: 0 };
@@ -51,7 +53,7 @@ export function Preloader() {
       window.clearTimeout(failsafe);
       tween.kill();
     };
-  }, []);
+  }, [isMobile]);
 
   if (hidden) return null;
 
