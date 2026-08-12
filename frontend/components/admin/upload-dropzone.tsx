@@ -3,9 +3,9 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
-import { ImagePlus, Loader2 } from "lucide-react";
+import { FileText, Film, ImagePlus, Loader2 } from "lucide-react";
 import { useAuth } from "@/lib/firebase/use-auth";
-import { uploadFile } from "@/lib/api";
+import { ApiError, uploadFile } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 interface UploadDropzoneProps {
@@ -13,6 +13,18 @@ interface UploadDropzoneProps {
   onUploaded: (url: string) => void;
   accept?: string;
   label?: string;
+}
+
+/** Short, readable label for signed Storage URLs (avoids blowing up modal layout). */
+function fileLabel(url: string): string {
+  try {
+    const path = new URL(url).pathname;
+    const name = decodeURIComponent(path.split("/").pop() ?? "");
+    if (name) return name.length > 48 ? `${name.slice(0, 45)}…` : name;
+  } catch {
+    /* not a URL */
+  }
+  return url.length > 48 ? `${url.slice(0, 45)}…` : url;
 }
 
 export function UploadDropzone({
@@ -26,6 +38,7 @@ export function UploadDropzone({
   const [uploading, setUploading] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const isImage = accept.startsWith("image");
+  const isVideo = accept.startsWith("video");
 
   async function handleFile(file: File) {
     setUploading(true);
@@ -34,8 +47,12 @@ export function UploadDropzone({
       const { url } = await uploadFile(file, token);
       onUploaded(url);
       toast.success("Plik wgrany.");
-    } catch {
-      toast.error("Nie udało się wgrać pliku.");
+    } catch (err) {
+      const message =
+        err instanceof ApiError
+          ? err.message
+          : "Nie udało się wgrać pliku.";
+      toast.error(message);
     } finally {
       setUploading(false);
     }
@@ -58,7 +75,7 @@ export function UploadDropzone({
       role="button"
       tabIndex={0}
       className={cn(
-        "flex min-h-32 cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-4 py-6 text-center transition-colors duration-150",
+        "flex min-h-32 w-full min-w-0 cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-dashed px-4 py-6 text-center transition-colors duration-150",
         dragOver
           ? "border-gold-deep bg-gold/5"
           : "border-slate-200 hover:border-slate-300"
@@ -86,12 +103,26 @@ export function UploadDropzone({
         </>
       ) : value ? (
         <>
-          <p className="max-w-full truncate text-xs text-slate-600">{value}</p>
+          {isVideo ? (
+            <Film className="h-6 w-6 shrink-0 text-slate-400" aria-hidden />
+          ) : (
+            <FileText className="h-6 w-6 shrink-0 text-slate-400" aria-hidden />
+          )}
+          <p
+            className="w-full min-w-0 truncate px-1 text-xs font-medium text-slate-700"
+            title={value}
+          >
+            {fileLabel(value)}
+          </p>
           <p className="text-xs text-slate-500">Kliknij, aby zmienić plik</p>
         </>
       ) : (
         <>
-          <ImagePlus className="h-6 w-6 text-slate-400" />
+          {isVideo ? (
+            <Film className="h-6 w-6 text-slate-400" />
+          ) : (
+            <ImagePlus className="h-6 w-6 text-slate-400" />
+          )}
           <p className="text-xs text-slate-500">{label}</p>
         </>
       )}

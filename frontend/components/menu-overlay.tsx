@@ -3,8 +3,10 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
+import { SoftNavLink } from "@/components/soft-nav-link";
 import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
+import { SITE_CONTACT } from "@/lib/site-contact";
 
 const NAV_LINKS = [
   { label: "Strona główna", href: "/#home" },
@@ -117,7 +119,7 @@ export function MenuOverlay({ open, onClose }: MenuOverlayProps) {
 
       <nav className="flex flex-1 flex-col items-center justify-center gap-4 px-6 sm:gap-5 lg:gap-6">
         {NAV_LINKS.map((item, i) => (
-          <Link
+          <SoftNavLink
             key={item.href}
             href={item.href}
             onClick={onClose}
@@ -125,7 +127,7 @@ export function MenuOverlay({ open, onClose }: MenuOverlayProps) {
             style={{ animationDelay: `${80 + i * 40}ms` }}
           >
             {item.label}
-          </Link>
+          </SoftNavLink>
         ))}
       </nav>
 
@@ -134,17 +136,23 @@ export function MenuOverlay({ open, onClose }: MenuOverlayProps) {
           <p className="font-body text-[10px] font-medium uppercase tracking-[0.22em] text-slate-muted">
             Telefon
           </p>
-          <p className="mt-2 font-body text-sm text-offwhite/60">
-            dane uzupełnione wkrótce
-          </p>
+          <a
+            href={`tel:${SITE_CONTACT.phoneTel}`}
+            className="mt-2 block font-body text-sm text-offwhite/80 transition-colors hover:text-gold-light"
+          >
+            {SITE_CONTACT.phoneDisplay}
+          </a>
         </div>
         <div className="text-right sm:text-left">
           <p className="font-body text-[10px] font-medium uppercase tracking-[0.22em] text-slate-muted">
             E-mail
           </p>
-          <p className="mt-2 font-body text-sm text-offwhite/60">
-            dane uzupełnione wkrótce
-          </p>
+          <a
+            href={`mailto:${SITE_CONTACT.email}`}
+            className="mt-2 block font-body text-sm text-offwhite/80 transition-colors hover:text-gold-light"
+          >
+            {SITE_CONTACT.email}
+          </a>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
+import { killScrollTriggersIn } from "@/lib/kill-scroll-triggers";
 
 /**
  * Full-bleed parallax divider. The image layer is taller than the frame and
@@ -37,7 +38,14 @@ export function ParallaxBand() {
     }, sectionRef);
 
     ScrollTrigger.refresh();
-    return () => ctx.revert();
+    return () => {
+      killScrollTriggersIn(sectionRef.current);
+      try {
+        ctx.revert();
+      } catch {
+        /* soft-nav race */
+      }
+    };
   }, []);
 
   return (

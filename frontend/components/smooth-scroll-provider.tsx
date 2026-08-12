@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
+import { hasPinSpacers } from "@/lib/kill-scroll-triggers";
 
 export function SmoothScrollProvider({
   children,
@@ -57,22 +58,47 @@ export function SmoothScrollProvider({
       gsap.ticker.remove(raf);
       lenis.destroy();
       lenisRef.current = null;
-      ScrollTrigger.scrollerProxy(root, {});
-      ScrollTrigger.refresh();
+      try {
+        ScrollTrigger.scrollerProxy(root, {});
+      } catch {
+        // ignore
+      }
     };
   }, []);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      const lenis = lenisRef.current;
-      if (lenis) {
-        lenis.scrollTo(0, { immediate: true });
-      } else {
-        window.scrollTo(0, 0);
+    // Defer past React commit + pin cleanup so Lenis/ScrollTrigger don't
+    // touch nodes mid-unmount (soft nav → removeChild crash).
+    let cancelled = false;
+    let attempts = 0;
+
+    const run = () => {
+      if (cancelled) return;
+      attempts += 1;
+      // Wait until previous page pin-spacers are gone (Hero cleanup).
+      if (hasPinSpacers() && attempts < 12) {
+        window.setTimeout(run, 40);
+        return;
       }
-      ScrollTrigger.refresh();
-    });
-    return () => cancelAnimationFrame(frame);
+      try {
+        const lenis = lenisRef.current;
+        if (lenis) {
+          lenis.resize();
+          lenis.scrollTo(0, { immediate: true });
+        } else {
+          window.scrollTo(0, 0);
+        }
+        ScrollTrigger.refresh();
+      } catch {
+        // Ignore DOM races during App Router transitions.
+      }
+    };
+
+    const id = window.setTimeout(run, 120);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(id);
+    };
   }, [pathname]);
 
   return <>{children}</>;

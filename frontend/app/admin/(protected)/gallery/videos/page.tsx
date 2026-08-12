@@ -64,7 +64,7 @@ export default function AdminVideosPage() {
             Galeria - Filmy
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Filmy widoczne na podstronie /videos (YouTube, Vimeo lub plik wideo).
+            Filmy widoczne na podstronie /videos — wgraj MP4/WebM albo wklej link YouTube/Vimeo.
           </p>
         </div>
         <Button onClick={openCreate} className="gap-2 bg-navy-deep text-offwhite hover:bg-navy-mid">
@@ -133,12 +133,12 @@ export default function AdminVideosPage() {
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md overflow-hidden">
           <DialogHeader>
             <DialogTitle>{editing ? "Edytuj film" : "Nowy film"}</DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-1.5">
+          <div className="flex min-w-0 flex-col gap-4">
+            <div className="flex min-w-0 flex-col gap-1.5">
               <Label htmlFor="video-title">Tytuł</Label>
               <Input
                 id="video-title"
@@ -146,16 +146,26 @@ export default function AdminVideosPage() {
                 onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
               />
             </div>
-            <div className="flex flex-col gap-1.5">
-              <Label htmlFor="video-url">Adres URL (YouTube, Vimeo lub plik wideo)</Label>
+            <div className="flex min-w-0 flex-col gap-1.5">
+              <Label>Plik wideo (MP4 / WebM / MOV, max 50 MB)</Label>
+              <UploadDropzone
+                accept="video/mp4,video/webm,video/quicktime"
+                value={form.videoUrl}
+                label="Wgraj plik wideo"
+                onUploaded={(url) => setForm((f) => ({ ...f, videoUrl: url }))}
+              />
+            </div>
+            <div className="flex min-w-0 flex-col gap-1.5">
+              <Label htmlFor="video-url">albo adres URL (YouTube / Vimeo / link do pliku)</Label>
               <Input
                 id="video-url"
                 value={form.videoUrl}
                 onChange={(e) => setForm((f) => ({ ...f, videoUrl: e.target.value }))}
                 placeholder="https://www.youtube.com/watch?v=..."
+                className="min-w-0"
               />
             </div>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex min-w-0 flex-col gap-1.5">
               <Label>Miniatura (opcjonalnie)</Label>
               <UploadDropzone
                 value={form.thumbnailUrl}

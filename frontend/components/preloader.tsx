@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { GoldBarsCanvas } from "@/components/gold-bars-canvas";
+import { useIsMobile } from "@/lib/use-is-mobile";
 
 function getLoadProgress(): number {
   const { readyState } = document;
@@ -12,13 +13,15 @@ function getLoadProgress(): number {
 }
 
 export function Preloader() {
+  const isMobile = useIsMobile();
   const [hidden, setHidden] = useState(true);
   const [percent, setPercent] = useState(0);
   const [showContent, setShowContent] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion() || document.readyState === "complete") {
+    // Mobile / reduced motion / already loaded: never block LCP with the splash.
+    if (prefersReducedMotion() || isMobile || document.readyState === "complete") {
       setHidden(true);
       return;
     }
@@ -48,7 +51,7 @@ export function Preloader() {
       document.removeEventListener("readystatechange", onProgress);
       window.removeEventListener("load", finish);
     };
-  }, []);
+  }, [isMobile]);
 
   if (hidden) return null;
 

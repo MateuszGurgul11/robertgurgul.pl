@@ -133,12 +133,12 @@ export default function AdminDocsPage() {
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md overflow-hidden">
           <DialogHeader>
             <DialogTitle>{editing ? "Edytuj dokument" : "Nowy dokument"}</DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-1.5">
+          <div className="flex min-w-0 flex-col gap-4">
+            <div className="flex min-w-0 flex-col gap-1.5">
               <Label htmlFor="doc-title">Tytuł</Label>
               <Input
                 id="doc-title"
@@ -146,7 +146,7 @@ export default function AdminDocsPage() {
                 onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
               />
             </div>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex min-w-0 flex-col gap-1.5">
               <Label>Typ dokumentu</Label>
               <Select
                 value={form.type}
@@ -164,7 +164,7 @@ export default function AdminDocsPage() {
               </Select>
             </div>
             {form.type === "file" ? (
-              <div className="flex flex-col gap-1.5">
+              <div className="flex min-w-0 flex-col gap-1.5">
                 <Label>Plik PDF</Label>
                 <UploadDropzone
                   accept="application/pdf"
@@ -174,13 +174,14 @@ export default function AdminDocsPage() {
                 />
               </div>
             ) : (
-              <div className="flex flex-col gap-1.5">
+              <div className="flex min-w-0 flex-col gap-1.5">
                 <Label htmlFor="doc-url">Adres URL</Label>
                 <Input
                   id="doc-url"
                   value={form.url}
                   onChange={(e) => setForm((f) => ({ ...f, url: e.target.value }))}
                   placeholder="https://..."
+                  className="min-w-0"
                 />
               </div>
             )}
