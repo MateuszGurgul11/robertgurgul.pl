@@ -21,7 +21,10 @@ import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
  * Lenis momentum + a scrubbed parallax give the sondaven "weight"; there is no
  * card chrome (rounded top / shadow / slide-over) — that chrome was the seam.
  */
-const VIDEO_SOURCES = [{ src: "/hero/connector.mp4", type: "video/mp4" }];
+const VIDEO_SOURCES = [
+  { src: "/hero/connector.mp4", type: "video/mp4" },
+  { src: "/hero/connector.webm", type: "video/webm" },
+];
 
 export function HalftoneBand() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -30,14 +33,29 @@ export function HalftoneBand() {
 
   useEffect(() => {
     const video = videoRef.current;
+    const section = sectionRef.current;
     const reduce = prefersReducedMotion();
 
-    if (video && !reduce) video.play().catch(() => {});
-    if (reduce || !sectionRef.current || !video) return;
+    if (!video || !section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (reduce) return;
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+    observer.observe(section);
+
+    if (reduce || !sectionRef.current) {
+      return () => observer.disconnect();
+    }
 
     const ctx = gsap.context(() => {
-      // Scrubbed parallax with a touch of inertia (scrub:1) — the film drifts
-      // a little slower than the page, the way the sondaven hero "lags" scroll.
       gsap.fromTo(
         video,
         { yPercent: -6 },
@@ -56,7 +74,10 @@ export function HalftoneBand() {
     }, sectionRef);
 
     ScrollTrigger.refresh();
-    return () => ctx.revert();
+    return () => {
+      observer.disconnect();
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -72,7 +93,7 @@ export function HalftoneBand() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="none"
         poster="/hero/connector.jpg"
         aria-hidden="true"
       >

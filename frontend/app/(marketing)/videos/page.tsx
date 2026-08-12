@@ -12,7 +12,7 @@ export default async function VideosPage() {
   let videos: Awaited<ReturnType<typeof videosApi.list>> = [];
   let errored = false;
   try {
-    videos = await videosApi.list();
+    videos = await videosApi.list({ revalidate: 300 });
   } catch {
     errored = true;
   }

@@ -26,8 +26,8 @@ import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
  * exactly FILM + SHRINK viewport-heights, so there is no dead scroll.
  */
 const VIDEO_SOURCES = [
-  { src: "/hero/ferma.webm", type: "video/webm" },
   { src: "/hero/ferma.mp4", type: "video/mp4" },
+  { src: "/hero/ferma.webm", type: "video/webm" },
 ];
 
 // Phase lengths, in viewport-heights of scrolling.
@@ -258,7 +258,7 @@ export function Hero() {
             className="absolute inset-0 h-full w-full object-cover"
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             poster="/hero/ferma.jpg"
             onError={() => setVideoFailed(true)}
             aria-hidden="true"

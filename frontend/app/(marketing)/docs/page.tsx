@@ -12,7 +12,7 @@ export default async function DocsPage() {
   let docs: Awaited<ReturnType<typeof docsApi.list>> = [];
   let errored = false;
   try {
-    docs = await docsApi.list();
+    docs = await docsApi.list({ revalidate: 300 });
   } catch {
     errored = true;
   }

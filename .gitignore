@@ -39,3 +39,6 @@ firebase/.emulator-data/
 .env
 .env.local
 .env.*.local
+
+# Optimized video backups (full originals kept here before re-encode)
+media-originals/

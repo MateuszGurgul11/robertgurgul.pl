@@ -56,7 +56,7 @@ const DEFAULT_SERVICES: Service[] = DEFAULT_OFFER.map(({ title, description }, i
 }));
 
 export async function OfferSection() {
-  const services = await servicesApi.list().catch(() => []);
+  const services = await servicesApi.list({ revalidate: 300 }).catch(() => []);
   const items = services.length ? services : DEFAULT_SERVICES;
 
   return (

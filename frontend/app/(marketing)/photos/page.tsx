@@ -12,7 +12,7 @@ export default async function PhotosPage() {
   let photos: Awaited<ReturnType<typeof photosApi.list>> = [];
   let errored = false;
   try {
-    photos = await photosApi.list();
+    photos = await photosApi.list({ revalidate: 300 });
   } catch {
     errored = true;
   }
