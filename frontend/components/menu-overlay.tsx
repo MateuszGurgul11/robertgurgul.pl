@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import { X } from "lucide-react";
 import { SoftNavLink } from "@/components/soft-nav-link";
 import { Logo } from "@/components/logo";
@@ -10,11 +9,11 @@ import { SITE_CONTACT } from "@/lib/site-contact";
 
 const NAV_LINKS = [
   { label: "Strona główna", href: "/#home" },
-  { label: "Oferta", href: "/#offer" },
+  { label: "Oferta", href: "/oferta" },
   { label: "Zdjęcia", href: "/photos" },
   { label: "Filmy", href: "/videos" },
   { label: "Dokumentacja PDF", href: "/docs" },
-  { label: "Kontakt", href: "/#connect" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 type NavBarRowProps = {
@@ -62,25 +61,38 @@ export function NavBarRow({
             {menuOpen ? "Close" : "Menu"}
           </span>
         </button>
-        <Link
-          href="/#offer"
+        <SoftNavLink
+          href="/oferta"
           onClick={menuOpen ? onMenuToggle : undefined}
           className="hidden font-body text-[11px] font-medium uppercase tracking-[0.22em] text-offwhite/80 transition-colors hover:text-gold-light sm:inline"
         >
           Oferta
-        </Link>
+        </SoftNavLink>
       </div>
 
-      <Logo variant="wordmark" className="justify-self-center text-center" />
+      <div className="justify-self-center">
+        {menuOpen ? (
+          <Logo variant="wordmark" className="text-center" />
+        ) : (
+          <>
+            <Logo variant="pictogram" priority className="md:hidden" />
+            <Logo
+              variant="horizontal"
+              priority
+              className="hidden h-8 md:inline-flex lg:h-9"
+            />
+          </>
+        )}
+      </div>
 
       <div className="flex items-center justify-end">
-        <Link
-          href="/#connect"
+        <SoftNavLink
+          href="/kontakt"
           onClick={menuOpen ? onMenuToggle : undefined}
           className="rounded-full border border-gold/50 px-4 py-2 font-body text-[11px] font-medium uppercase tracking-[0.18em] text-offwhite transition-colors hover:bg-gold/10 hover:text-gold-light sm:px-5 sm:py-2.5"
         >
           Kontakt
-        </Link>
+        </SoftNavLink>
       </div>
     </div>
   );

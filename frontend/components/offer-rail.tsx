@@ -148,7 +148,7 @@ function DetailPanel({ service, index }: { service: Service; index: number }) {
         ) : null}
 
         <Link
-          href="#connect"
+          href="/kontakt"
           className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-gold/40 px-5 py-2.5 font-heading text-sm font-semibold text-gold-light transition-colors duration-200 hover:bg-gold/10"
         >
           Zapytaj o tę usługę
@@ -168,13 +168,22 @@ export function OfferRail({ services }: { services: Service[] }) {
   return (
     <section id="offer" className="relative bg-navy-deep bg-dot-grid py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="Robert Gurgul"
-          title="Oferta"
-          subtitle="Osiem obszarów wsparcia, które realnie przekładają się na wynik fermy - od doboru sprzętu po codzienną opiekę nad stadem."
-          align="left"
-          tone="dark"
-        />
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeader
+            eyebrow="Robert Gurgul"
+            title="Oferta"
+            subtitle="Osiem obszarów wsparcia, które realnie przekładają się na wynik fermy - od doboru sprzętu po codzienną opiekę nad stadem."
+            align="left"
+            tone="dark"
+          />
+          <Link
+            href="/oferta"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 px-5 py-2.5 font-heading text-sm font-semibold text-gold-light transition-colors duration-200 hover:bg-gold/10"
+          >
+            Pełna oferta
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
 
         <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div className="flex flex-col">

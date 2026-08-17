@@ -65,7 +65,7 @@ function HeroCopy({
 
         {mobile ? (
           <Link
-            href="#connect"
+            href="/kontakt"
             className="mt-2 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-navy-deepest/40 px-5 py-2.5 font-heading text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-offwhite backdrop-blur-sm transition-colors hover:border-gold hover:bg-gold/10"
           >
             Umów konsultację
@@ -94,7 +94,7 @@ function HeroCopy({
 
       {!mobile ? (
         <Link
-          href="#connect"
+          href="/kontakt"
           className="group absolute bottom-8 right-8 flex h-28 w-28 flex-col items-center justify-center rounded-full border border-gold/50 bg-navy-deepest/35 text-center font-heading text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-offwhite backdrop-blur-sm transition-colors hover:border-gold hover:bg-gold/10 sm:h-32 sm:w-32 sm:text-xs"
         >
           <ArrowUpRight

@@ -1,12 +1,45 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type LogoProps = {
-  className?: string;
-  variant?: "default" | "wordmark";
+const VARIANTS = {
+  pictogram: {
+    src: "/logo/piktogram.png",
+    width: 58,
+    height: 58,
+    alt: "Robert Gurgul",
+  },
+  horizontal: {
+    src: "/logo/poziom.png",
+    width: 291,
+    height: 74,
+    alt: "Robert Gurgul — Profesjonalne doradztwo zootechniczne",
+  },
+  vertical: {
+    src: "/logo/pion.png",
+    width: 211,
+    height: 145,
+    alt: "Robert Gurgul — Profesjonalne doradztwo zootechniczne",
+  },
+} as const;
+
+const HEIGHT: Record<keyof typeof VARIANTS, string> = {
+  pictogram: "h-10",
+  horizontal: "h-9",
+  vertical: "h-32",
 };
 
-export function Logo({ className, variant = "default" }: LogoProps) {
+type LogoProps = {
+  className?: string;
+  variant?: keyof typeof VARIANTS | "wordmark";
+  priority?: boolean;
+};
+
+export function Logo({
+  className,
+  variant = "horizontal",
+  priority = false,
+}: LogoProps) {
   if (variant === "wordmark") {
     return (
       <Link
@@ -21,17 +54,21 @@ export function Logo({ className, variant = "default" }: LogoProps) {
     );
   }
 
+  const asset = VARIANTS[variant];
+
   return (
     <Link
       href="/#home"
-      className={cn("group flex items-center gap-2.5", className)}
+      className={cn("inline-flex shrink-0 items-center", HEIGHT[variant], className)}
     >
-      <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/70 bg-navy-deep font-heading text-base font-bold text-gold transition-colors duration-200 group-hover:bg-gold group-hover:text-navy-deep">
-        RG
-      </span>
-      <span className="font-heading text-sm font-semibold tracking-wide text-offwhite sm:text-base">
-        Robert Gurgul
-      </span>
+      <Image
+        src={asset.src}
+        alt={asset.alt}
+        width={asset.width}
+        height={asset.height}
+        priority={priority}
+        className="h-full w-auto object-contain"
+      />
     </Link>
   );
 }

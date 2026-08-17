@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { ScrollTrigger } from "@/lib/gsap";
 import { killHomeScrollTriggers } from "@/lib/kill-scroll-triggers";
 
-const AWAY = new Set(["/photos", "/videos", "/docs"]);
+const AWAY = new Set(["/photos", "/videos", "/docs", "/oferta", "/kontakt"]);
 
 function prepareSoftNav(href: string) {
   if (!AWAY.has(href.split("#")[0] ?? href)) return;

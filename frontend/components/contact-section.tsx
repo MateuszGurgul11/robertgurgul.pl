@@ -8,9 +8,14 @@ import { SITE_CONTACT } from "@/lib/site-contact";
 
 const TREE_PROFILE = treeProfile(14, 10);
 
-export function ContactSection() {
+export function ContactSection({ compactHeader = false }: { compactHeader?: boolean }) {
   return (
-    <section id="connect" className="relative overflow-hidden bg-light-bg py-20 sm:py-28">
+    <section
+      id={compactHeader ? undefined : "connect"}
+      className={`relative overflow-hidden bg-light-bg ${
+        compactHeader ? "py-12 sm:py-16" : "py-20 sm:py-28"
+      }`}
+    >
       <div
         className="pointer-events-none absolute right-0 bottom-0 text-gold-deep/10"
         aria-hidden="true"
@@ -19,13 +24,19 @@ export function ContactSection() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="Kontakt"
-          title="Skontaktuj się ze mną"
-          subtitle="Masz pytanie o żywienie, mikroklimat albo po prostu chcesz pogadać o swojej fermie? Napisz - odpowiadam osobiście."
-          align="left"
-          tone="light"
-        />
+        {compactHeader ? (
+          <h2 className="font-heading text-2xl font-semibold text-navy-deep sm:text-3xl">
+            Napisz wiadomość
+          </h2>
+        ) : (
+          <SectionHeader
+            eyebrow="Kontakt"
+            title="Skontaktuj się ze mną"
+            subtitle="Masz pytanie o żywienie, mikroklimat albo po prostu chcesz pogadać o swojej fermie? Napisz - odpowiadam osobiście."
+            align="left"
+            tone="light"
+          />
+        )}
 
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-12">
           <Reveal className="lg:col-span-3">

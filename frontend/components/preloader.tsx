@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { GoldBarsCanvas } from "@/components/gold-bars-canvas";
+import { Logo } from "@/components/logo";
 import { useIsMobile } from "@/lib/use-is-mobile";
 
 function getLoadProgress(): number {
@@ -63,9 +64,7 @@ export function Preloader() {
     >
       {showContent ? (
         <>
-          <span className="flex h-16 w-16 items-center justify-center rounded-full border border-gold/60 font-heading text-xl font-bold text-gold">
-            RG
-          </span>
+          <Logo variant="pictogram" className="h-16 pointer-events-none" />
           <GoldBarsCanvas progress={percent / 100} barCount={24} className="h-16 w-48" />
           <p className="font-heading text-sm tracking-[0.2em] text-slate-muted">
             {percent}%

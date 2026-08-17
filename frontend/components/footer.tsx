@@ -6,20 +6,20 @@ import { SITE_CONTACT } from "@/lib/site-contact";
 
 const QUICK_LINKS = [
   { label: "Strona główna", href: "/#home" },
-  { label: "Oferta", href: "/#offer" },
+  { label: "Oferta", href: "/oferta" },
   { label: "Zdjęcia", href: "/photos" },
   { label: "Filmy", href: "/videos" },
   { label: "Dokumentacja PDF", href: "/docs" },
-  { label: "Kontakt", href: "/#connect" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 function FooterContent() {
   return (
     <div className="flex min-h-[85vh] flex-col bg-navy-deepest bg-dot-grid">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 pt-8 sm:px-6 sm:pt-10">
-        <Logo />
+        <Logo variant="horizontal" className="h-8 sm:h-10" />
         <Link
-          href="/#connect"
+          href="/kontakt"
           className="rounded-full border border-gold/40 px-4 py-2 font-body text-[11px] font-medium uppercase tracking-[0.18em] text-offwhite/80 transition-colors hover:bg-gold/10 hover:text-gold-light sm:px-5 sm:py-2.5"
         >
           Kontakt
@@ -34,7 +34,7 @@ function FooterContent() {
           Porozmawiajmy
         </h2>
         <Button
-          render={<Link href="/#connect" />}
+          render={<Link href="/kontakt" />}
           nativeButton={false}
           className="h-auto rounded-full bg-gradient-to-r from-gold-deep to-gold px-8 py-4 font-heading text-sm font-semibold text-navy-deep transition-transform duration-200 hover:scale-[1.02] hover:from-gold hover:to-gold-light"
         >
@@ -45,7 +45,7 @@ function FooterContent() {
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div className="grid grid-cols-1 gap-10 border-t border-gold/10 pt-10 sm:grid-cols-3">
           <div className="flex flex-col gap-4">
-            <Logo />
+            <Logo variant="vertical" className="h-28 sm:h-36" />
             <p className="max-w-xs text-sm leading-relaxed text-slate-muted">
               Profesjonalne doradztwo żywieniowe i zootechniczne dla ferm
               drobiu.
@@ -99,8 +99,7 @@ function FooterContent() {
 
         <div className="mt-10 border-t border-gold-deep/10 py-6">
           <p className="text-center text-xs text-slate-muted/70">
-            © {new Date().getFullYear()} Robert Gurgul. Wszelkie prawa
-            zastrzeżone.
+            © {new Date().getFullYear()} Created by NEXT marketing STUDIO
           </p>
         </div>
       </div>
