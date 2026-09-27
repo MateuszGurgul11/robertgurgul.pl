@@ -1,0 +1,30 @@
+/* Paleta „Zielone pastwisko” (generowane: scripts/etap3-kolory.py — nie edytować ręcznie). */
+:root { --rg-d: #1e2b24; --rg-t: #e9e2cf; --rg-l: #f4f0e6; --rg-a: #4f6a4a; --rg-a-dark: #7f9a78; --rg-c: #d9ae4e; --rg-on-c: #1e2b24; }
+
+/* Sekcje jasne (domyślny motyw szablonu) */
+:root, .theme_on-light {
+  --_colors---base-0--100: #f4f0e6; --_colors---base-0--50: color-mix(in srgb, #f4f0e6 50%, transparent); --_colors---base-0--10: color-mix(in srgb, #f4f0e6 10%, transparent);
+  --_colors---base-1000--100: #1e2b24; --_colors---base-1000--50: color-mix(in srgb, #1e2b24 50%, transparent); --_colors---base-1000--10: color-mix(in srgb, #1e2b24 10%, transparent);
+  --rg-accent: #4f6a4a;
+}
+/* Sekcje ciemne */
+.theme_on-dark {
+  --_colors---base-0--100: #1e2b24; --_colors---base-0--50: color-mix(in srgb, #1e2b24 50%, transparent); --_colors---base-0--10: color-mix(in srgb, #1e2b24 10%, transparent);
+  --_colors---base-1000--100: #e9e2cf; --_colors---base-1000--50: color-mix(in srgb, #e9e2cf 50%, transparent); --_colors---base-1000--10: color-mix(in srgb, #e9e2cf 10%, transparent);
+  --rg-accent: #7f9a78;
+}
+/* Karty na zdjęciach (oferta): tekst biały, tło ciemne */
+.theme_on-color {
+  --_colors---base-0--100: #1e2b24; --_colors---base-0--50: color-mix(in srgb, #1e2b24 50%, transparent); --_colors---base-0--10: color-mix(in srgb, #1e2b24 10%, transparent);
+}
+
+/* Przyciski */
+.btn_bg { background-color: var(--rg-c); }
+.btn [hover="text"] { color: var(--rg-on-c); }
+.btn-circle_bg { outline-color: var(--rg-c); }
+/* Akcenty */
+.rg-about_num { color: var(--rg-accent); opacity: 1; }
+.rg-tag { border-color: var(--rg-accent); }
+.rg-tag p { color: var(--rg-accent); }
+.reference-link::after { background: var(--rg-c); }
+.line-l { background-color: var(--rg-accent); }

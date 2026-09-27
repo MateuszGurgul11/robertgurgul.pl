@@ -1,0 +1,100 @@
+{
+  "scripts": [
+    {
+      "src": "/assets/js/local.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/422d678bf8.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/bf62e18edd.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/bf074f10e1.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/bab7830ec9.js",
+      "module": false,
+      "async": true,
+      "attrs": {
+        "fs-cc-mode": "informational"
+      }
+    },
+    {
+      "src": "/assets/vendor/76e251ff54.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/a834d0a572.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/5c7ca340d2.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/2d1ce64424.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/f4b743bae5.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/e4caa31af9.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/vendor/13cf11a418.js",
+      "module": false,
+      "async": false,
+      "attrs": {}
+    },
+    {
+      "src": "/assets/js/site.js",
+      "module": true,
+      "async": false,
+      "attrs": {}
+    }
+  ],
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Robert Gurgul — Profesjonalne Doradztwo Zootechniczne",
+    "description": "Profesjonalne doradztwo żywieniowe i zootechniczne dla ferm drobiu.",
+    "url": "https://www.robertgurgul.pl/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Wolica Kozia 48",
+      "addressLocality": "Nowe Miasto nad Wartą",
+      "postalCode": "63-040",
+      "addressCountry": "PL"
+    },
+    "telephone": "+48502592194",
+    "email": "r.gurgul@interia.pl"
+  }
+}

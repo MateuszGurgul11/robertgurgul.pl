@@ -1,0 +1,11 @@
+/* Czcionki strony: Fraunces (nagłówki) + Manrope (tekst). Generowane przez scripts/etap3-czcionki.py.
+   Nagłówki szablonu mają -0.064em odstępu (pod Arial) — dla Fraunces łagodniej. */
+:root, body {
+  --_fonts---font-display: var(--font-fraunces), "Fraunces", Georgia, serif;
+  --_fonts---font-body: var(--font-manrope), "Manrope", Arial, sans-serif;
+  --local-font: var(--font-manrope), "Manrope", Arial, sans-serif;
+  --_fonts---h1--letter-spacing: -.035em; --_fonts---h2--letter-spacing: -.035em;
+  --_fonts---h3--letter-spacing: -.035em; --_fonts---h4--letter-spacing: -.035em;
+  --_fonts---h5--letter-spacing: -.035em; --_fonts---h6--letter-spacing: -.035em;
+}
+.h1, .h2, .h3, .h4, .h5, .h6 { font-variation-settings: "opsz" 96; }

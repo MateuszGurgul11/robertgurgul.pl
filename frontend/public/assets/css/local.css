@@ -1,0 +1,97 @@
+/* The original font files are intentionally omitted. */
+:root { --local-font: Arial, Helvetica, sans-serif; }
+html, body, button, input, select, textarea { font-family: var(--local-font); }
+.local-form-message { margin-top: 1rem; font-size: 0.875rem; line-height: 1.4; }
+
+/* Nagłówek w motywie szablonu: ciemny brąz + beż, font i typografia jak .p6. */
+.header.reference-header {
+  --nav-bg: var(--rg-d, #2c2824); --nav-fg: var(--rg-t, #a89474);
+  --nav-muted: color-mix(in srgb, var(--nav-fg) 50%, transparent); --nav-line: color-mix(in srgb, var(--nav-fg) 20%, transparent);
+  background: var(--nav-bg); color: var(--nav-fg); padding: 0 3.15%;
+}
+.reference-nav-shell { min-height: 96px; display: flex; align-items: center; gap: clamp(22px, 2.2vw, 48px); border-bottom: 1px solid var(--nav-line); position: relative; z-index: 1; }
+.reference-brand { display: flex; align-items: center; gap: 20px; margin-right: auto; color: inherit; text-decoration: none; flex-shrink: 0; }
+.reference-monogram { font: 400 44px/1 var(--_fonts---font-body, var(--local-font)); letter-spacing: -4px; padding-right: 4px; text-transform: lowercase; }
+.reference-monogram span { color: var(--nav-muted); }
+.reference-brand-name, .reference-link, .reference-contact {
+  font-family: var(--_fonts---font-body, var(--local-font)); font-weight: 400;
+  font-size: var(--_fonts---p6--size, 12px); line-height: var(--_fonts---p6--line-height, 1.4);
+  letter-spacing: var(--_fonts---p6--letter-spacing, .05em); text-transform: uppercase;
+}
+.reference-brand-name { border-left: 1px solid var(--nav-line); padding: 3px 0 3px 20px; }
+.reference-links { display: flex; align-items: center; gap: clamp(20px, 2.2vw, 46px); }
+.reference-link, .reference-contact { text-decoration: none; color: var(--nav-fg); white-space: nowrap; }
+.reference-link { position: relative; padding: 15px 0; color: var(--nav-muted); transition: color .2s ease; }
+.reference-link::after { content: ''; position: absolute; height: 1px; background: var(--nav-fg); bottom: 2px; left: 0; right: 0; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.reference-link:hover, .reference-link[aria-current="location"] { color: var(--nav-fg); }
+.reference-link:hover::after, .reference-link[aria-current="location"]::after { transform: scaleX(1); }
+.reference-contact { min-width: 141px; display: flex; gap: 25px; justify-content: space-between; align-items: center; padding: 19px 0; border-bottom: 1px solid var(--nav-muted); transition: border-color .2s ease; }
+.reference-contact svg { width: 20px; height: 20px; transition: transform .2s ease; }
+.reference-contact:hover { border-color: var(--nav-fg); }
+.reference-contact:hover svg { transform: translate(2px,-2px); }
+.reference-header a:focus-visible, .reference-menu-toggle:focus-visible { outline: 1px solid var(--nav-fg); outline-offset: 6px; }
+.reference-header .reference-menu-toggle, .reference-header .header_bg { display: none; }
+@media (min-width: 1600px) { .reference-nav-shell { min-height: 104px; } }
+@media (max-width: 1100px) {
+ .reference-nav-shell { min-height: 88px; gap: 24px; }
+ .reference-header .reference-links { display: none; }
+ .reference-header .reference-menu-toggle { display: flex; align-items: center; justify-content: center; color: var(--nav-fg); width: 40px; height: 44px; }
+ .reference-header .menu-btn_label-w { display: none; }
+ .reference-header .menu-btn_ico.b-desk { display: none; }
+ .reference-header .menu-btn_ico.b-mob { display: block; width: 32px; height: 32px; }
+ .reference-monogram { font-size: 40px; }
+}
+@media (max-width: 600px) {
+ .header.reference-header { padding: 0 20px; }
+ .reference-nav-shell { min-height: 82px; gap: 20px; }
+ .reference-brand { gap: 16px; }
+ .reference-brand-name { padding-left: 16px; }
+ .reference-header .reference-contact { display: none; }
+ .reference-monogram { font-size: 36px; letter-spacing: -3px; }
+}
+@media (prefers-reduced-motion: reduce) { .reference-header *::after, .reference-header svg { transition: none; } }
+
+/* Hero na telefonie: pierwsza klatka filmu z fermy zamiast kadru hotelu. */
+.scroll-video.light, .scroll-video.dark { background-image: url(../media/hero-ferma-000.webp); }
+
+/* ===== Etap 4: sekcja „O mnie” — czytelniejszy układ w motywie szablonu ===== */
+.rg-about_head, .rg-about_body { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--_units---u-32); }
+.rg-about_head { align-items: end; }
+.rg-about_label { grid-column: 1 / 5; padding-bottom: var(--_units---u-16); }
+.rg-about .about-s_title { grid-column: 6 / 13; }
+.rg-about_body { row-gap: var(--_units---u-72); }
+.rg-about_lead { grid-column: 1 / 13; max-width: 27em; font-size: calc(var(--_fonts---h5--size) * .8); }
+.rg-about_cols { grid-column: 1 / 13; display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(32px, 6vw, 120px); row-gap: var(--_units---u-48); }
+.rg-about_kicker { display: flex; gap: var(--_units---u-16); margin-bottom: var(--_units---u-16); }
+.rg-about_num { opacity: .5; }
+.rg-about_text {
+  font-family: var(--_fonts---font-body); font-size: clamp(16px, 1.25vw, 21px); line-height: 1.6;
+  letter-spacing: 0; text-transform: none; color: var(--_colors---base-1000--100); max-width: 34em; margin: 0;
+}
+.rg-about_foot {
+  grid-column: 1 / 13; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+  gap: var(--_units---u-48); padding-top: var(--_units---u-32); border-top: 1px solid var(--_colors---base-1000--10);
+}
+.rg-about_tags { display: flex; flex-wrap: wrap; gap: var(--_units---u-8); }
+.rg-tag { border: 1px solid var(--_colors---base-1000--50); }
+.rg-about_foot-r { width: min(100%, 360px); }
+@media (max-width: 991px) {
+  .rg-about_head, .rg-about_body { grid-template-columns: 1fr; row-gap: var(--_units---u-32); }
+  .rg-about_label, .rg-about .about-s_title, .rg-about_lead, .rg-about_cols, .rg-about_foot { grid-column: 1 / -1; }
+  .rg-about_cols { grid-template-columns: 1fr; }
+}
+
+/* Hero: mocniejsze przyciemnienie jasnego filmu z fermy, żeby napisy były czytelne. */
+.hero-w_bg, .mob_hero-w_bg { --hero-mask: #0e100f; }   /* neutralna, prawie czarna maska hero */
+.hero-w_bg .over, .mob_hero-w_bg .over { background-color: var(--hero-mask); opacity: .58; }
+.hero-s .text-dark { text-shadow: 0 1px 14px color-mix(in srgb, #0e100f 85%, transparent); }
+.hero-s_content_logo .logo { filter: drop-shadow(0 2px 18px color-mix(in srgb, #0e100f 75%, transparent)); }
+.hero-w_bg .over-gradient-top, .mob_hero-w_bg .over-gradient-top { background-image: linear-gradient(color-mix(in srgb, var(--hero-mask) 80%, transparent), transparent); }
+.hero-w_bg .over-gradient-bot, .mob_hero-w_bg .over-gradient-bot { background-image: linear-gradient(transparent, color-mix(in srgb, var(--hero-mask) 80%, transparent)); }
+
+/* logotyp */
+.logo-w, .logo { aspect-ratio: 280 / 24; }
+/* /logotyp */
+
+/* Przycisk dźwięku z szablonu (muzyka Son Daven) — ukryty, brak własnej ścieżki. */
+.sound, .sound-w, .sound-toggle { display: none !important; }
