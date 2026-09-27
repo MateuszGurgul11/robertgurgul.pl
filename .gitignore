@@ -43,4 +43,5 @@ firebase/.emulator-data/
 # Optimized video backups (full originals kept here before re-encode)
 media-originals/
 
-Szablon/
+# Projekt źródłowy strony (budowany lokalnie; do repo trafia tylko eksport w frontend/)
+/Szablon/
