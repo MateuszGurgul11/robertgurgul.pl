@@ -47,56 +47,61 @@ export default function AdminDashboardPage() {
   }, []);
 
   const cards: StatCard[] = [
-    { label: "Usługi w Ofercie", href: "/admin/offer", icon: ListChecks, count: counts.services ?? null },
     { label: "Zdjęcia w galerii", href: "/admin/gallery/photos", icon: Images, count: counts.photos ?? null },
-    { label: "Filmy w galerii", href: "/admin/gallery/videos", icon: PlayCircle, count: counts.videos ?? null },
-    { label: "Dokumenty PDF", href: "/admin/gallery/docs", icon: FileText, count: counts.docs ?? null },
+    { label: "Filmy", href: "/admin/gallery/videos", icon: PlayCircle, count: counts.videos ?? null },
+    { label: "Dokumenty", href: "/admin/gallery/docs", icon: FileText, count: counts.docs ?? null },
+    { label: "Usługi w ofercie", href: "/admin/offer", icon: ListChecks, count: counts.services ?? null },
   ];
 
   return (
-    <div className="flex flex-col gap-6">
-      <div>
-        <h1 className="font-heading text-2xl font-semibold text-slate-800">
-          Witaj w panelu CMS
-        </h1>
-        <p className="mt-1 text-sm text-slate-500">
-          Zarządzaj ofertą, galerią i wiadomościami ze strony robertgurgul.pl.
+    <div className="flex flex-col gap-10">
+      <div className="border-b border-slate-200 pb-6">
+        <p className="text-[11px] uppercase tracking-[0.08em] text-slate-500">[ Pulpit ]</p>
+        <h1 className="mt-3 font-heading text-slate-800">Witaj w panelu</h1>
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-500">
+          Dodawaj zdjęcia, filmy i dokumenty do galerii strony robertgurgul.pl i odpowiadaj na wiadomości z formularza.
+          Teksty strony są w repozytorium (content/strona-glowna.ts).
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {cards.map(({ label, href, icon: Icon, count }) => (
+      <div className="grid grid-cols-2 border-l border-t border-slate-200 lg:grid-cols-4">
+        {cards.map(({ label, href, icon: Icon, count }, i) => (
           <Link
             key={href}
             href={href}
-            className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-5 transition-shadow duration-150 hover:shadow-md"
+            className="group flex flex-col gap-6 border-b border-r border-slate-200 bg-card p-4 sm:gap-8 sm:p-6 transition-colors duration-150 hover:bg-light-bg"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-deep/5 text-navy-deep">
-              <Icon className="h-5 w-5" />
+            <span className="flex items-center justify-between text-[11px] uppercase tracking-[0.08em] text-slate-500">
+              <span>{String(i + 1).padStart(2, "0")}</span>
+              <Icon className="h-4 w-4 text-slate-400 transition-colors group-hover:text-navy-deep" strokeWidth={1.5} />
             </span>
-            <p className="text-2xl font-semibold text-slate-800">
-              {count ?? "-"}
-            </p>
-            <p className="text-sm text-slate-500">{label}</p>
+            <span className="font-heading text-5xl leading-none text-navy-deep sm:text-6xl">{count ?? "–"}</span>
+            <span className="flex items-center justify-between border-t border-slate-200 pt-3 text-[11px] uppercase tracking-[0.08em] text-slate-600 sm:text-xs">
+              {label}
+              <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+            </span>
           </Link>
         ))}
       </div>
 
       <Link
         href="/admin/messages"
-        className="flex items-center gap-4 rounded-xl border border-gold-deep/30 bg-gold/5 p-5 transition-shadow duration-150 hover:shadow-md"
+        className="group flex flex-col gap-4 bg-navy-deep p-6 text-offwhite transition-colors hover:bg-navy-mid sm:flex-row sm:items-center sm:justify-between sm:p-8"
       >
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/15 text-gold-deep">
-          <Mail className="h-5 w-5" />
-        </span>
-        <div>
-          <p className="font-heading text-base font-semibold text-slate-800">
-            {unread === null ? "-" : unread} nieprzeczytanych wiadomości
-          </p>
-          <p className="text-sm text-slate-500">
-            Przejdź do skrzynki wiadomości z formularza kontaktowego
-          </p>
+        <div className="flex items-center gap-5">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-offwhite/25 text-gold">
+            <Mail className="h-5 w-5" strokeWidth={1.5} />
+          </span>
+          <div>
+            <p className="font-heading text-2xl uppercase leading-tight">
+              {unread === null ? "–" : unread} {unread === 1 ? "nieprzeczytana wiadomość" : "nieprzeczytanych wiadomości"}
+            </p>
+            <p className="mt-1 text-sm text-offwhite/60">Wiadomości z formularza kontaktowego na stronie</p>
+          </div>
         </div>
+        <span className="flex items-center gap-3 self-start bg-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-navy-deep sm:self-auto">
+          Otwórz skrzynkę <span aria-hidden="true">→</span>
+        </span>
       </Link>
     </div>
   );

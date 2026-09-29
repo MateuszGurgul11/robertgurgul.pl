@@ -32,7 +32,17 @@ export function SzablonSkrypty({ scripts }: { scripts: SzablonSkrypt[] }) {
         document.body.appendChild(el);
       });
 
+    // React nie renderuje atrybutu `muted` po stronie serwera — bez wyciszenia przeglądarki
+    // blokują autoodtwarzanie. Wyciszamy wszystkie filmy przed uruchomieniem skryptów szablonu.
+    document.querySelectorAll("video").forEach((v) => {
+      v.muted = true;
+      v.defaultMuted = true;
+      if (v.autoplay) void v.play().catch(() => {});
+    });
+
     (async () => {
+      // animacje tekstu (SplitText) mierzą litery — czekamy na czcionki, żeby podział był poprawny
+      await document.fonts.ready;
       for (const s of scripts) {
         if (s.async) void load(s);
         else await load(s);

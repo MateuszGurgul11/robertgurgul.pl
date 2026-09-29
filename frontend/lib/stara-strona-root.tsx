@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cinzel, Exo_2 } from "next/font/google";
 
 // Wspólny główny układ (html/body) poprzedniej wersji strony — używany przez
-// app/(marketing)/layout.tsx (podstrony + /stara-strona) i app/admin/layout.tsx.
+// app/(marketing)/layout.tsx (/oferta, /kontakt i /stara-strona).
 // Nowa strona główna ma własny układ: app/(nowa)/layout.tsx.
 
 // Free OFL stand-ins for the (licensed) Kyiv Type Foundry fonts:

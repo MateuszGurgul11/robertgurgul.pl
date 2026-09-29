@@ -1,18 +1,4 @@
-/* Keep this local copy from submitting leads to the original site's backend. */
-document.addEventListener('submit', function (event) {
-  const form = event.target;
-  if (!(form instanceof HTMLFormElement)) return;
-  event.preventDefault();
-  event.stopImmediatePropagation();
-  let message = form.querySelector('.local-form-message');
-  if (!message) {
-    message = document.createElement('p');
-    message.className = 'local-form-message';
-    message.setAttribute('role', 'status');
-    form.appendChild(message);
-  }
-  message.textContent = 'To jest podgląd lokalny — wiadomość nie została wysłana.';
-}, true);
+/* Formularz kontaktowy obsługuje komponent React (components/strona/formularz-kontaktowy.tsx). */
 
 // Uruchom od razu, jeśli dokument jest już gotowy (w Next.js skrypt ładuje się po starcie Reacta).
 function onReady(fn) {

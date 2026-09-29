@@ -95,3 +95,8 @@ html, body, button, input, select, textarea { font-family: var(--local-font); }
 
 /* Przycisk dźwięku z szablonu (muzyka Son Daven) — ukryty, brak własnej ścieżki. */
 .sound, .sound-w, .sound-toggle { display: none !important; }
+
+/* Formularz kontaktowy (React): pole wiadomości i komunikaty walidacji. */
+.rg-textarea { min-height: 5.5em; resize: vertical; font-family: inherit; }
+.rg-form-blad { margin: 6px 0 0; color: #b3261e; text-transform: none; letter-spacing: 0; }
+.modal_cta-form_error { margin-bottom: 16px; }

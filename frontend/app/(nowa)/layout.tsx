@@ -1,22 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { fraunces, manrope } from "@/lib/czcionki";
 
-// Główny układ nowej strony (projekt przeniesiony z Szablon/). Bez Tailwinda i bez
-// układu poprzedniej strony — style i skrypty pochodzą z public/assets (generuje je
-// Szablon/scripts/eksport-nextjs.py). Czcionki hostowane lokalnie przez next/font.
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin", "latin-ext"],
-  axes: ["opsz"],
-  display: "swap",
-});
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
+// Główny układ strony głównej i podstron galerii (/photos, /videos, /docs). Bez Tailwinda i bez układu poprzedniej strony — style i skrypty
+// animacji pochodzą z szablonu (public/assets), treść z components/strona + content/strona-glowna.ts.
+// Czcionki: lib/czcionki.ts (next/font).
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://robertgurgul.pl";
 const title = "Robert Gurgul — Doradztwo zootechniczne dla ferm drobiu";
@@ -44,14 +31,16 @@ export const viewport: Viewport = {
   themeColor: "#1e2b24",
 };
 
-// Kolejność jak w szablonie: styl Webflow, style z <head>, poprawki lokalne, paleta, czcionki.
+// Kolejność jak kaskada w szablonie: styl Webflow, style z <head>, poprawki lokalne, czcionki, paleta,
+// style osadzone w treści i drugi arkusz Webflow (w oryginale na końcu <body>).
 const STYLESHEETS = [
   "/assets/css/3f7cba4a07.css",
   "/assets/css/szablon-inline.css",
-  "/assets/css/84657b9fac.css",
   "/assets/css/local.css",
-  "/assets/css/kolory.css",
   "/assets/css/czcionki.css",
+  "/assets/css/kolory.css",
+  "/assets/css/szablon-embed.css",
+  "/assets/css/84657b9fac.css",
 ];
 
 // Skrypt Webflow z <head>: klasy w-mod-js / w-mod-touch na <html> przed pierwszym malowaniem.

@@ -61,10 +61,10 @@ export default function AdminPhotosPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-heading text-2xl font-semibold text-slate-800">
-            Galeria - Zdjęcia
+            Zdjęcia
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Zdjęcia widoczne na podstronie /photos.
+            Zdjęcia w galerii /photos. Pierwsze 16 (według kolejności) pokazuje też slider „Z ferm” na stronie głównej.
           </p>
         </div>
         <Button onClick={openCreate} className="gap-2 bg-navy-deep text-offwhite hover:bg-navy-mid">

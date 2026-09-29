@@ -61,10 +61,10 @@ export default function AdminVideosPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-heading text-2xl font-semibold text-slate-800">
-            Galeria - Filmy
+            Filmy
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Filmy widoczne na podstronie /videos — wgraj MP4/WebM albo wklej link YouTube/Vimeo.
+            Filmy na podstronie /videos i (4 pierwsze) w sekcji materiałów na stronie głównej — wgraj MP4/WebM albo wklej link YouTube/Vimeo.
           </p>
         </div>
         <Button onClick={openCreate} className="gap-2 bg-navy-deep text-offwhite hover:bg-navy-mid">

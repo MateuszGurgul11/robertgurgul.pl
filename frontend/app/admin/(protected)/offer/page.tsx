@@ -70,7 +70,7 @@ export default function AdminOfferPage() {
             Oferta
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Bloki usług wyświetlane w sekcji „Oferta” na stronie głównej.
+            Usługi wyświetlane na podstronie /oferta. Karty usług na stronie głównej edytuje się w pliku content/strona-glowna.ts.
           </p>
         </div>
         <Button onClick={openCreate} className="gap-2 bg-navy-deep text-offwhite hover:bg-navy-mid">

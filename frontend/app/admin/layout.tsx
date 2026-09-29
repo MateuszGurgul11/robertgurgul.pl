@@ -1,15 +1,23 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "../globals.css";
+import "./cms.css";
 import { AuthProvider } from "@/lib/firebase/use-auth";
 import { Toaster } from "@/components/ui/sonner";
-import { OldRootHtml, siteMetadata, siteViewport } from "@/lib/stara-strona-root";
+import { fraunces, manrope } from "@/lib/czcionki";
+
+// Główny układ panelu CMS. Tailwind + shadcn/ui z tokenami przestawionymi na motyw nowej strony (cms.css).
 
 export const metadata: Metadata = {
-  ...siteMetadata,
-  title: "Panel CMS",
+  title: "Panel CMS | Robert Gurgul",
   robots: { index: false, follow: false },
+  icons: { icon: "/assets/media/favicon-32.webp" },
 };
-export const viewport = siteViewport;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#1e2b24",
+};
 
 export default function AdminLayout({
   children,
@@ -17,13 +25,13 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <OldRootHtml>
-      <AuthProvider>
-        <div className="min-h-screen bg-slate-50 text-slate-900">
+    <html lang="pl" className={`${fraunces.variable} ${manrope.variable} rg-cms h-full antialiased`}>
+      <body className="min-h-full font-body">
+        <AuthProvider>
           {children}
-        </div>
-        <Toaster richColors position="top-right" />
-      </AuthProvider>
-    </OldRootHtml>
+          <Toaster richColors position="top-right" />
+        </AuthProvider>
+      </body>
+    </html>
   );
 }
