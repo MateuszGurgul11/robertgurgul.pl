@@ -45,6 +45,16 @@ export const tresci = {
         href: "#footer",
       },
     ],
+    // Zakładka z rozwijaną listą podstron mediów (przed „Kontakt”)
+    media: {
+      etykieta: "Media",
+      href: "/media",
+      linki: [
+        { etykieta: "Zdjęcia", href: "/photos" },
+        { etykieta: "Dokumenty", href: "/docs" },
+        { etykieta: "Filmy", href: "/videos" },
+      ],
+    },
     cta: "Porozmawiajmy",
   },
   hero: {
@@ -113,6 +123,10 @@ export const tresci = {
       noweMiasto: "Nowe Miasto nad Wartą",
       noweMiastoOdleglosc: "3,4 km",
       wolicaNowa: "Wolica Nowa",
+      sroda: "Środa Wielkopolska",
+      srodaOdleglosc: "20 km",
+      jarocin: "Jarocin",
+      jarocinOdleglosc: "13 km",
     },
     tekst: "Spotkajmy się na miejscu — obejrzę fermę i porozmawiamy o planie działania bez zobowiązań.",
     specjalizacjeTytul: "Specjalizacje",
@@ -604,7 +618,7 @@ export const tresci = {
       {
         etykieta: "Oferta",
         tytul: "Pełna oferta usług",
-        href: "/oferta",
+        href: "#benefits",
       },
     ],
     zobaczWszystkie: "Zobacz wszystkie",
@@ -663,8 +677,8 @@ export const tresci = {
   },
   stopka: {
     lokalizacjaEtykieta: "lokalizacja",
-    kontaktEtykieta: "Kontakt",
-    miasto: "Nowe Miasto nad Wartą",
+    mediaEtykieta: "Media",
+    mediaLink: "Zdjęcia, filmy i dokumenty",
     prawa: "© 2026 Robert Gurgul. Wszelkie prawa zastrzeżone",
     polityka: "Polityka prywatności",
   },
@@ -695,6 +709,10 @@ export const tresci = {
         href: "#gallery",
       },
       {
+        etykieta: "Zdjęcia",
+        href: "/photos",
+      },
+      {
         etykieta: "Dokumenty",
         href: "/docs",
       },
@@ -707,11 +725,9 @@ export const tresci = {
         href: "#footer",
       },
     ],
-    dodatkowyLink: "Pełna galeria zdjęć",
     telefonEtykieta: "Telefon",
     emailEtykieta: "E-mail",
     przycisk: "Konsultacja",
-    dodatkowyLinkHref: "/photos",
   },
   formularz: {
     naglowek: "Odpowiem na Twoje pytania i omówimy szczegóły współpracy",

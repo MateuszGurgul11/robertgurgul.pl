@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { fraunces, manrope } from "@/lib/czcionki";
+import { bodoni, manrope } from "@/lib/czcionki";
 
 // Główny układ strony głównej i podstron galerii (/photos, /videos, /docs). Bez Tailwinda i bez układu poprzedniej strony — style i skrypty
 // animacji pochodzą z szablonu (public/assets), treść z components/strona + content/strona-glowna.ts.
@@ -41,6 +41,7 @@ const STYLESHEETS = [
   "/assets/css/kolory.css",
   "/assets/css/szablon-embed.css",
   "/assets/css/84657b9fac.css",
+  "/assets/css/uklad.css", // własne układy sekcji — na końcu, żeby nadpisywał szablon
 ];
 
 // Skrypt Webflow z <head>: klasy w-mod-js / w-mod-touch na <html> przed pierwszym malowaniem.
@@ -54,7 +55,7 @@ export default function NowaLayout({ children }: { children: React.ReactNode }) 
       data-wf-domain="robertgurgul.pl"
       data-wf-page="6940a0abd735a1e3a640d032"
       data-wf-site="6940a0abd735a1e3a640d042"
-      className={`${fraunces.variable} ${manrope.variable}`}
+      className={`${bodoni.variable} ${manrope.variable}`}
       suppressHydrationWarning
     >
       <head>

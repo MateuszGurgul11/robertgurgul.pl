@@ -1,6 +1,7 @@
 // Sekcja strony głównej. Teksty: content/strona-glowna.ts. Klasy i atrybuty (hover=, slider=, parallax=…)
 // pochodzą z szablonu i sterują animacjami w public/assets/js/site.js — nie zmieniaj ich bez potrzeby.
 import { tresci as t } from "@/content/strona-glowna";
+import { doSekcji } from "@/components/strona/naglowek";
 import { FormularzKontaktowy } from "./formularz-kontaktowy";
 
 export function Podpowiedzi() {
@@ -70,7 +71,7 @@ export function OknoWideo() {
   );
 }
 
-export function OknoMenu() {
+export function OknoMenu({ podstrona = false }: { podstrona?: boolean }) {
   return (
     <div modal-menu="menu" className="modal menu">
       <div className="modal_c theme_on-dark">
@@ -79,7 +80,7 @@ export function OknoMenu() {
           <div className="grid">
             <div data-nav="" index-w="" id="w-node-_7445bffa-2061-a06e-ddea-17b3d67e1961-d67e195c" className="modal_menu_nav">
               {t.menu.linki.map((m, i) => (
-                  <a key={i} aria-label="O mnie" hover-menu-item="" modal-menu-headline="menu" modal-menu-close="menu" href={m.href} className="nav-item w-inline-block">
+                  <a key={i} aria-label={m.etykieta} hover-menu-item="" modal-menu-headline="menu" modal-menu-close="menu" href={doSekcji(m.href, podstrona)} className="nav-item w-inline-block">
                     <div hover="label" className="nav-item_label">
                       <div className="nav-item_label_text">
                         <div hover="text" className="h5 text-dark">
@@ -89,28 +90,6 @@ export function OknoMenu() {
                     </div>
                   </a>
               ))}
-            </div>
-          </div>
-        </div>
-        <div className="modal_menu_center b-mob">
-          <div className="grid">
-            <div modal-menu-ctn="menu" id="w-node-_335d7034-ed62-0d4b-6345-08ba41a051b2-d67e195c" className="modal_menu_nav">
-              <div className="u-32" />
-              <a aria-label={t.menu.dodatkowyLink} hover-nav-item="" href={t.menu.dodatkowyLinkHref} target="_blank" className="nav-item w-inline-block">
-                <div hover="label" className="nav-item_label">
-                  <div className="nav-item_label_text">
-                    <div hover="text" className="p6 text-dark">
-                      {t.menu.dodatkowyLink}
-                    </div>
-                  </div>
-                  <div className="nav-item_label_text is-2">
-                    <div hover="text" className="p6 text-dark">
-                      {t.menu.dodatkowyLink}
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <div className="u-32" />
             </div>
           </div>
         </div>
@@ -229,7 +208,7 @@ export function Cookies() {
             <div className="u-16" />
             <div className="cookies_card_btn-w">
               <div fs-cc="close" className="cookies_card_btn">
-                <a aria-label="Ок" hover-nav-item="" hover-divider="" href="#" className="nav-item w-inline-block">
+                <a aria-label="OK" hover-nav-item="" hover-divider="" href="#" className="nav-item w-inline-block">
                   <div hover="label" className="nav-item_label">
                     <div className="nav-item_label_text">
                       <div hover="text" className="p4 text-dark">

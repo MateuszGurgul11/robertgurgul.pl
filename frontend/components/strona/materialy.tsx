@@ -9,7 +9,7 @@ export function Materialy({ dokumenty, linki }: { dokumenty: { tytul: string; hr
         <div className="blog-w">
           <div data-last-updated="" data-tabs="" className="blog-s">
             <div className="u-136" />
-            <div className="blog-s_title">
+            <div className="blog-s_title rg-lewo">
               <div data-scroll-reveal="ctn" className="title">
                 <div className="title_stars text-dark">
                   <div className="ico-8-12">
@@ -34,7 +34,7 @@ export function Materialy({ dokumenty, linki }: { dokumenty: { tytul: string; hr
                     </div>
                   </div>
                 </div>
-                <h2 className="p6 text-dark a-center">
+                <h2 className="p6 text-dark">
                   {t.materialy.etykieta}
                 </h2>
                 <div className="title_stars text-dark">
@@ -62,7 +62,7 @@ export function Materialy({ dokumenty, linki }: { dokumenty: { tytul: string; hr
                 </div>
               </div>
               <div className="u-32" />
-              <h3 data-scroll-reveal="h" className="h2 text-dark a-center">
+              <h3 data-scroll-reveal="h" className="h2 text-dark rg-tytul">
                 {t.materialy.tytul}
               </h3>
               <div className="u-48" />

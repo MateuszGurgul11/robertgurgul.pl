@@ -1,11 +1,31 @@
-/* Czcionki strony: Fraunces (nagłówki) + Manrope (tekst). Generowane przez scripts/etap3-czcionki.py.
-   Nagłówki szablonu mają -0.064em odstępu (pod Arial) — dla Fraunces łagodniej. */
+/* Czcionki strony: Bodoni Moda (nagłówki) + Manrope (tekst). Czcionki ładuje next/font (lib/czcionki.ts).
+   Nagłówki szablonu mają -0.064em odstępu (pod Arial) — dla Bodoni Moda łagodniej (wersaliki Bodoni są szerokie). */
 :root, body {
-  --_fonts---font-display: var(--font-fraunces), "Fraunces", Georgia, serif;
+  --_fonts---font-display: var(--font-bodoni), "Bodoni Moda", Didot, Georgia, serif;
   --_fonts---font-body: var(--font-manrope), "Manrope", Arial, sans-serif;
   --local-font: var(--font-manrope), "Manrope", Arial, sans-serif;
   --_fonts---h1--letter-spacing: -.035em; --_fonts---h2--letter-spacing: -.035em;
   --_fonts---h3--letter-spacing: -.035em; --_fonts---h4--letter-spacing: -.035em;
-  --_fonts---h5--letter-spacing: -.035em; --_fonts---h6--letter-spacing: -.035em;
+  --_fonts---h5--letter-spacing: -.01em; --_fonts---h6--letter-spacing: 0em;
 }
-.h1, .h2, .h3, .h4, .h5, .h6 { font-variation-settings: "opsz" 96; }
+/* Duże nagłówki: wariant wystawowy Bodoni (cienkie szeryfy). Mniejsze: optyczny rozmiar wg wielkości tekstu,
+   inaczej kreski są za cienkie i litery się zlewają. */
+.h1, .h2, .h3 { font-variation-settings: "opsz" 96; }
+.h4, .h5, .h6 { font-optical-sizing: auto; font-variation-settings: normal; }
+
+/* Caps tylko na nagłówkach sekcji (.h1–.h3, h2 + warianty).
+   Leady (.h5 na h3) i akapity (.p4 / p.p6) — zdanie, bez text-transform. */
+.h4, .h5, .h6,
+.p1, .p2, .p3, .p4, .p5,
+p.p6 {
+  text-transform: none;
+}
+.h1, .h2, .h3,
+h1, h2,
+h2.h5, h2.h4, h2.p6,
+h3.h1, h3.h2, h3.h3,
+h4.h2, h4.h3,
+.gallery-s_title,
+.commissioning-s_title {
+  text-transform: uppercase;
+}

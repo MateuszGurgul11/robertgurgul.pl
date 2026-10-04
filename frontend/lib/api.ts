@@ -4,7 +4,6 @@ import type {
   GalleryDoc,
   GalleryPhoto,
   GalleryVideo,
-  Service,
 } from "@/lib/types";
 
 const API_URL =
@@ -79,7 +78,6 @@ function resourceClient<T extends { id: string }>(resourcePath: string) {
   };
 }
 
-export const servicesApi = resourceClient<Service>("/api/services");
 export const photosApi = resourceClient<GalleryPhoto>("/api/gallery/photos");
 export const videosApi = resourceClient<GalleryVideo>("/api/gallery/videos");
 export const docsApi = resourceClient<GalleryDoc>("/api/gallery/docs");

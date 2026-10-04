@@ -113,6 +113,7 @@ export function FormularzKontaktowy() {
     <div modal-cta-main="cta" className="modal_cta-form">
       <form
         id="phone-form"
+        data-lenis-prevent=""
         className="modal_cta-form_form theme_on-light"
         noValidate
         onSubmit={wyslij}
@@ -129,11 +130,16 @@ export function FormularzKontaktowy() {
           </div>
           <div className="u-32" />
           <div className="input-list">
-            {pole("imie", f.pola.imie, { type: "text", name: "imie", autoComplete: "given-name", maxLength: 80, required: true })}
-            {pole("nazwisko", f.pola.nazwisko, { type: "text", name: "nazwisko", autoComplete: "family-name", maxLength: 80, required: true })}
-            {pole("email", f.pola.email, { type: "email", name: "email", autoComplete: "email", maxLength: 120, required: true })}
-            {pole("telefon", f.pola.telefon, { type: "tel", name: "telefon", autoComplete: "tel", maxLength: 20, required: true })}
-            {pole("wiadomosc", f.pola.wiadomosc, { name: "wiadomosc", rows: 3, maxLength: 4000, required: true })}
+            {/* pola parami (rg-form-rzad, uklad.css) — formularz mieści się na jednym ekranie */}
+            <div className="rg-form-rzad">
+              {pole("imie", f.pola.imie, { type: "text", name: "imie", autoComplete: "given-name", maxLength: 80, required: true })}
+              {pole("nazwisko", f.pola.nazwisko, { type: "text", name: "nazwisko", autoComplete: "family-name", maxLength: 80, required: true })}
+            </div>
+            <div className="rg-form-rzad">
+              {pole("email", f.pola.email, { type: "email", name: "email", autoComplete: "email", maxLength: 120, required: true })}
+              {pole("telefon", f.pola.telefon, { type: "tel", name: "telefon", autoComplete: "tel", maxLength: 20, required: true })}
+            </div>
+            {pole("wiadomosc", f.pola.wiadomosc, { name: "wiadomosc", rows: 2, maxLength: 4000, required: true })}
             <div className="u-16" />
             <div modal-cta-container="cta" className="p6 text-dark">
               {f.zgoda}{" "}

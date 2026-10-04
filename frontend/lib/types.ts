@@ -1,11 +1,3 @@
-export interface Service {
-  id: string;
-  title: string;
-  description: string | null;
-  imageUrl: string | null;
-  order: number;
-}
-
 export interface GalleryPhoto {
   id: string;
   imageUrl: string;

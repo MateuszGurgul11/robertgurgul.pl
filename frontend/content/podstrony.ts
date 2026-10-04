@@ -2,15 +2,33 @@
 // Same zdjęcia, filmy i dokumenty dodaje się w panelu CMS (/admin) — podstrony pobierają je z bazy.
 
 export const podstrony = {
-  nawigacja: [
-    { etykieta: "Strona główna", href: "/" },
-    { etykieta: "Zdjęcia", href: "/photos" },
-    { etykieta: "Filmy", href: "/videos" },
-    { etykieta: "Dokumenty", href: "/docs" },
-    { etykieta: "Kontakt", href: "/#footer" },
-  ],
-  zadzwon: "Zadzwoń",
   okruszki: "Strona główna",
+  media: {
+    tytul: "Media",
+    meta: "Media z ferm — zdjęcia, filmy i dokumenty",
+    etykieta: "Media",
+    tytulLewy: "Media",
+    tytulPrawy: "z ferm",
+    wstep: "Zdjęcia, nagrania i dokumenty z ferm, na których pracuję — wybierz, co chcesz zobaczyć.",
+    zobacz: "Zobacz wszystkie",
+    dzialy: {
+      zdjecia: {
+        tytul: "Zdjęcia",
+        opis: "Kurniki, stada i wyposażenie ferm — z audytów i codziennej opieki zootechnicznej.",
+        href: "/photos",
+      },
+      filmy: {
+        tytul: "Filmy",
+        opis: "Krótkie nagrania z ferm i wizyt — jak wygląda praca w kurniku z bliska.",
+        href: "/videos",
+      },
+      dokumenty: {
+        tytul: "Dokumenty",
+        opis: "Wzory dokumentów, instrukcje i materiały szkoleniowe do podglądu lub pobrania.",
+        href: "/docs",
+      },
+    },
+  },
   zdjecia: {
     tytul: "Zdjęcia",
     meta: "Zdjęcia z ferm drobiu — galeria",
@@ -38,14 +56,16 @@ export const podstrony = {
     blad: "Nie udało się pobrać filmów. Spróbuj ponownie za chwilę.",
     odtworz: "Odtwórz",
     zamknij: "Zamknij",
+    nieObslugiwany: "Ta przeglądarka nie odtwarza tego formatu filmu.",
+    pobierzFilm: "Pobierz film",
   },
   dokumenty: {
     tytul: "Dokumenty",
     meta: "Dokumenty i materiały do pobrania",
     etykieta: "Do pobrania",
-    tytulLewy: "Doku",
-    tytulPrawy: "menty",
-    wstep: "Artykuły, opracowania i materiały dla hodowców drobiu — do przeczytania online lub pobrania.",
+    tytulLewy: "Dokumenty",
+    tytulPrawy: "do pobrania",
+    wstep: "Wzory dokumentów, instrukcje i materiały szkoleniowe dla ferm drobiu — do podglądu online lub pobrania.",
     licznik: ["dokument", "dokumenty", "dokumentów"],
     pusto: "Dokumenty pojawią się wkrótce.",
     blad: "Nie udało się pobrać dokumentów. Spróbuj ponownie za chwilę.",
@@ -54,11 +74,6 @@ export const podstrony = {
     otworz: "Otwórz",
     typPlik: "PDF",
     typLink: "Link",
-  },
-  stopka: {
-    haslo: "Zdrowe stado zaczyna się od dobrego planu",
-    powrot: "Wróć na stronę główną",
-    prawa: "© 2026 Robert Gurgul. Wszelkie prawa zastrzeżone",
   },
 };
 

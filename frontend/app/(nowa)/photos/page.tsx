@@ -24,7 +24,6 @@ export default async function ZdjeciaPage() {
 
   return (
     <Podstrona
-      aktywna="/photos"
       etykieta={z.tytul}
       tytulLewy={z.tytulLewy}
       tytulPrawy={z.tytulPrawy}

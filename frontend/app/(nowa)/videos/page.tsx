@@ -24,7 +24,6 @@ export default async function FilmyPage() {
 
   return (
     <Podstrona
-      aktywna="/videos"
       etykieta={f.tytul}
       tytulLewy={f.tytulLewy}
       tytulPrawy={f.tytulPrawy}

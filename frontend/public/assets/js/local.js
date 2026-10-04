@@ -9,7 +9,8 @@ function onReady(fn) {
 // Navigation state follows the visible section; the original smooth-scroll handles anchors.
 onReady(() => {
   const links = [...document.querySelectorAll('.reference-link')];
-  const sections = links.map(link => document.querySelector(link.hash));
+  // tylko linki do sekcji tej strony (#…); linki do podstron (/photos) i z podstron (/#about) pomijamy
+  const sections = links.map(link => (link.hash && link.pathname === location.pathname ? document.querySelector(link.hash) : null));
   let scheduled = false;
   function updateActive() {
     scheduled = false;

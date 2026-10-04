@@ -1,11 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import "../globals.css";
-import "./cms.css";
+import "./admin.css";
 import { AuthProvider } from "@/lib/firebase/use-auth";
 import { Toaster } from "@/components/ui/sonner";
-import { fraunces, manrope } from "@/lib/czcionki";
+import { bodoni, manrope } from "@/lib/czcionki";
 
-// Główny układ panelu CMS. Tailwind + shadcn/ui z tokenami przestawionymi na motyw nowej strony (cms.css).
+// Główny układ panelu CMS. Tailwind + shadcn/ui w motywie strony (admin.css).
 
 export const metadata: Metadata = {
   title: "Panel CMS | Robert Gurgul",
@@ -25,7 +24,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl" className={`${fraunces.variable} ${manrope.variable} rg-cms h-full antialiased`}>
+    <html lang="pl" className={`${bodoni.variable} ${manrope.variable} h-full antialiased`}>
       <body className="min-h-full font-body">
         <AuthProvider>
           {children}

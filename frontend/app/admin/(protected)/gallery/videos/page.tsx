@@ -154,6 +154,12 @@ export default function AdminVideosPage() {
                 label="Wgraj plik wideo"
                 onUploaded={(url) => setForm((f) => ({ ...f, videoUrl: url }))}
               />
+              {/\.mov$/i.test(form.videoUrl.split("?")[0]) ? (
+                <p className="border-l-2 border-gold pl-3 text-xs leading-relaxed text-slate-600">
+                  Pliki .mov z iPhone&apos;a (kodek HEVC) nie odtwarzają się w Firefoksie i na części starszych komputerów.
+                  Najpewniej działa MP4 (H.264) — np. w iPhonie: Ustawienia → Aparat → Formaty → „Najbardziej zgodne”.
+                </p>
+              ) : null}
             </div>
             <div className="flex min-w-0 flex-col gap-1.5">
               <Label htmlFor="video-url">albo adres URL (YouTube / Vimeo / link do pliku)</Label>

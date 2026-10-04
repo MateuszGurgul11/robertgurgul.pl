@@ -24,7 +24,6 @@ export default async function DokumentyPage() {
 
   return (
     <Podstrona
-      aktywna="/docs"
       etykieta={d.tytul}
       tytulLewy={d.tytulLewy}
       tytulPrawy={d.tytulPrawy}

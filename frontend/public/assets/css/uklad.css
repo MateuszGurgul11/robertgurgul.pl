@@ -1,0 +1,240 @@
+/* Własne układy sekcji (nie z szablonu): połączone nagłówki wyrównane do lewej, mapa, specjalizacje, obszary.
+   Ładowany jako ostatni arkusz (app/(nowa)/layout.tsx). Kolory: zmienne palety (--rg-*, --_colors---*). */
+
+/* ---------------------------------------------------------------- nagłówki sekcji */
+.rg-tytul {
+  display: block;
+  width: 100%;
+  text-align: left;
+  text-wrap: balance;
+}
+.rg-tytul + .u-16, .rg-tytul + .u-32 { flex: none; }
+.rg-lewo { align-items: flex-start !important; text-align: left !important; justify-content: flex-start !important; }
+.rg-lewo .title { justify-content: flex-start; }
+/* komórki siatki szablonu zaczynały nagłówki w 2. lub 3. kolumnie (grid-area z #w-node-…) — wszystkie od 1. */
+.location-s_title, .dev-s_lead.rg-lewo { grid-column: 1 / -1 !important; grid-area: auto / 1 / auto / -1 !important; }
+.blog-s_title.rg-lewo { align-self: stretch; width: 100%; }
+
+/* ---------------------------------------------------------------- mapa */
+/* Szablon: komórka mapy ma height: 0 i margin-top ujemny (mapa wchodziła pod nagłówek i kartę slidera).
+   W naszym układzie mapa ma własne miejsce — nie zasłania jej nagłówek ani sekcja specjalizacji. */
+@media (min-width: 992px) {
+  .location-s_desc_map { height: auto; margin-top: 0; }
+}
+/* miasta poza kadrem */
+.rg-pin-daleko .map-pin_vector { top: -14px; left: -14px; transform-origin: 50% 50%; }
+.rg-pin-daleko .map-pin_vector svg { transform: translateX(14px); }
+
+/* ---------------------------------------------------------------- lokalizacja: specjalizacje */
+/* W prawej kolumnie obok mapy: pasek zdjęcia + numerowany spis specjalizacji, adres i przycisk. */
+.rg-spec { display: flex; flex-direction: column; }
+.rg-spec_foto { position: relative; margin: 0; }
+.rg-spec_foto .img-w { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+.rg-spec_foto .img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.rg-spec_podpis {
+  position: absolute; left: var(--_units---u-16, 16px); bottom: var(--_units---u-16, 16px);
+  color: var(--rg-t, #e9e2cf); margin: 0;
+}
+.rg-spec_karta {
+  background: var(--_colors---base-0--100);
+  color: var(--_colors---base-1000--100);
+  padding: var(--_units---u-24, 24px) var(--_units---u-32, 32px) var(--_units---u-32, 32px);
+  display: flex; flex-direction: column;
+}
+.rg-spec_top {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: var(--_units---u-12, 12px);
+  border-bottom: 1px solid var(--_colors---base-1000--100);
+}
+.rg-spec_lista { list-style: none; margin: 0; padding: 0; }
+.rg-spec_item {
+  display: grid; grid-template-columns: 2.75em 1fr auto; align-items: baseline; gap: var(--_units---u-12, 12px);
+  padding: var(--_units---u-12, 12px) 0;
+  border-bottom: 1px solid var(--_colors---base-1000--10);
+  transition: padding-left .4s cubic-bezier(.25, 1, .5, 1);
+}
+.rg-spec_nr { color: var(--rg-accent, #4f6a4a); }
+.rg-spec_nazwa { margin: 0; }
+.rg-spec_gw { width: 12px; height: 12px; opacity: .35; transition: transform .5s cubic-bezier(.25, 1, .5, 1), opacity .3s; }
+.rg-spec_item:hover { padding-left: 10px; }
+.rg-spec_item:hover .rg-spec_gw { transform: rotate(90deg) scale(1.3); opacity: 1; color: var(--rg-c, #d9ae4e); }
+.rg-spec_item:hover .rg-spec_nr { color: var(--rg-c, #d9ae4e); }
+.rg-spec_dol {
+  padding-top: var(--_units---u-32, 32px);
+  display: flex; justify-content: space-between; align-items: flex-end; gap: var(--_units---u-24, 24px); flex-wrap: wrap;
+}
+@media (max-width: 991px) {
+  .rg-spec_karta { padding: var(--_units---u-24, 24px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rg-spec_item, .rg-spec_gw { transition: none; }
+}
+
+/* ---------------------------------------------------------------- kompetencje (na jeden ekran) */
+/* Lewa kolumna: etykieta, opis, pionowa lista obszarów. Prawa: zdjęcia obszaru + nachodzący panel opisu.
+   Wysokość karty liczona od wysokości okna, żeby cała sekcja mieściła się na ekranie. */
+.rg-komp {
+  --komp-h: clamp(420px, calc(100vh - 220px), 680px);
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--_units---u-48, 48px);
+  padding-top: var(--_units---u-72, 72px);
+  align-items: stretch;
+}
+.rg-komp_lewa { display: flex; flex-direction: column; min-height: var(--komp-h); }
+.rg-komp_etykieta { justify-content: flex-start !important; }
+.rg-komp_opis {
+  margin: var(--_units---u-24, 24px) 0 0;
+  font-family: var(--_fonts---font-body); font-size: clamp(15px, 1.05vw, 18px); line-height: 1.55;
+  letter-spacing: 0; text-transform: none; max-width: 34em;
+}
+.rg-komp_lista {
+  margin-top: var(--_units---u-32, 32px);
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--_colors---base-1000--100);
+}
+.rg-komp_tab {
+  appearance: none; background: none; border: 0; cursor: pointer; color: inherit; text-align: left;
+  position: relative; display: grid; grid-template-columns: 2.5em 1fr; align-items: baseline;
+  padding: 11px 0 11px 14px;
+  border-bottom: 1px solid var(--_colors---base-1000--10);
+  opacity: .5; transition: opacity .3s ease, padding-left .4s cubic-bezier(.25, 1, .5, 1);
+}
+.rg-komp_tab::before {
+  content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px;
+  background: var(--rg-c, #d9ae4e); transform: scaleY(0); transition: transform .4s cubic-bezier(.25, 1, .5, 1);
+}
+.rg-komp_tab:hover { opacity: .85; }
+.rg-komp_tab.is-active { opacity: 1; padding-left: 22px; }
+.rg-komp_tab.is-active::before { transform: scaleY(1); }
+.rg-komp_tab:focus-visible { outline: 1px solid currentColor; outline-offset: -3px; }
+.rg-komp_tab_nr { color: var(--rg-accent, #4f6a4a); }
+.rg-komp_tab_nazwa {
+  font-family: var(--_fonts---font-display); font-size: clamp(20px, 1.7vw, 28px); line-height: 1.1;
+  text-transform: uppercase; letter-spacing: -.01em;
+}
+.rg-komp_podpis { margin-top: auto; padding-top: var(--_units---u-24, 24px); max-width: 28em; }
+
+/* prawa kolumna: karty obszarów (przełączane przez initTabs) */
+.rg-komp .rg-obszary_karty { position: relative; overflow: clip; margin: 0; height: var(--komp-h); }
+.rg-obszar { display: none; width: 100%; height: 100%; top: 0; left: 0; }
+.rg-obszar:first-child { display: block; }
+.rg-komp .rg-obszar_siatka { position: relative; display: block; height: 100%; }
+.rg-komp .rg-obszar_galeria { position: absolute; inset: 0 0 0 0; aspect-ratio: auto; overflow: hidden; background: var(--rg-d, #1e2b24); }
+.rg-obszar_slajd { position: absolute; inset: 0; }
+.rg-obszar_slajd .img { width: 100%; height: 100%; object-fit: cover; }
+.rg-komp .rg-obszar_galeria::after {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 110px; z-index: 2; pointer-events: none;
+  background: linear-gradient(color-mix(in srgb, var(--rg-d, #1e2b24) 55%, transparent), transparent);
+}
+.rg-obszar_pag {
+  position: absolute; left: var(--_units---u-16, 16px); top: var(--_units---u-16, 16px);
+  z-index: 3; display: flex; align-items: center; gap: var(--_units---u-16, 16px);
+}
+/* panel opisu nachodzący na zdjęcie (prawy dolny róg) */
+.rg-komp .rg-obszar_info {
+  position: absolute; right: 0; bottom: 0; z-index: 2;
+  width: min(30rem, 62%);
+  padding: var(--_units---u-24, 24px) var(--_units---u-32, 32px) var(--_units---u-32, 32px);
+  background: var(--_colors---base-0--100);
+  display: flex; flex-direction: column;
+}
+.rg-komp .rg-obszar_info .u-24 { height: 14px; }
+.rg-komp .rg-obszar_info .u-32 { height: 18px; }
+.rg-komp .rg-obszar_info .u-16 { height: 8px; }
+.rg-komp .rg-obszar_numer {
+  position: absolute; top: var(--_units---u-16, 16px); right: var(--_units---u-24, 24px);
+  font-family: var(--_fonts---font-display); font-size: clamp(40px, 4vw, 64px); line-height: 1;
+  color: var(--rg-c, #d9ae4e); font-variation-settings: "opsz" 96; user-select: none;
+}
+.rg-komp .rg-obszar_info h3 { padding-right: 2.2em; }
+.rg-obszar_info .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.rg-obszar_info .description-text p {
+  font-family: var(--_fonts---font-body); font-size: clamp(14px, 1vw, 16px); line-height: 1.55;
+  text-transform: none; letter-spacing: 0; margin: 0;
+}
+
+@media (max-width: 991px) {
+  /* minmax(0, 1fr) + min-width: 0 — inaczej przewijana lista zakładek rozpycha kolumnę poza ekran */
+  .rg-komp { grid-template-columns: minmax(0, 1fr); gap: var(--_units---u-24, 24px); --komp-h: auto; }
+  .rg-komp > * { min-width: 0; }
+  .rg-komp_lewa { min-height: 0; }
+  .rg-komp_lista { flex-direction: row; overflow-x: auto; scrollbar-width: none; border-top: 0; gap: 8px; }
+  .rg-komp_lista::-webkit-scrollbar { display: none; }
+  .rg-komp_tab { flex: 0 0 auto; border: 1px solid var(--_colors---base-1000--10); padding: 10px 14px; grid-template-columns: auto auto; gap: 8px; }
+  .rg-komp_tab.is-active { padding-left: 14px; border-color: var(--rg-c, #d9ae4e); }
+  .rg-komp_tab::before { display: none; }
+  .rg-komp_podpis { display: none; }
+  .rg-komp .rg-obszary_karty { height: auto; }
+  .rg-komp .rg-obszar_siatka { display: flex; flex-direction: column; }
+  .rg-komp .rg-obszar_galeria { position: relative; aspect-ratio: 4 / 3; }
+  .rg-komp .rg-obszar_info { position: relative; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rg-komp_tab, .rg-komp_tab::before { transition: none; }
+}
+
+/* ---------------------------------------------------------------- nagłówek: zakładka Media */
+.rg-nav-media { position: relative; }
+.rg-nav-media_btn { display: inline-flex; align-items: center; gap: 8px; }
+.rg-nav-media_btn svg { width: 10px; height: 6px; transition: transform .25s ease; }
+.rg-nav-media_lista {
+  position: absolute; top: 100%; left: -18px; min-width: 190px; z-index: 5;
+  display: flex; flex-direction: column;
+  padding: 8px 18px 12px;
+  background: var(--nav-bg, #1e2b24);
+  border: 1px solid var(--nav-line, rgba(233, 226, 207, .2)); border-top: 0;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+}
+.rg-nav-media:hover .rg-nav-media_lista, .rg-nav-media:focus-within .rg-nav-media_lista {
+  opacity: 1; visibility: visible; transform: none; transition-delay: 0s;
+}
+.rg-nav-media:hover .rg-nav-media_btn svg, .rg-nav-media:focus-within .rg-nav-media_btn svg { transform: rotate(180deg); }
+.rg-nav-media_link {
+  font-family: var(--_fonts---font-body); font-size: var(--_fonts---p6--size, 12px); letter-spacing: var(--_fonts---p6--letter-spacing, .05em);
+  text-transform: uppercase; text-decoration: none; color: var(--nav-muted);
+  padding: 10px 0; border-bottom: 1px solid var(--nav-line, rgba(233, 226, 207, .2));
+  transition: color .2s ease, padding-left .3s ease;
+}
+.rg-nav-media_link:last-child { border-bottom: 0; }
+.rg-nav-media_link:hover, .rg-nav-media_link:focus-visible { color: var(--nav-fg); padding-left: 6px; }
+
+/* ---------------------------------------------------------------- telefon: poprawki */
+/* Hero na telefonie (zamiast klatek wideo) — szablon miał tu swoją wizualizację budynku; dajemy fermę. */
+.hero-img.light, .hero-img.dark {
+  background-image: url(../media/hero-ferma-000.webp);
+  background-position: 50% 60%;
+}
+/* O mnie: numer i etykieta kolumny („01 Moja rola”) były sklejone */
+.rg-about_kicker { display: flex; gap: .75em; align-items: baseline; }
+@media (max-width: 991px) {
+  /* Lokalizacja: tekst → przycisk → mapa → specjalizacje (prawa kolumna rozbita na elementy siatki) */
+  .location-s_desc { display: contents; }
+  .location-s_desc > * { grid-column: 1 / -1; }
+  .location-s_desc > p { grid-row: 1; }
+  .location-s_desc > .u-32 { grid-row: 2; }
+  .location-s_desc > .location-s_desc_btn { grid-row: 3; }
+  .location-s_desc_map { grid-row: 4 !important; margin-top: var(--_units---u-32, 32px); }
+  .location-s_desc > .u-72 { grid-row: 5; }
+  .location-s_desc > .rg-spec { grid-row: 6; }
+  /* mapa na wąskim ekranie: podpisy pinezek nie mogą na siebie nachodzić */
+  .map-w_pin.is-6 { top: 33% !important; }
+  .rg-pin-sroda { left: calc(20% - 6px) !important; }
+}
+
+/* ---------------------------------------------------------------- okno kontaktu (formularz) */
+/* Szablon: pudełko o stałej wysokości (4 komórki) pod krótszy formularz — nasze 5 pól wypadało poza tło.
+   Teraz wysokość wg treści, przewijanie w środku na niskich ekranach, pola parami. */
+.modal_cta-form { height: auto; max-height: calc(100dvh - 2 * var(--_units---u-32, 32px)); display: flex; }
+.modal_cta-form_form { height: auto; max-height: 100%; overflow-y: auto; overscroll-behavior: contain; gap: var(--_units---u-24, 24px); }
+.modal_cta-form_form_bot .u-48 { height: var(--_units---u-16, 16px); }
+.modal_cta-form_success { min-height: 420px; }
+.rg-form-rzad { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--_units---u-24, 24px); }
+.modal_cta-form .rg-textarea { min-height: 3.2em; }
+@media (min-width: 992px) {
+  #w-node-_1591a5e0-e0d1-2517-5418-ac4086299db7-86299db4 { grid-column: 4 / 10 !important; }
+}
+@media (max-width: 767px) {
+  .rg-form-rzad { grid-template-columns: 1fr; }
+}

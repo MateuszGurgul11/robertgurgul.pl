@@ -145,10 +145,10 @@ Obie opcje działają z kodem w tym repo bez zmian.
 ### D. Po wdrożeniu
 
 - Zaktualizuj `CORS_ALLOWED_ORIGINS` na Render o finalną domenę frontendu.
-- Zaloguj się do `/admin/login` użytkownikiem z kroku A.2 i uzupełnij Ofertę,
-  Galerię (zdjęcia/filmy/dokumenty) — strona startuje z pustą bazą (Oferta ma
-  wbudowany fallback z 8 domyślnymi nazwami usług z brief'u, widoczny dopóki
-  nie dodasz realnych pozycji w CMS).
+- Zaloguj się do `/admin/login` użytkownikiem z kroku A.2 i dodaj zdjęcia, filmy i dokumenty
+  do galerii (podstrony `/photos`, `/videos`, `/docs` i sekcje galerii na stronie głównej).
+  Teksty strony (w tym usługi) są w repozytorium: `frontend/content/strona-glowna.ts`
+  i `frontend/content/podstrony.ts`.
 
 ## Uwaga dotycząca tekstu „O Firmie”
 

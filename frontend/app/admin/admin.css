@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Panel CMS (Tailwind + shadcn/ui) w motywie strony: paleta „Zielone pastwisko”, Bodoni Moda + Manrope,
+   ostre narożniki. Strona publiczna nie używa Tailwinda — ma własne style w public/assets/css. */
+
+@theme {
+  /* marka (nazwy klas zostały z poprzedniej wersji: navy = ciemna zieleń, gold = złoto przycisków) */
+  --color-navy-deepest: #141d18;
+  --color-navy-deep: #1e2b24;
+  --color-navy-mid: #34463b;
+  --color-gold-deep: #a8812c;
+  --color-gold: #d9ae4e;
+  --color-gold-light: #e6c67e;
+  --color-gold-lighter: #f0dfb4;
+  --color-offwhite: #f4f0e6;
+  --color-slate-muted: #9aa596;
+  --color-light-bg: #ece6d6;
+
+  /* neutralne — ciepłe, lekko zielone zamiast chłodnego „slate” */
+  --color-slate-50: #f4f0e6;
+  --color-slate-100: #ebe5d5;
+  --color-slate-200: #ddd5c1;
+  --color-slate-300: #c7bea8;
+  --color-slate-400: #8f9587;
+  --color-slate-500: #6b7266;
+  --color-slate-600: #4d564b;
+  --color-slate-700: #34403a;
+  --color-slate-800: #1e2b24;
+  --color-slate-900: #141d18;
+
+  --font-heading: var(--font-bodoni), "Bodoni Moda", Didot, Georgia, serif;
+  --font-body: var(--font-manrope), "Manrope", Arial, sans-serif;
+  --font-sans: var(--font-body);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #f4f0e6;
+  --foreground: #1e2b24;
+  --card: #fbf8f1;
+  --card-foreground: #1e2b24;
+  --popover: #fbf8f1;
+  --popover-foreground: #1e2b24;
+  --primary: #1e2b24;
+  --primary-foreground: #f4f0e6;
+  --secondary: #ebe5d5;
+  --secondary-foreground: #1e2b24;
+  --muted: #ebe5d5;
+  --muted-foreground: #6b7266;
+  --accent: #e3ddca;
+  --accent-foreground: #1e2b24;
+  --destructive: #b3261e;
+  --border: #ddd5c1;
+  --input: #cfc6b0;
+  --ring: #4f6a4a;
+  --radius: 0.125rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
+  ::selection {
+    background: #d9ae4e;
+    color: #1e2b24;
+  }
+}
+
+/* Nagłówki stron panelu: jak na stronie — Bodoni Moda, wersaliki, bez pogrubienia */
+main h1.font-heading {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  line-height: 1;
+}
+[data-slot="dialog-title"],
+[data-slot="sheet-title"] {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  letter-spacing: -0.005em;
+}
+[data-slot="label"] {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4d564b;
+}
+[data-slot="button"] {
+  letter-spacing: 0.04em;
+}

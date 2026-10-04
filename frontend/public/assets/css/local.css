@@ -89,9 +89,20 @@ html, body, button, input, select, textarea { font-family: var(--local-font); }
 .hero-w_bg .over-gradient-top, .mob_hero-w_bg .over-gradient-top { background-image: linear-gradient(color-mix(in srgb, var(--hero-mask) 80%, transparent), transparent); }
 .hero-w_bg .over-gradient-bot, .mob_hero-w_bg .over-gradient-bot { background-image: linear-gradient(transparent, color-mix(in srgb, var(--hero-mask) 80%, transparent)); }
 
-/* logotyp */
-.logo-w, .logo { aspect-ratio: 280 / 24; }
+/* logotyp — wyższy viewBox pod Bodoni Moda (szeryfy nie mieszczą się w 24 jednostkach) */
+.logo-w, .logo { aspect-ratio: 280 / 52; overflow: visible; }
+.logo svg { overflow: visible; }
 /* /logotyp */
+
+/* Hero CTA: szablon ma bottom: -u-32, a section.clip ucina kulkę pod viewportem */
+.hero-s_btn {
+  bottom: var(--_units---u-32);
+}
+@media screen and (max-width: 991px) {
+  .hero-s_btn {
+    bottom: var(--_units---u-16);
+  }
+}
 
 /* Przycisk dźwięku z szablonu (muzyka Son Daven) — ukryty, brak własnej ścieżki. */
 .sound, .sound-w, .sound-toggle { display: none !important; }

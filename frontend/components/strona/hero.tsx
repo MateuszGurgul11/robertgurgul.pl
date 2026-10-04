@@ -33,8 +33,8 @@ export function Hero() {
                     <div preloader="logo-w-finish" className="logo-w">
                       <div preloader="logo-static" className="hero-s_content_logo_c">
                         <div className="logo w-embed">
-                          <svg width="100%" height="100%" viewBox="0 0 280 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Robert Gurgul">
-                            <text x="0" y="24" fill="currentColor" style={{"fontFamily": "var(--_fonts---font-display, Arial, Helvetica, sans-serif)"}} fontSize="33.52" textLength="280" lengthAdjust="spacing">
+                          <svg width="100%" height="100%" viewBox="0 -12 280 52" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Robert Gurgul" preserveAspectRatio="xMidYMid meet">
+                            <text x="0" y="28" fill="currentColor" style={{"fontFamily": "var(--_fonts---font-display, Arial, Helvetica, sans-serif)"}} fontSize="30" textLength="280" lengthAdjust="spacing">
                               {t.nazwa}
                             </text>
                           </svg>

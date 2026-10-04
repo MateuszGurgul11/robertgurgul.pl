@@ -120,7 +120,7 @@ export function OMnie() {
                       </div>
                       <div className="video-card_video-w">
                         <video muted loop webkit-playsinline="webkit-playsinline" playsInline hover="img" className="video" poster="/assets/media/hero-ferma-000.webp">
-                          <source src="/assets/media/ferma-krotki.mp4" type="video/mp4" />
+                          <source src="/assets/media/ferma-krotki.mp4#t=1" type="video/mp4" />
                         </video>
                       </div>
                     </div>

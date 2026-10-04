@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { Foto } from "./foto";
 import { podstrony as p } from "@/content/podstrony";
+import { Linia, PrzyciskStrzalka, PrzyciskZamknij } from "./szablon-ui";
 
 export type Zdjecie = { id: string; src: string; alt: string };
 
@@ -40,13 +41,16 @@ export function GaleriaZdjec({ zdjecia }: { zdjecia: Zdjecie[] }) {
       <ul className="rgp-photos">
         {zdjecia.map((f, i) => (
           <li key={f.id} className="rgp-photo">
-            <button type="button" className="rgp-photo_btn" onClick={() => otworz(i)} aria-label={`${z.powieksz}: ${f.alt || nr(i + 1)}`}>
-              <span className="rgp-photo_img">
-                <Image src={f.src} alt={f.alt} fill sizes="(max-width: 600px) 50vw, (max-width: 1100px) 33vw, 25vw" />
+            <button type="button" className="rgp-photo_btn rgp-btn-reset" onClick={() => otworz(i)} aria-label={`${z.powieksz}: ${f.alt || nr(i + 1)}`}>
+              <span className="rgp-photo_img img-w">
+                <Foto src={f.src} alt={f.alt} fill sizes="(max-width: 767px) 50vw, (max-width: 1100px) 33vw, 25vw" />
               </span>
+              <span className="u-16" />
+              <Linia />
+              <span className="u-12" />
               <span className="rgp-photo_meta">
-                <span>{nr(i + 1)}</span>
-                {f.alt ? <span className="rgp-photo_alt">{f.alt}</span> : null}
+                <span className="p6 text-gray">{nr(i + 1)}</span>
+                {f.alt ? <span className="p6 text-dark rgp-photo_alt">{f.alt}</span> : null}
               </span>
             </button>
           </li>
@@ -55,30 +59,25 @@ export function GaleriaZdjec({ zdjecia }: { zdjecia: Zdjecie[] }) {
 
       <dialog
         ref={okno}
+        data-lenis-prevent=""
         className="rgp-lightbox"
         aria-label={biezace?.alt || z.powieksz}
         onClose={() => setAktywne(null)}
         onClick={(e) => e.target === e.currentTarget && zamknij()}
       >
         {biezace ? (
-          <div className="rgp-lightbox_in">
+          <div className="rgp-lightbox_in theme_on-dark">
             <div className="rgp-lightbox_bar">
-              <span className="rgp-label">{nr(aktywne! + 1)} / {nr(zdjecia.length)}</span>
-              <button type="button" className="rgp-bracket" onClick={zamknij} aria-label={z.zamknij}>
-                [ <span>x</span> ]
-              </button>
+              <span className="p6 text-gray">{nr(aktywne! + 1)} / {nr(zdjecia.length)}</span>
+              <PrzyciskZamknij etykieta={z.zamknij} onClick={zamknij} />
             </div>
             <div className="rgp-lightbox_img">
-              <Image key={biezace.id} src={biezace.src} alt={biezace.alt} fill sizes="(max-width: 1600px) 100vw, 1600px" />
+              <Foto key={biezace.id} src={biezace.src} alt={biezace.alt} fill sizes="(max-width: 1600px) 100vw, 1600px" />
             </div>
             <div className="rgp-lightbox_bar">
-              <button type="button" className="rgp-bracket" onClick={() => przesun(-1)} aria-label={z.poprzednie}>
-                [ ← ]
-              </button>
-              <p className="rgp-lightbox_alt">{biezace.alt}</p>
-              <button type="button" className="rgp-bracket" onClick={() => przesun(1)} aria-label={z.nastepne}>
-                [ → ]
-              </button>
+              <PrzyciskStrzalka kierunek="lewo" etykieta={z.poprzednie} onClick={() => przesun(-1)} />
+              <p className="p6 text-dark rgp-lightbox_alt">{biezace.alt}</p>
+              <PrzyciskStrzalka kierunek="prawo" etykieta={z.nastepne} onClick={() => przesun(1)} />
             </div>
           </div>
         ) : null}

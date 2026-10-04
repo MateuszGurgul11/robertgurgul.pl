@@ -5,17 +5,16 @@ import Link from "next/link";
 import {
   FileText,
   Images,
-  ListChecks,
   Mail,
   PlayCircle,
 } from "lucide-react";
 import { useAuth } from "@/lib/firebase/use-auth";
-import { contactApi, docsApi, photosApi, servicesApi, videosApi } from "@/lib/api";
+import { contactApi, docsApi, photosApi, videosApi } from "@/lib/api";
 
 interface StatCard {
   label: string;
   href: string;
-  icon: typeof ListChecks;
+  icon: typeof Images;
   count: number | null;
 }
 
@@ -26,13 +25,11 @@ export default function AdminDashboardPage() {
 
   useEffect(() => {
     Promise.all([
-      servicesApi.list().catch(() => []),
       photosApi.list().catch(() => []),
       videosApi.list().catch(() => []),
       docsApi.list().catch(() => []),
-    ]).then(([services, photos, videos, docs]) => {
+    ]).then(([photos, videos, docs]) => {
       setCounts({
-        services: services.length,
         photos: photos.length,
         videos: videos.length,
         docs: docs.length,
@@ -47,10 +44,9 @@ export default function AdminDashboardPage() {
   }, []);
 
   const cards: StatCard[] = [
-    { label: "Zdjęcia w galerii", href: "/admin/gallery/photos", icon: Images, count: counts.photos ?? null },
+    { label: "Zdjęcia", href: "/admin/gallery/photos", icon: Images, count: counts.photos ?? null },
     { label: "Filmy", href: "/admin/gallery/videos", icon: PlayCircle, count: counts.videos ?? null },
     { label: "Dokumenty", href: "/admin/gallery/docs", icon: FileText, count: counts.docs ?? null },
-    { label: "Usługi w ofercie", href: "/admin/offer", icon: ListChecks, count: counts.services ?? null },
   ];
 
   return (
@@ -60,11 +56,11 @@ export default function AdminDashboardPage() {
         <h1 className="mt-3 font-heading text-slate-800">Witaj w panelu</h1>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-500">
           Dodawaj zdjęcia, filmy i dokumenty do galerii strony robertgurgul.pl i odpowiadaj na wiadomości z formularza.
-          Teksty strony są w repozytorium (content/strona-glowna.ts).
+          Teksty strony są w repozytorium (content/strona-glowna.ts i content/podstrony.ts).
         </p>
       </div>
 
-      <div className="grid grid-cols-2 border-l border-t border-slate-200 lg:grid-cols-4">
+      <div className="grid grid-cols-3 border-l border-t border-slate-200">
         {cards.map(({ label, href, icon: Icon, count }, i) => (
           <Link
             key={href}

@@ -1,8 +1,8 @@
-import { Fraunces, Manrope } from "next/font/google";
+import { Bodoni_Moda, Manrope } from "next/font/google";
 
-// Czcionki nowej strony (i panelu CMS): Fraunces — nagłówki, Manrope — tekst. Hostowane lokalnie przez next/font.
-export const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Czcionki nowej strony (i panelu CMS): Bodoni Moda — nagłówki, Manrope — tekst. Hostowane lokalnie przez next/font.
+export const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin", "latin-ext"],
   axes: ["opsz"],
   display: "swap",

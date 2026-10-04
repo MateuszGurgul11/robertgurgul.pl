@@ -9,13 +9,8 @@ export function JakPracuje() {
         <div className="commissioning-w">
           <div className="commissioning-s">
             <div className="u-136" />
-            <h2 data-scroll-reveal="h" className="commissioning-s_title h2">
-              <span>
-                {t.jakPracuje.tytul1}
-              </span>
-              <span>
-                {t.jakPracuje.tytul2}
-              </span>
+            <h2 data-scroll-reveal="h" className="h2 text-dark rg-tytul">
+              {t.jakPracuje.tytul1} {t.jakPracuje.tytul2}
             </h2>
             <div className="commissioning-s_img-w">
               <div className="u-16 b-desk" />

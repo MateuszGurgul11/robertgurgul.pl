@@ -39,31 +39,14 @@ export function Stopka() {
                       <div id="w-node-_50d4bf81-750e-6eac-7da5-0d76d7aa7c32-d7aa7c22" className="footer-s_top_info">
                         <div className="footer-s_top_info_address-r a-right">
                           <h3 className="p6 text-gray">
-                            {t.stopka.kontaktEtykieta}
-                            <br />
+                            {t.stopka.mediaEtykieta}
                           </h3>
                           <div className="unit-4" />
-                          <a aria-label={t.kontakt.adresLinia1} hover-nav-item-important="" href={t.kontakt.mapa} target="_blank" className="nav-item w-inline-block">
+                          <a aria-label={t.stopka.mediaLink} hover-nav-item-important="" href="/media" className="nav-item w-inline-block">
                             <div hover="label" className="nav-item_label">
                               <div className="nav-item_label_text">
                                 <p hover="text" className="p6 text-dark">
-                                  {t.kontakt.adresLinia1}
-                                </p>
-                              </div>
-                            </div>
-                          </a>
-                          <div className="u-24" />
-                        </div>
-                        <div className="footer-s_top_info_address-r a-right">
-                          <h4 className="p6 text-gray">
-                            {t.stopka.miasto}
-                          </h4>
-                          <div className="unit-4" />
-                          <a aria-label={t.kontakt.adresLinia2} hover-nav-item-important="" href={t.kontakt.mapa} target="_blank" className="nav-item w-inline-block">
-                            <div hover="label" className="nav-item_label">
-                              <div className="nav-item_label_text">
-                                <p hover="text" className="p6 text-dark">
-                                  {t.kontakt.adresLinia2}
+                                  {t.stopka.mediaLink}
                                 </p>
                               </div>
                             </div>

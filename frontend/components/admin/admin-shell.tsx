@@ -7,7 +7,6 @@ import {
   FileText,
   Images,
   LayoutDashboard,
-  ListChecks,
   LogOut,
   Mail,
   Menu,
@@ -23,7 +22,6 @@ const NAV = [
   { href: "/admin/gallery/photos", label: "Zdjęcia", icon: Images },
   { href: "/admin/gallery/videos", label: "Filmy", icon: PlayCircle },
   { href: "/admin/gallery/docs", label: "Dokumenty", icon: FileText },
-  { href: "/admin/offer", label: "Oferta", icon: ListChecks },
   { href: "/admin/messages", label: "Wiadomości", icon: Mail },
 ];
 

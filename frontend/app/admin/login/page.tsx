@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { getFirebaseAuth } from "@/lib/firebase/client";
@@ -71,12 +72,12 @@ export default function AdminLoginPage() {
           <span className="lg:hidden">
             <Monogram ciemny />
           </span>
-          <a
+          <Link
             href="/"
             className="border-b border-slate-300 py-2 text-[11px] uppercase tracking-[0.08em] text-slate-600 transition-colors hover:border-navy-deep hover:text-navy-deep"
           >
             ← Strona główna
-          </a>
+          </Link>
         </div>
 
         <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center py-12">
@@ -85,7 +86,7 @@ export default function AdminLoginPage() {
             Panel CMS
           </h1>
           <p className="mt-4 text-sm leading-relaxed text-slate-500">
-            Zaloguj się, aby zarządzać galerią, ofertą i wiadomościami.
+            Zaloguj się, aby zarządzać galerią i wiadomościami.
           </p>
 
           <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-7">

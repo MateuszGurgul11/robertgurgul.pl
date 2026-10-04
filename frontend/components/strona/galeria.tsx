@@ -9,14 +9,9 @@ export function Galeria({ zdjecia }: { zdjecia: { src: string; alt: string }[] }
         <div className="gallery-w">
           <div className="gallery-s">
             <div className="u-16" />
-            <div data-scroll-reveal="h" className="gallery-s_title">
-              <h2 className="h2 text-dark">
-                {t.galeria.tytul1}
-              </h2>
-              <div className="h2 text-dark">
-                {t.galeria.tytul2}
-              </div>
-            </div>
+            <h2 data-scroll-reveal="h" className="h2 text-dark rg-tytul">
+              {t.galeria.tytul1} {t.galeria.tytul2}
+            </h2>
             <div className="u-16" />
             <div slider="gallery" className="gallery-s_cms theme_on-dark">
               <div slider="pag" className="slider_pag">

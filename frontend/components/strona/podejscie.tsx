@@ -10,7 +10,7 @@ export function Podejscie() {
           <div className="dev-s">
             <div className="u-136 b-desk" />
             <div className="grid">
-              <div id="w-node-_9fae2dcc-7ff9-43ef-df85-68d9a650e784-a640d032" className="dev-s_lead">
+              <div id="w-node-_9fae2dcc-7ff9-43ef-df85-68d9a650e784-a640d032" className="dev-s_lead rg-lewo">
                 <div data-scroll-reveal="ctn" className="title">
                   <div className="title_stars text-dark">
                     <div className="ico-8-12">
@@ -35,7 +35,7 @@ export function Podejscie() {
                       </div>
                     </div>
                   </div>
-                  <h2 className="p6 text-dark a-center">
+                  <h2 className="p6 text-dark">
                     {t.podejscie.etykieta}
                   </h2>
                   <div className="title_stars text-dark">
@@ -63,7 +63,7 @@ export function Podejscie() {
                   </div>
                 </div>
                 <div className="u-32" />
-                <h3 data-scroll-reveal="h" className="h3 text-dark a-center">
+                <h3 data-scroll-reveal="h" className="h3 text-dark rg-tytul">
                   {t.podejscie.tytul}
                 </h3>
               </div>

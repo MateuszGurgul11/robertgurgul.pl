@@ -2,12 +2,15 @@
 // pochodzą z szablonu i sterują animacjami w public/assets/js/site.js — nie zmieniaj ich bez potrzeby.
 import { tresci as t } from "@/content/strona-glowna";
 
-export function Naglowek() {
+/** Na podstronach linki do sekcji (#about) prowadzą na stronę główną (/#about). */
+export const doSekcji = (href: string, podstrona?: boolean) => (podstrona && href.startsWith("#") ? `/${href}` : href);
+
+export function Naglowek({ podstrona = false }: { podstrona?: boolean }) {
   return (
     <div className="theme_on-dark">
       <nav className="header reference-header" aria-label="Menu główne">
         <div className="reference-nav-shell">
-          <a href="#hero" className="reference-brand" aria-label="Robert Gurgul — strona główna">
+          <a href={podstrona ? "/" : "#hero"} className="reference-brand" aria-label="Robert Gurgul — strona główna">
             <span className="reference-monogram" aria-hidden="true">
               {"rg"}
               <span>
@@ -21,8 +24,27 @@ export function Naglowek() {
             </span>
           </a>
           <div className="reference-links">
-            {t.naglowek.menu.map((m, i) => (
-                <a key={i} className="reference-link" href={m.href}>
+            {t.naglowek.menu.slice(0, -1).map((m, i) => (
+                <a key={i} className="reference-link" href={doSekcji(m.href, podstrona)}>
+                  {m.etykieta}
+                </a>
+            ))}
+            {/* Media: rozwijana lista podstron (CSS :hover / :focus-within — style w uklad.css) */}
+            <div className="rg-nav-media">
+              <a className="reference-link rg-nav-media_btn" href={t.naglowek.media.href} aria-haspopup="true">
+                {t.naglowek.media.etykieta}
+                <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.2" /></svg>
+              </a>
+              <div className="rg-nav-media_lista">
+                {t.naglowek.media.linki.map((l) => (
+                  <a key={l.href} href={l.href} className="rg-nav-media_link">
+                    {l.etykieta}
+                  </a>
+                ))}
+              </div>
+            </div>
+            {t.naglowek.menu.slice(-1).map((m) => (
+                <a key={m.href} className="reference-link" href={doSekcji(m.href, podstrona)}>
                   {m.etykieta}
                 </a>
             ))}
