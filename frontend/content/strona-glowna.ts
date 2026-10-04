@@ -59,12 +59,19 @@ export const tresci = {
   },
   hero: {
     etykieta: "doradztwo zootechniczne",
-    lewy1: "doradztwo",
-    lewy2: "Robert Gurgul",
-    srodek1: "Fermy",
-    srodek2: "drobiu",
-    prawy1: "Wolica Kozia,",
-    prawy2: "Nowe Miasto nad Wartą",
+    // prawa góra: duże liczby z podpisem (jak „up to 10%” w szablonie)
+    liczby: [
+      { liczba: "8", opis1: "zakresów", opis2: "usług" },
+      { liczba: "3", opis1: "gatunki", opis2: "drobiu" },
+    ],
+    // lewy dół: hasło w trzech wierszach
+    haslo: ["Zdrowe stado", "zaczyna się od", "dobrego planu"],
+    // dolny rząd: dwa wiersze, wyróżniony fragment w „chipie” (wyroznij: 1 = pierwszy wiersz, 2 = drugi)
+    info: [
+      { wiersz1: "Wolica Kozia", wiersz2: "Nowe Miasto nad Wartą", wyroznij: 1, href: "" },
+      { wiersz1: "Pierwszy krok", wiersz2: "audyt na fermie", wyroznij: 2, href: "" },
+      { wiersz1: "Zadzwoń", wiersz2: "+48 502 592 194", wyroznij: 2, href: "tel:+48502592194" },
+    ],
     ctaMobile: "Porozmawiajmy",
     cta: "Umów konsultację",
   },

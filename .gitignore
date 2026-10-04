@@ -43,5 +43,10 @@ firebase/.emulator-data/
 # Optimized video backups (full originals kept here before re-encode)
 media-originals/
 
-# Projekt źródłowy strony (budowany lokalnie; do repo trafia tylko eksport w frontend/)
+# Szablony i kopie zapasowe — tylko lokalnie, nie w repo.
+# Wzorce zakotwiczone (/…), żeby nie łapały frontend/components/szablon/ (kod strony;
+# macOS nie rozróżnia wielkości liter, a wzorzec „Szablon/” bez „/” wyciął kiedyś ten folder z repo).
 /Szablon/
+/backup/
+**/_backup/
+.claude/

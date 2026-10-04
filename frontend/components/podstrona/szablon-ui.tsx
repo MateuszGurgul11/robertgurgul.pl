@@ -12,9 +12,9 @@ const Gwiazdka = () => (
 );
 
 /** +++ ETYKIETA +++ */
-export function Etykieta({ children, as: Tag = "p" }: { children: React.ReactNode; as?: "p" | "h2" }) {
+export function Etykieta({ children, as: Tag = "p", klasa = "" }: { children: React.ReactNode; as?: "p" | "h1" | "h2"; klasa?: string }) {
   return (
-    <div data-scroll-reveal="ctn" className="title rgp-etykieta">
+    <div data-scroll-reveal="ctn" className={`title rgp-etykieta ${klasa}`.trim()}>
       <div className="title_stars text-dark"><Gwiazdka /><Gwiazdka /><Gwiazdka /></div>
       <Tag className="p6 text-dark">{children}</Tag>
       <div className="title_stars text-dark"><Gwiazdka /><Gwiazdka /><Gwiazdka /></div>

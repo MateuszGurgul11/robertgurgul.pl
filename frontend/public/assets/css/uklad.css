@@ -238,3 +238,48 @@
 @media (max-width: 767px) {
   .rg-form-rzad { grid-template-columns: 1fr; }
 }
+
+
+/* ---------------------------------------------------------------- hero (układ jak nowa wersja szablonu) */
+/* Góra: etykieta + ROBERT GURGUL po lewej, liczby po prawej. Dół: hasło i rząd informacji po lewej, kulka po prawej. */
+.hero-s.rg-hero {
+  justify-content: space-between;
+  padding: calc(var(--_units---u-104, 104px) + var(--_units---u-48, 48px)) 0 var(--_units---u-48, 48px);
+}
+.rg-hero_gora, .rg-hero_dol { display: flex; justify-content: space-between; gap: var(--_units---u-48, 48px); }
+.rg-hero_gora { align-items: flex-start; }
+.rg-hero_dol { align-items: flex-end; }
+.rg-hero_lewa { flex: 0 1 62%; min-width: 0; }
+/* etykieta jak „+++ MOTTO +++” (komponent Etykieta) — od lewej, wersaliki */
+.rg-hero_etykieta { justify-content: flex-start; }
+.rg-hero_etykieta .p6 { text-transform: uppercase; margin: 0; }
+.rg-hero_logo { width: 100%; }
+.rg-hero_logo .logo-w { width: 100%; }
+.rg-hero_liczby { display: flex; gap: var(--_units---u-72, 72px); padding-top: var(--_units---u-24, 24px); }
+.rg-hero_liczba { display: flex; flex-direction: column; gap: var(--_units---u-12, 12px); }
+.rg-hero_liczba_w {
+  margin: 0; font-family: var(--_fonts---font-display); font-weight: 400; line-height: .85;
+  font-size: clamp(64px, 7.6vw, 156px); letter-spacing: -.02em; font-variation-settings: "opsz" 96;
+}
+.rg-hero_liczby .rg-hero_liczba .p6 { text-transform: uppercase; margin: 0; }
+.rg-hero_dol .rg-hero_haslo { margin: 0; text-align: left; display: flex; flex-direction: column; text-transform: uppercase; }
+.rg-hero_info { display: flex; flex-wrap: wrap; gap: var(--_units---u-24, 24px) var(--_units---u-72, 72px); margin-top: var(--_units---u-48, 48px); }
+.rg-hero_info .rg-hero_info_el { display: flex; flex-direction: column; gap: 4px; margin: 0; text-transform: uppercase; text-decoration: none; }
+.rg-hero_info_w { display: block; }
+/* wyróżniony fragment jak „[BLAGO]” w szablonie: odwrócone kolory */
+.rg-chip {
+  display: inline-block; padding: 1px 6px;
+  background: var(--_colors---base-1000--100); color: var(--_colors---base-0--100);
+}
+.rg-hero_info_link:hover .rg-chip { background: var(--rg-c, #d9ae4e); color: var(--rg-d, #1e2b24); }
+.rg-hero_cta { flex: none; }
+@media (max-width: 991px) {
+  .hero-s.rg-hero { padding: calc(var(--_units---u-104, 104px) + 36px) 0 var(--_units---u-32, 32px); }
+  .rg-hero_gora { flex-direction: column; gap: var(--_units---u-24, 24px); }
+  .rg-hero_lewa { flex-basis: auto; width: 100%; }
+  .rg-hero_liczby { gap: var(--_units---u-32, 32px); padding-top: 0; }
+  .rg-hero_liczba_w { font-size: clamp(44px, 14vw, 72px); }
+  .rg-hero_dol { flex-direction: column; align-items: stretch; gap: var(--_units---u-24, 24px); }
+  .rg-hero_info { gap: var(--_units---u-16, 16px) var(--_units---u-32, 32px); margin-top: var(--_units---u-24, 24px); }
+  .rg-hero_cta { align-self: flex-end; }
+}
