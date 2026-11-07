@@ -1,8 +1,14 @@
+/* Czcionki przycięte do znaków używanych na stronie (public/assets/fonts). Polskie litery w osobnym, małym pliku. */
+@font-face { font-family: "Archivo"; src: url(/assets/fonts/archivo-latin.woff2) format("woff2"); font-weight: 500 700; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url(/assets/fonts/archivo-pl.woff2) format("woff2"); font-weight: 500 700; font-display: swap; unicode-range: U+0104-0107, U+0118-0119, U+0141-0144, U+015A-015B, U+0179-017C; }
+@font-face { font-family: "Source Sans 3"; src: url(/assets/fonts/source-sans-latin.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Source Sans 3"; src: url(/assets/fonts/source-sans-pl.woff2) format("woff2"); font-weight: 400 700; font-display: swap; unicode-range: U+0104-0107, U+0118-0119, U+0141-0144, U+015A-015B, U+0179-017C; }
+
 /* Czcionki strony: Archivo (nagłówki) + Source Sans 3 (tekst). Czcionki ładuje next/font (lib/czcionki.ts). */
 :root, body {
-  --_fonts---font-display: var(--font-naglowki), "Archivo", Arial, sans-serif;
-  --_fonts---font-body: var(--font-tekst), "Source Sans 3", Arial, sans-serif;
-  --local-font: var(--font-tekst), "Source Sans 3", Arial, sans-serif;
+  --_fonts---font-display: "Archivo", Arial, sans-serif;
+  --_fonts---font-body: "Source Sans 3", Arial, sans-serif;
+  --local-font: "Source Sans 3", Arial, sans-serif;
   --_fonts---h1--letter-spacing: -.03em; --_fonts---h2--letter-spacing: -.025em;
   --_fonts---h3--letter-spacing: -.02em; --_fonts---h4--letter-spacing: -.015em;
   --_fonts---h5--letter-spacing: -.01em; --_fonts---h6--letter-spacing: 0em;

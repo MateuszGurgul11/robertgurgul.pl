@@ -10,7 +10,7 @@ export function Naglowek({ podstrona = false }: { podstrona?: boolean }) {
     <div className="theme_on-dark">
       <nav className="header reference-header" aria-label="Menu główne">
         <div className="reference-nav-shell">
-          <a href={podstrona ? "/" : "#hero"} className="reference-brand" aria-label="Robert Gurgul, strona główna">
+          <a href={podstrona ? "/" : "#hero"} className="reference-brand" aria-label="rg. Robert Gurgul, strona główna">
             <span className="reference-monogram" aria-hidden="true">
               {"rg"}
               <span>
@@ -96,7 +96,7 @@ export function Naglowek({ podstrona = false }: { podstrona?: boolean }) {
                         {"Menu"}
                       </div>
                     </div>
-                    <div className="nav-item_label_text is-2">
+                    <div aria-hidden="true" className="nav-item_label_text is-2">
                       <div hover="text" className="p6 text-dark">
                         {"Menu"}
                       </div>
@@ -112,7 +112,7 @@ export function Naglowek({ podstrona = false }: { podstrona?: boolean }) {
                         {"Zamknij"}
                       </div>
                     </div>
-                    <div className="nav-item_label_text is-2">
+                    <div aria-hidden="true" className="nav-item_label_text is-2">
                       <div hover="text" className="p6 text-dark">
                         {"Zamknij"}
                       </div>

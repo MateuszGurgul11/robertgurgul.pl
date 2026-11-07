@@ -115,7 +115,7 @@ export function Materialy({ dokumenty, linki }: { dokumenty: { tytul: string; hr
                             <a aria-label={d.tytul} data-barba-prevent="all" href={d.href} className="news-card_link w-inline-block" />
                             <div className="news-card_img">
                               <div className="img-w">
-                                <img hover="img" loading="eager" alt={t.materialy.okladki[i % t.materialy.okladki.length].alt} src={t.materialy.okladki[i % t.materialy.okladki.length].src} className="img" />
+                                <img hover="img" loading="lazy" alt={t.materialy.okladki[i % t.materialy.okladki.length].alt} src={t.materialy.okladki[i % t.materialy.okladki.length].src} className="img" />
                               </div>
                             </div>
                             <div className="u-24" />
@@ -157,7 +157,7 @@ export function Materialy({ dokumenty, linki }: { dokumenty: { tytul: string; hr
                           {t.materialy.zobaczWszystkie}
                         </div>
                       </div>
-                      <div className="nav-item_label_text is-2">
+                      <div aria-hidden="true" className="nav-item_label_text is-2">
                         <div hover="text" className="p3 text-dark">
                           {t.materialy.zobaczWszystkie}
                         </div>
@@ -221,7 +221,7 @@ export function Materialy({ dokumenty, linki }: { dokumenty: { tytul: string; hr
                           {t.materialy.zobaczWszystkie}
                         </div>
                       </div>
-                      <div className="nav-item_label_text is-2">
+                      <div aria-hidden="true" className="nav-item_label_text is-2">
                         <div hover="text" className="p3 text-dark">
                           {t.materialy.zobaczWszystkie}
                         </div>

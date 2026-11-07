@@ -215,7 +215,7 @@ export function Cookies() {
                         {t.cookies.ok}
                       </div>
                     </div>
-                    <div className="nav-item_label_text is-2">
+                    <div aria-hidden="true" className="nav-item_label_text is-2">
                       <div hover="text" className="p4 text-dark">
                         {t.cookies.ok}
                       </div>

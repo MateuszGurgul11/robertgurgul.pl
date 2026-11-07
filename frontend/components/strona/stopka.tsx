@@ -16,11 +16,11 @@ export function Stopka() {
                     <div className="grid">
                       <div id="w-node-_50d4bf81-750e-6eac-7da5-0d76d7aa7c2b-d7aa7c22" className="footer-s_top_desc">
                         <div className="footer-s_top_info_address-l">
-                          <h3 className="p6 text-gray">
+                          <div className="p6 text-gray">
                             {t.stopka.lokalizacjaEtykieta}
-                          </h3>
+                          </div>
                           <div className="unit-4" />
-                          <a aria-label={t.kontakt.adres} hover-nav-item-important="" href={t.kontakt.mapa} target="_blank" className="nav-item w-inline-block">
+                          <a hover-nav-item-important="" href={t.kontakt.mapa} target="_blank" className="nav-item w-inline-block">
                             <div hover="label" className="nav-item_label">
                               <div className="nav-item_label_text">
                                 <p hover="text" className="p6 text-dark">
@@ -38,11 +38,11 @@ export function Stopka() {
                       </div>
                       <div id="w-node-_50d4bf81-750e-6eac-7da5-0d76d7aa7c32-d7aa7c22" className="footer-s_top_info">
                         <div className="footer-s_top_info_address-r a-right">
-                          <h3 className="p6 text-gray">
+                          <div className="p6 text-gray">
                             {t.stopka.mediaEtykieta}
-                          </h3>
+                          </div>
                           <div className="unit-4" />
-                          <a aria-label={t.stopka.mediaLink} hover-nav-item-important="" href="/media" className="nav-item w-inline-block">
+                          <a hover-nav-item-important="" href="/media" className="nav-item w-inline-block">
                             <div hover="label" className="nav-item_label">
                               <div className="nav-item_label_text">
                                 <p hover="text" className="p6 text-dark">
@@ -60,14 +60,14 @@ export function Stopka() {
                     <div className="contact-cms w-dyn-list">
                       <div role="list" className="contact-cms_list w-dyn-items">
                         <div role="listitem" className="contact-cms_list_item w-dyn-item">
-                          <a aria-label={t.kontakt.telefon} hover-divider="" href={t.kontakt.telefonHref} className="nav-item w-inline-block">
+                          <a hover-divider="" href={t.kontakt.telefonHref} className="nav-item w-inline-block">
                             <div hover="label" className="nav-item_label">
                               <div className="nav-item_label_text">
                                 <div hover="text" className="p2 text-dark">
                                   {t.kontakt.telefon}
                                 </div>
                               </div>
-                              <div className="nav-item_label_text is-2">
+                              <div aria-hidden="true" className="nav-item_label_text is-2">
                                 <p hover="text" className="p2 text-dark">
                                   {t.kontakt.telefon}
                                 </p>
@@ -82,14 +82,14 @@ export function Stopka() {
                           </a>
                         </div>
                         <div role="listitem" className="contact-cms_list_item w-dyn-item">
-                          <a aria-label={t.kontakt.email} hover-divider="" href={t.kontakt.emailHref} className="nav-item w-inline-block">
+                          <a hover-divider="" href={t.kontakt.emailHref} className="nav-item w-inline-block">
                             <div hover="label" className="nav-item_label">
                               <div className="nav-item_label_text">
                                 <div hover="text" className="p2 text-dark">
                                   {t.kontakt.email}
                                 </div>
                               </div>
-                              <div className="nav-item_label_text is-2">
+                              <div aria-hidden="true" className="nav-item_label_text is-2">
                                 <p hover="text" className="p2 text-dark">
                                   {t.kontakt.email}
                                 </p>
@@ -116,7 +116,7 @@ export function Stopka() {
                     </div>
                     <div className="nav-item-list">
                       <div className="sound b-desk" />
-                      <a aria-label={t.stopka.polityka} hover-nav-item="" href="#" target="_blank" className="nav-item w-inline-block">
+                      <a hover-nav-item="" href="#" target="_blank" className="nav-item w-inline-block">
                         <div hover="label" className="nav-item_label">
                           <div className="nav-item_label_text">
                             <div hover="text" className="p6 text-dark">
@@ -124,7 +124,7 @@ export function Stopka() {
                               <br />
                             </div>
                           </div>
-                          <div className="nav-item_label_text is-2">
+                          <div aria-hidden="true" className="nav-item_label_text is-2">
                             <div hover="text" className="p6 text-dark">
                               {t.stopka.polityka}
                               <br />

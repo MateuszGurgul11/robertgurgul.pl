@@ -203,7 +203,7 @@
 /* ---------------------------------------------------------------- telefon: poprawki */
 /* Hero na telefonie (zamiast klatek wideo) — szablon miał tu swoją wizualizację budynku; dajemy fermę. */
 .hero-img.light, .hero-img.dark {
-  background-image: url(../media/hero-ferma-000.webp);
+  background-image: url(/assets/media/hero-ferma-000.webp);
   background-position: 50% 60%;
 }
 /* O mnie: numer i etykieta kolumny („01 Moja rola”) były sklejone */
@@ -302,3 +302,29 @@
 /* zdjęcie portretowe w karcie sekcji Podejście: wypełnia miejsce między tekstem a podpisem */
 .rg-portret { flex: 1 1 auto; min-height: 0; margin-top: var(--_units---u-24, 24px); overflow: hidden; }
 .rg-portret img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+/* Hero na komputerze: pierwszy kadr widać od razu, klatki wideo wczytują się po pierwszej interakcji */
+@media (min-width: 992px) {
+  .hero-w_bg .img-w { background: url(/assets/frames/hero-video/000.webp) center / cover no-repeat; }
+}
+
+/* Kontrast WCAG AA: szary liczony z koloru tekstu i tła motywu, więc działa na jasnym i ciemnym tle */
+.text-gray { color: color-mix(in srgb, var(--_colors---base-1000--100) 72%, var(--_colors---base-0--100)); }
+.rg-komp_tab { opacity: .8; }
+.rg-komp_tab_nr { color: var(--_colors---base-1000--100); }
+.rg-komp .rg-obszar_numer { color: var(--rg-accent, #4f6a4a); }
+
+/* Bez intro: strona widoczna od razu, jeszcze przed startem skryptów szablonu.
+   Powrót do intra: usuń tę regułę, ustaw SHOW_INTRO w site.js i przywróć autoPlay w preloader.tsx. */
+[data-master-preloader], [data-preloader], .transition { display: none !important; }
+
+/* Marquee „Współpraca”: jawne ciemne tło, żeby jasny napis miał pewny kontrast */
+.fin-s_title_marquee { background-color: var(--rg-d, #1e2b24); overflow: hidden; }
+
+/* Do startu szablonu przeglądarka renderuje tylko hero: sekcje niżej i ich obrazy czekają. Klasę rg-start
+   dodaje components/szablon/szablon-skrypty.tsx tuż przed skryptami, które mierzą prawdziwe wysokości sekcji. */
+html:not(.rg-start) section:not(#hero) { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+html:not(.rg-start) .noise { background-image: none; }
+
+/* Kontrast linków menu na ciemnym pasku */
+.reference-header.reference-header { --nav-muted: #a8ad9f; }

@@ -65,7 +65,7 @@ export function KontaktCta() {
                     <div className="contact-cms w-dyn-list">
                       <div role="list" className="contact-cms_list w-dyn-items">
                         <div role="listitem" className="contact-cms_list_item w-dyn-item">
-                          <a aria-label={t.kontakt.telefon} hover-nav-item-important="" href={t.kontakt.telefonHref} className="nav-item w-inline-block">
+                          <a hover-nav-item-important="" href={t.kontakt.telefonHref} className="nav-item w-inline-block">
                             <div hover="label" className="nav-item_label">
                               <div className="nav-item_label_text">
                                 <p hover="text" className="p6 text-dark">
@@ -76,7 +76,7 @@ export function KontaktCta() {
                           </a>
                         </div>
                         <div role="listitem" className="contact-cms_list_item w-dyn-item">
-                          <a aria-label={t.kontakt.email} hover-nav-item-important="" href={t.kontakt.emailHref} className="nav-item w-inline-block">
+                          <a hover-nav-item-important="" href={t.kontakt.emailHref} className="nav-item w-inline-block">
                             <div hover="label" className="nav-item_label">
                               <div className="nav-item_label_text">
                                 <p hover="text" className="p6 text-dark">
@@ -100,13 +100,13 @@ export function KontaktCta() {
           </div>
           <div className="cta-w_bg">
             <div className="cta-w_bg_transition-t">
-              <img src="/assets/media/6b0b9dbe51-697c433cb34f01cb48e5a44e_transition-dark-t-04-4c.svg" loading="eager" alt="" className="img" />
+              <img src="/assets/media/6b0b9dbe51-697c433cb34f01cb48e5a44e_transition-dark-t-04-4c.svg" loading="lazy" alt="" className="img" />
             </div>
             <div parallax="w" className="img-w">
-              <img className="img-p" src="/assets/media/kury-tlo-1920.webp" srcSet="/assets/media/kury-tlo-800.webp 800w, /assets/media/kury-tlo-1280.webp 1280w, /assets/media/kury-tlo-1920.webp 1920w" alt={t.kontaktCta.zdjecieAlt} sizes="100vw" parallax="img" loading="eager" />
+              <img className="img-p" src="/assets/media/kury-tlo-1920.webp" srcSet="/assets/media/kury-tlo-800.webp 800w, /assets/media/kury-tlo-1280.webp 1280w, /assets/media/kury-tlo-1920.webp 1920w" alt={t.kontaktCta.zdjecieAlt} sizes="100vw" parallax="img" loading="lazy" />
             </div>
             <div className="cta-w_bg_transition-b">
-              <img src="/assets/media/e510680a13-697c43b1823139f755ab2fc5_transition-dark-b-07-4c.svg" loading="eager" alt="" className="img" />
+              <img src="/assets/media/e510680a13-697c43b1823139f755ab2fc5_transition-dark-b-07-4c.svg" loading="lazy" alt="" className="img" />
             </div>
           </div>
         </div>

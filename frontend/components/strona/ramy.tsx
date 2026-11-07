@@ -305,7 +305,7 @@ export function ObrocTelefon() {
   return (
     <div className="landscape-cover">
       <div className="landscape-cover_img">
-        <img loading="eager" src="/assets/media/721c740989-6940a0abd735a1e3a640d06f_4cbe061e6fd5a3c989526dd43bfe32d0_landscape.svg" alt="Obróć telefon, aby wygodniej przeglądać stronę" className="img contain" />
+        <img loading="lazy" src="/assets/media/721c740989-6940a0abd735a1e3a640d06f_4cbe061e6fd5a3c989526dd43bfe32d0_landscape.svg" alt="Obróć telefon, aby wygodniej przeglądać stronę" className="img contain" />
       </div>
       <div className="landscape-cover_bg" />
     </div>

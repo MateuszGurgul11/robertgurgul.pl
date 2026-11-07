@@ -160,7 +160,7 @@ export function Oferta() {
                           <div className="benefit-card_bg test">
                             <div className="over-gradient-bot" />
                             <div className="img-w test">
-                              <img src={u.zdjecie.src} srcSet={u.zdjecie.srcSet} loading="eager" hover="img" alt={u.zdjecie.alt} sizes="100vw" className="img" />
+                              <img src={u.zdjecie.src} srcSet={u.zdjecie.srcSet} loading="lazy" hover="img" alt={u.zdjecie.alt} sizes="100vw" className="img" />
                             </div>
                           </div>
                         </div>
@@ -179,7 +179,7 @@ export function Oferta() {
                             {t.oferta.pokazWiecej}
                           </div>
                         </div>
-                        <div className="nav-item_label_text is-2">
+                        <div aria-hidden="true" className="nav-item_label_text is-2">
                           <div hover="text" className="p3 text-dark">
                             {t.oferta.pokazWiecej}
                           </div>

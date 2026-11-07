@@ -187,7 +187,7 @@ export function Kompetencje() {
             <div className="u-72 b-desk" />
             <div className="u-72 b-mob" />
             <div className="commissioning-s_transition">
-              <img src="/assets/media/5934e42448-697c3da7844f5fc2f9b5d44d_transition-dark-02-4c.svg" loading="eager" alt="" className="img" />
+              <img src="/assets/media/5934e42448-697c3da7844f5fc2f9b5d44d_transition-dark-02-4c.svg" loading="lazy" alt="" className="img" />
             </div>
           </div>
           <div className="commissioning_themes">

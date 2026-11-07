@@ -5,7 +5,7 @@ import { tresci as t } from "@/content/strona-glowna";
 export function PrzejscieOMnie() {
   return (
     <div className="about-s_transition">
-      <img src="/assets/media/968eec43e7-6a84d7bda6314e15c2a414ef_transition-light-01-3c.svg" loading="eager" alt="" className="img" />
+      <img src="/assets/media/968eec43e7-6a84d7bda6314e15c2a414ef_transition-light-01-3c.svg" loading="lazy" alt="" className="img" />
       <div className="about-s_transition_bg" />
     </div>
   );
@@ -129,10 +129,10 @@ export function OMnie() {
             </div>
             <div className="about-s_img">
               <div className="img-w">
-                <img src="/assets/media/ferma-paralaxa.webp" loading="eager" sizes="100vw" srcSet="/assets/media/ferma-paralaxa-800.webp 800w, /assets/media/ferma-paralaxa-1280.webp 1280w, /assets/media/ferma-paralaxa.webp 1920w" alt="Nowoczesna ferma drobiu: dwa kurniki z silosami paszowymi po obu stronach drogi" className="img" />
+                <img src="/assets/media/ferma-paralaxa.webp" loading="lazy" sizes="100vw" srcSet="/assets/media/ferma-paralaxa-800.webp 800w, /assets/media/ferma-paralaxa-1280.webp 1280w, /assets/media/ferma-paralaxa.webp 1920w" alt="Nowoczesna ferma drobiu: dwa kurniki z silosami paszowymi po obu stronach drogi" className="img" />
               </div>
               <div className="about-s_img_transition">
-                <img src="/assets/media/357a81f2a9-697c3acf6bad09a0bb8d9339_ab67727487cf44f099170cdb0cd7ef0a_transition-dark-04.svg" loading="eager" alt="" className="img" />
+                <img src="/assets/media/357a81f2a9-697c3acf6bad09a0bb8d9339_ab67727487cf44f099170cdb0cd7ef0a_transition-dark-04.svg" loading="lazy" alt="" className="img" />
               </div>
             </div>
           </div>

@@ -51,7 +51,7 @@ export function Preloader() {
         <div data-preloader="bg" className="preloader_bg">
           <div className="preloader_bg_c">
             <div data-preloader="scene" className="preloader_bg_scene">
-              <video preload="auto" webkit-playsinline="" playsInline muted autoPlay loop poster="/assets/media/kury-preloader-paski.webp" className="video">
+              <video preload="none" webkit-playsinline="" playsInline muted loop className="video">
                 <source src="/assets/media/kury-preloader-paski.mp4" type="video/mp4" />
               </video>
               <div className="preloader_bg_scene_label b-mob">

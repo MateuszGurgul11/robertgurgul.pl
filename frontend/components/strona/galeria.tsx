@@ -117,7 +117,7 @@ export function Galeria({ zdjecia }: { zdjecia: { src: string; alt: string }[] }
           </div>
           <div className="gallery-w_bg">
             <div className="gallery-w_bg_transition">
-              <img src="/assets/media/d5cc2bc85d-697c3eec307d786c260b8c0f_transition-dark-03-4c.svg" loading="eager" alt="" className="img" />
+              <img src="/assets/media/d5cc2bc85d-697c3eec307d786c260b8c0f_transition-dark-03-4c.svg" loading="lazy" alt="" className="img" />
             </div>
             <div className="gallery-w_bg_b" />
           </div>

@@ -20,7 +20,7 @@ export function Lokalizacja() {
             <div className="grid">
               <div id="w-node-_9aa3edfa-e162-c544-2728-ad132459384b-a640d032" className="location-s_desc_map">
                 <div map="" className="map-w">
-                  <img src="/assets/media/mapa-fermy.svg" loading="eager" alt="Mapa okolicy fermy w Wolicy Koziej koło Nowego Miasta nad Wartą (dane © OpenStreetMap)" className="map" />
+                  <img src="/assets/media/mapa-fermy.svg" loading="lazy" alt="Mapa okolicy fermy w Wolicy Koziej koło Nowego Miasta nad Wartą (dane © OpenStreetMap)" className="map" />
                   <div className="map-w_pin is-0" style={{"inset": "auto", "left": "calc(50.0% - 6px)", "top": "calc(51.7% - 6px)"}}>
                     <div pin="" className="map-pin map-pin--ferma">
                       <div className="map-pin_label">

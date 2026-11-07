@@ -57,7 +57,7 @@ export function Faq() {
                   <div index-w="" role="list" className="faq-cms_list w-dyn-items">
                     {t.faq.pytania.map((f, i) => (
                         <div key={i} data-scroll-reveal="ctn" role="listitem" className="faq-cms_list_item w-dyn-item">
-                          <a aria-label={f.pytanie} hover-faq="" hover-divider="" accordion-btn={`pytanie-${i + 1}`} id="w-node-df907bce-6b90-57ee-e8f7-fd487ceef30f-a640d032" href="#" className="faq-card w-inline-block">
+                          <a hover-faq="" hover-divider="" accordion-btn={`pytanie-${i + 1}`} id="w-node-df907bce-6b90-57ee-e8f7-fd487ceef30f-a640d032" href="#" className="faq-card w-inline-block">
                             <div className="u-24" />
                             <div className="grid _8-columns">
                               <div id="w-node-df907bce-6b90-57ee-e8f7-fd487ceef312-a640d032" className="faq-card_index">

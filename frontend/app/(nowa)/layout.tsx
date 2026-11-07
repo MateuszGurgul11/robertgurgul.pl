@@ -1,9 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { naglowkowa, tekstowa } from "@/lib/czcionki";
+// Kolejność jak kaskada w szablonie: styl Webflow, style z <head>, poprawki lokalne, czcionki, paleta,
+// style osadzone w treści i drugi arkusz Webflow, a na końcu własne układy sekcji.
+import "@/public/assets/css/3f7cba4a07.css";
+import "@/public/assets/css/szablon-inline.css";
+import "@/public/assets/css/local.css";
+import "@/public/assets/css/czcionki.css";
+import "@/public/assets/css/kolory.css";
+import "@/public/assets/css/szablon-embed.css";
+import "@/public/assets/css/84657b9fac.css";
+import "@/public/assets/css/uklad.css";
 
 // Główny układ strony głównej i podstron galerii (/photos, /videos, /docs). Bez Tailwinda i bez układu poprzedniej strony — style i skrypty
 // animacji pochodzą z szablonu (public/assets), treść z components/strona + content/strona-glowna.ts.
-// Czcionki: lib/czcionki.ts (next/font).
+// Czcionki: @font-face w czcionki.css, pliki w public/assets/fonts.
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://robertgurgul.pl";
 const title = "Robert Gurgul: Doradztwo zootechniczne dla ferm drobiu";
@@ -31,18 +40,8 @@ export const viewport: Viewport = {
   themeColor: "#1e2b24",
 };
 
-// Kolejność jak kaskada w szablonie: styl Webflow, style z <head>, poprawki lokalne, czcionki, paleta,
-// style osadzone w treści i drugi arkusz Webflow (w oryginale na końcu <body>).
-const STYLESHEETS = [
-  "/assets/css/3f7cba4a07.css",
-  "/assets/css/szablon-inline.css",
-  "/assets/css/local.css",
-  "/assets/css/czcionki.css",
-  "/assets/css/kolory.css",
-  "/assets/css/szablon-embed.css",
-  "/assets/css/84657b9fac.css",
-  "/assets/css/uklad.css", // własne układy sekcji — na końcu, żeby nadpisywał szablon
-];
+// Małe pliki (razem ok. 40 KB): tekst hero jest głównym elementem strony, więc czcionki pobieramy od razu.
+const CZCIONKI = ["archivo-latin", "archivo-pl", "source-sans-latin", "source-sans-pl"];
 
 // Skrypt Webflow z <head>: klasy w-mod-js / w-mod-touch na <html> przed pierwszym malowaniem.
 const WEBFLOW_MODS =
@@ -55,12 +54,11 @@ export default function NowaLayout({ children }: { children: React.ReactNode }) 
       data-wf-domain="robertgurgul.pl"
       data-wf-page="6940a0abd735a1e3a640d032"
       data-wf-site="6940a0abd735a1e3a640d042"
-      className={`${naglowkowa.variable} ${tekstowa.variable}`}
       suppressHydrationWarning
     >
       <head>
-        {STYLESHEETS.map((href) => (
-          <link key={href} rel="stylesheet" href={href} precedence="szablon" />
+        {CZCIONKI.map((nazwa) => (
+          <link key={nazwa} rel="preload" href={`/assets/fonts/${nazwa}.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />
         ))}
         <script dangerouslySetInnerHTML={{ __html: WEBFLOW_MODS }} />
       </head>

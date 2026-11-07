@@ -1,6 +1,6 @@
 import { Archivo, Source_Sans_3 } from "next/font/google";
 
-// Czcionki strony i panelu CMS, hostowane lokalnie przez next/font.
+// Czcionki panelu CMS, hostowane lokalnie przez next/font. Strona publiczna ma lżejsze pliki: public/assets/css/czcionki.css.
 // Archivo — nagłówki: mocny, techniczny grotesk. Source Sans 3 — tekst: czytelny przy długich opisach.
 export const naglowkowa = Archivo({
   variable: "--font-naglowki",

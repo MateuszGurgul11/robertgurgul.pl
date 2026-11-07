@@ -90,7 +90,7 @@ export function LinkTekst({ children, href, nowaKarta, klasa = "p6" }: { childre
         <div className="nav-item_label_text">
           <div hover="text" className={`${klasa} text-dark`}>{children}</div>
         </div>
-        <div className="nav-item_label_text is-2">
+        <div aria-hidden="true" className="nav-item_label_text is-2">
           <div hover="text" className={`${klasa} text-dark`}>{children}</div>
         </div>
       </div>

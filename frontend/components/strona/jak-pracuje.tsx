@@ -16,7 +16,7 @@ export function JakPracuje() {
               <div className="u-16 b-desk" />
               <div className="commissioning-s_img">
                 <div className="img-w">
-                  <img src="/assets/media/cms-08-1920.webp" srcSet="/assets/media/cms-08-800.webp 800w, /assets/media/cms-08-1280.webp 1280w, /assets/media/cms-08-1920.webp 1920w" loading="eager" sizes="100vw" alt="Ferma Kogut" className="img" />
+                  <img src="/assets/media/cms-08-1920.webp" srcSet="/assets/media/cms-08-800.webp 800w, /assets/media/cms-08-1280.webp 1280w, /assets/media/cms-08-1920.webp 1920w" loading="lazy" sizes="100vw" alt="Ferma Kogut" className="img" />
                 </div>
               </div>
               <div className="u-16 b-desk" />

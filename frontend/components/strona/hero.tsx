@@ -6,6 +6,9 @@ import { Etykieta } from "@/components/podstrona/szablon-ui";
 export function Hero() {
   return (
     <section id="hero" className="section theme_on-dark clip">
+      {/* Pierwszy kadr hero: główny element strony, więc pobierany od razu (React przenosi te linki do <head>) */}
+      <link rel="preload" as="image" href="/assets/frames/hero-video/000.webp" media="(min-width: 992px)" fetchPriority="high" />
+      <link rel="preload" as="image" href="/assets/media/hero-ferma-000.webp" media="(max-width: 991px)" fetchPriority="high" />
       <div className="container">
         <div data-scroll-video-container="" className="hero-scroll-area">
           <div className="mob_hero-w_bg b-mob">
