@@ -91,13 +91,13 @@ export function Wspolpraca() {
             <div className="grid">
               <div id="w-node-_30f45dfe-c77b-ff98-374e-db553de724aa-a640d032" className="fin-s_left">
                 <h3 data-scroll-reveal="p" className="p6 text-dark">
-                  {t.wspolpraca.krok.etykieta}
+                  {t.wspolpraca.wynik.etykieta}
                 </h3>
                 <div className="u-24" />
                 <h4 data-scroll-reveal="h" className="h3 text-dark">
-                  {t.wspolpraca.krok.wartosc1}
+                  {t.wspolpraca.wynik.wartosc1}
                   <br />
-                  {t.wspolpraca.krok.wartosc2}
+                  {t.wspolpraca.wynik.wartosc2}
                 </h4>
                 <div className="u-32 b-mob">
                   <div className="div-block" />
@@ -106,77 +106,21 @@ export function Wspolpraca() {
               <div id="w-node-_305534a3-3971-bd57-4782-2c29d3c76d35-a640d032" className="fin-s_right">
                 <div className="data">
                   <div className="data-list">
-                    <div data-scroll-reveal="ctn" className="data-card">
-                      <div className="data-card_title">
-                        <h3 className="p6 text-dark">
-                          {t.wspolpraca.zakres.etykieta}
-                        </h3>
-                      </div>
-                      <div className="unit-8" />
-                      <div className="data-card_data">
-                        <p className="p3 text-dark">
-                          {t.wspolpraca.zakres.wartosc}
-                        </p>
-                      </div>
-                    </div>
-                    <div data-scroll-reveal="ctn" className="data-card">
-                      <div className="data-card_title">
-                        <h3 className="p6 text-dark">
-                          {t.wspolpraca.specjalizacje.etykieta}
-                        </h3>
-                        <div className="data-card_title_info">
-                          <div hover-btn-info="" className="btn-info">
-                            <div hover="label" className="btn-info_label">
-                              <h1 className="p6 text-dark">
-                                {"(?)"}
-                              </h1>
-                            </div>
-                            <div hover="tool-tip" className="tool-tip">
-                              <p className="p6 text-light">
-                                {t.wspolpraca.specjalizacje.podpowiedz}
-                              </p>
-                              <div className="tool-tip_caret text-dark w-embed">
-                                <svg width="100%" height="100%" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M16 0H0L8 8L16 0Z" fill="currentColor" />
-                                </svg>
-                              </div>
-                            </div>
-                          </div>
+                    {t.wspolpraca.zawartosc.map((z) => (
+                      <div key={z.etykieta} data-scroll-reveal="ctn" className="data-card">
+                        <div className="data-card_title">
+                          <h3 className="p6 text-dark">
+                            {z.etykieta}
+                          </h3>
+                        </div>
+                        <div className="unit-8" />
+                        <div className="data-card_data">
+                          <p className="p3 text-dark">
+                            {z.wartosc}
+                          </p>
                         </div>
                       </div>
-                      <div className="unit-8" />
-                      <div className="data-card_data">
-                        <p className="p3 text-dark">
-                          {t.wspolpraca.specjalizacje.wartosc}
-                        </p>
-                      </div>
-                    </div>
-                    <div data-scroll-reveal="ctn" className="data-card">
-                      <div className="data-card_title">
-                        <h3 className="p6 text-dark">
-                          {t.wspolpraca.etapy.etykieta}
-                        </h3>
-                      </div>
-                      <div className="unit-8" />
-                      <div className="data-card_data">
-                        <p className="p3 text-dark">
-                          {t.wspolpraca.etapy.wartosc}
-                        </p>
-                      </div>
-                    </div>
-                    <div data-scroll-reveal="ctn" className="data-card">
-                      <div className="data-card_title">
-                        <h3 className="p6 text-dark">
-                          {t.wspolpraca.kontakt.etykieta}
-                        </h3>
-                      </div>
-                      <div className="unit-8" />
-                      <div className="data-card_data">
-                        <p className="p3 text-dark">
-                          {t.wspolpraca.kontakt.wartosc}
-                        </p>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>

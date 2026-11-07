@@ -99,7 +99,7 @@ export function Komunikat({ rodzaj, tekst }: { rodzaj: "pusto" | "blad"; tekst: 
     <div className="rgp-notice" role={rodzaj === "blad" ? "alert" : "status"}>
       <Linia />
       <div className="u-32" />
-      <p className={`p6 ${rodzaj === "blad" ? "rgp-notice_blad" : "text-gray"}`}>{rodzaj === "blad" ? "[ ! ]" : "[ — ]"}</p>
+      <p className={`p6 ${rodzaj === "blad" ? "rgp-notice_blad" : "text-gray"}`}>{rodzaj === "blad" ? "[ ! ]" : "[ · ]"}</p>
       <div className="u-16" />
       <p className="h5 text-dark">{tekst}</p>
     </div>

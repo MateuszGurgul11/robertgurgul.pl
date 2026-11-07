@@ -146,7 +146,7 @@ export function Kompetencje() {
                         <div className="rg-obszar_info">
                           <span className="rg-obszar_numer" aria-hidden="true">{o.numer}</span>
                           <p className="p6 text-gray">
-                            {t.kompetencje.obszarEtykieta} {o.numer} — {o.grupa}
+                            {t.kompetencje.obszarEtykieta} {o.numer}: {o.grupa}
                           </p>
                           <div className="u-16" />
                           <h3 className="h4 text-dark">{o.tytul}</h3>

@@ -1,17 +1,24 @@
-/* Czcionki strony: Bodoni Moda (nagłówki) + Manrope (tekst). Czcionki ładuje next/font (lib/czcionki.ts).
-   Nagłówki szablonu mają -0.064em odstępu (pod Arial) — dla Bodoni Moda łagodniej (wersaliki Bodoni są szerokie). */
+/* Czcionki strony: Archivo (nagłówki) + Source Sans 3 (tekst). Czcionki ładuje next/font (lib/czcionki.ts). */
 :root, body {
-  --_fonts---font-display: var(--font-bodoni), "Bodoni Moda", Didot, Georgia, serif;
-  --_fonts---font-body: var(--font-manrope), "Manrope", Arial, sans-serif;
-  --local-font: var(--font-manrope), "Manrope", Arial, sans-serif;
-  --_fonts---h1--letter-spacing: -.035em; --_fonts---h2--letter-spacing: -.035em;
-  --_fonts---h3--letter-spacing: -.035em; --_fonts---h4--letter-spacing: -.035em;
+  --_fonts---font-display: var(--font-naglowki), "Archivo", Arial, sans-serif;
+  --_fonts---font-body: var(--font-tekst), "Source Sans 3", Arial, sans-serif;
+  --local-font: var(--font-tekst), "Source Sans 3", Arial, sans-serif;
+  --_fonts---h1--letter-spacing: -.03em; --_fonts---h2--letter-spacing: -.025em;
+  --_fonts---h3--letter-spacing: -.02em; --_fonts---h4--letter-spacing: -.015em;
   --_fonts---h5--letter-spacing: -.01em; --_fonts---h6--letter-spacing: 0em;
+  /* Skala tekstu: minimum 16 px, tekst główny 18 px. Stałe wartości zamiast rozmiarów szablonu
+     liczonych od szerokości okna (spadały do 7–11 px). */
+  --_fonts---p6--size: 16px; --_fonts---p6--line-height: 1.4; --_fonts---p6--letter-spacing: .03em;
+  --_fonts---p5--size: 16px; --_fonts---p5--line-height: 1.45; --_fonts---p5--letter-spacing: .02em;
+  --_fonts---p4--size: 18px; --_fonts---p4--line-height: 1.55; --_fonts---p4--letter-spacing: .005em;
+  --_fonts---p3--size: 20px; --_fonts---p3--line-height: 1.4; --_fonts---p3--letter-spacing: .01em;
+  --_fonts---p2--size: clamp(22px, 1.8vw, 28px); --_fonts---p2--line-height: 1.25; --_fonts---p2--letter-spacing: .01em;
+  --_fonts---p1--size: clamp(26px, 2.3vw, 36px); --_fonts---p1--line-height: 1.2; --_fonts---p1--letter-spacing: 0em;
 }
-/* Duże nagłówki: wariant wystawowy Bodoni (cienkie szeryfy). Mniejsze: optyczny rozmiar wg wielkości tekstu,
-   inaczej kreski są za cienkie i litery się zlewają. */
-.h1, .h2, .h3 { font-variation-settings: "opsz" 96; }
-.h4, .h5, .h6 { font-optical-sizing: auto; font-variation-settings: normal; }
+/* Szablon ma nagłówki w wadze 400 (pod krój szeryfowy) — grotesk potrzebuje więcej masy. */
+.h1, .h2, .h3 { font-weight: 600; }
+.h4, .h5, .h6 { font-weight: 500; }
+.logo svg text { font-weight: 700; }
 
 /* Caps tylko na nagłówkach sekcji (.h1–.h3, h2 + warianty).
    Leady (.h5 na h3) i akapity (.p4 / p.p6) — zdanie, bez text-transform. */

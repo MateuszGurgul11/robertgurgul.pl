@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./admin.css";
 import { AuthProvider } from "@/lib/firebase/use-auth";
 import { Toaster } from "@/components/ui/sonner";
-import { bodoni, manrope } from "@/lib/czcionki";
+import { naglowkowa, tekstowa } from "@/lib/czcionki";
 
 // Główny układ panelu CMS. Tailwind + shadcn/ui w motywie strony (admin.css).
 
@@ -24,7 +24,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl" className={`${bodoni.variable} ${manrope.variable} h-full antialiased`}>
+    <html lang="pl" className={`${naglowkowa.variable} ${tekstowa.variable} h-full antialiased`}>
       <body className="min-h-full font-body">
         <AuthProvider>
           {children}

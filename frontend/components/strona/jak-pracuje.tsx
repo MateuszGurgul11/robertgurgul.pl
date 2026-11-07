@@ -54,56 +54,25 @@ export function JakPracuje() {
                   <div className="table">
                     <div data-scroll-reveal="line" className="line-s" />
                     <div className="table_list">
-                      <div data-scroll-reveal="ctn" className="table-card">
-                        <div className="u-16" />
-                        <div data-scroll-reveal="" className="table-card_info">
-                          <div className="table-card_info_title">
-                            <p className="p6 text-dark">
-                              {t.jakPracuje.kroki[0].tytul}
-                            </p>
+                      {t.jakPracuje.kroki.map((k, i) => (
+                        <div key={k.tytul} data-scroll-reveal="ctn" className="table-card">
+                          <div className="u-16" />
+                          <div data-scroll-reveal="" className="table-card_info">
+                            <div className="table-card_info_title">
+                              <p className="p6 text-dark">
+                                {k.tytul}
+                              </p>
+                            </div>
+                            <div className="table-card_info_data">
+                              <p className="p6 text-dark a-right">
+                                {k.kiedy}
+                              </p>
+                            </div>
                           </div>
-                          <div className="table-card_info_data">
-                            <p className="p6 text-dark a-right">
-                              {t.jakPracuje.kroki[0].kiedy}
-                            </p>
-                          </div>
+                          <div className="u-16" />
+                          {i < t.jakPracuje.kroki.length - 1 ? <div data-scroll-reveal="line" className="line-s" /> : null}
                         </div>
-                        <div className="u-16" />
-                        <div data-scroll-reveal="line" className="line-s" />
-                      </div>
-                      <div data-scroll-reveal="ctn" className="table-card">
-                        <div className="u-16" />
-                        <div data-scroll-reveal="" className="table-card_info">
-                          <div className="table-card_info_title">
-                            <p className="p6 text-dark">
-                              {t.jakPracuje.kroki[1].tytul}
-                            </p>
-                          </div>
-                          <div className="table-card_info_data">
-                            <p className="p6 text-dark a-right">
-                              {t.jakPracuje.kroki[1].kiedy}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="u-16" />
-                        <div data-scroll-reveal="line" className="line-s" />
-                      </div>
-                      <div data-scroll-reveal="ctn" className="table-card">
-                        <div className="u-16" />
-                        <div data-scroll-reveal="" className="table-card_info">
-                          <div className="table-card_info_title">
-                            <p className="p6 text-dark">
-                              {t.jakPracuje.kroki[2].tytul}
-                            </p>
-                          </div>
-                          <div className="table-card_info_data">
-                            <p className="p6 text-dark a-right">
-                              {t.jakPracuje.kroki[2].kiedy}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="u-16" />
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>

@@ -19,8 +19,8 @@ export function Hero() {
             <div className="over" />
           </div>
           <div className="hero-w">
-            {/* Układ hero: lewa góra — etykieta + ROBERT GURGUL (cel animacji logo z preloadera),
-                prawa góra — liczby; lewy dół — hasło, rząd informacji z wyróżnieniami; prawy dół — kulka CTA.
+            {/* Układ hero: lewa góra – etykieta + ROBERT GURGUL (cel animacji logo z preloadera),
+                prawa góra – liczby; lewy dół – hasło i info; prawy dół – CTA (.btn jak w reszcie strony).
                 Style: public/assets/css/uklad.css (.rg-hero). */}
             <div className="hero-s rg-hero">
               <div className="rg-hero_gora">
@@ -80,18 +80,21 @@ export function Hero() {
                   </div>
                 </div>
                 <div data-intro="ctn" className="rg-hero_cta">
-                  <div modal-cta-open="cta" className="modal-trigger">
-                    <a aria-label={t.hero.cta} data-magnetic-strength="" href="#" className="btn-circle w-inline-block">
-                      <div className="btn-circle_bg" />
-                      <div data-magnetic-inner-target="" className="btn-circle_label">
-                        <div className="btn-circle_label_text">
-                          <div hover="text" className="p6 text-dark">
-                            <span className="b-desk">{t.hero.cta}</span>
-                            <span className="b-mob">{t.hero.ctaMobile}</span>
+                  <div className="btn-list">
+                    <div modal-cta-open="cta" className="modal-trigger">
+                      <a aria-label={t.hero.cta} hover-btn="" data-wf--btn--variant="med" href="#" className="btn w-inline-block">
+                        <div hover="label" className="btn_label">
+                          <div className="btn_label_text">
+                            <div hover="text" className="p6 text-light">
+                              <span className="b-desk">{t.hero.cta}</span>
+                              <span className="b-mob">{t.hero.ctaMobile}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </a>
+                        <div hover="hover" className="btn_hover" />
+                        <div hover="bg" className="btn_bg" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

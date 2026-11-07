@@ -1,15 +1,16 @@
-import { Bodoni_Moda, Manrope } from "next/font/google";
+import { Archivo, Source_Sans_3 } from "next/font/google";
 
-// Czcionki nowej strony (i panelu CMS): Bodoni Moda — nagłówki, Manrope — tekst. Hostowane lokalnie przez next/font.
-export const bodoni = Bodoni_Moda({
-  variable: "--font-bodoni",
+// Czcionki strony i panelu CMS, hostowane lokalnie przez next/font.
+// Archivo — nagłówki: mocny, techniczny grotesk. Source Sans 3 — tekst: czytelny przy długich opisach.
+export const naglowkowa = Archivo({
+  variable: "--font-naglowki",
   subsets: ["latin", "latin-ext"],
-  axes: ["opsz"],
+  axes: ["wdth"],
   display: "swap",
 });
 
-export const manrope = Manrope({
-  variable: "--font-manrope",
+export const tekstowa = Source_Sans_3({
+  variable: "--font-tekst",
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });

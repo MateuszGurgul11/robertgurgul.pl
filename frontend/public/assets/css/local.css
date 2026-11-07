@@ -89,7 +89,7 @@ html, body, button, input, select, textarea { font-family: var(--local-font); }
 .hero-w_bg .over-gradient-top, .mob_hero-w_bg .over-gradient-top { background-image: linear-gradient(color-mix(in srgb, var(--hero-mask) 80%, transparent), transparent); }
 .hero-w_bg .over-gradient-bot, .mob_hero-w_bg .over-gradient-bot { background-image: linear-gradient(transparent, color-mix(in srgb, var(--hero-mask) 80%, transparent)); }
 
-/* logotyp — wyższy viewBox pod Bodoni Moda (szeryfy nie mieszczą się w 24 jednostkach) */
+/* logotyp — wyższy viewBox, żeby litery nie były ucinane */
 .logo-w, .logo { aspect-ratio: 280 / 52; overflow: visible; }
 .logo svg { overflow: visible; }
 /* /logotyp */

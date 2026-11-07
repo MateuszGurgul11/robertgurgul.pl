@@ -64,7 +64,7 @@ export default function AdminVideosPage() {
             Filmy
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Filmy na podstronie /videos i (4 pierwsze) w sekcji materiałów na stronie głównej — wgraj MP4/WebM albo wklej link YouTube/Vimeo.
+            Filmy na podstronie /videos i (4 pierwsze) w sekcji materiałów na stronie głównej: wgraj MP4/WebM albo wklej link YouTube/Vimeo.
           </p>
         </div>
         <Button onClick={openCreate} className="gap-2 bg-navy-deep text-offwhite hover:bg-navy-mid">
@@ -157,7 +157,7 @@ export default function AdminVideosPage() {
               {/\.mov$/i.test(form.videoUrl.split("?")[0]) ? (
                 <p className="border-l-2 border-gold pl-3 text-xs leading-relaxed text-slate-600">
                   Pliki .mov z iPhone&apos;a (kodek HEVC) nie odtwarzają się w Firefoksie i na części starszych komputerów.
-                  Najpewniej działa MP4 (H.264) — np. w iPhonie: Ustawienia → Aparat → Formaty → „Najbardziej zgodne”.
+                  Najpewniej działa MP4 (H.264), np. w iPhonie: Ustawienia → Aparat → Formaty → „Najbardziej zgodne”.
                 </p>
               ) : null}
             </div>

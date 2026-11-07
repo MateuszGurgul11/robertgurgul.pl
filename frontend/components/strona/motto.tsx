@@ -70,7 +70,7 @@ export function Motto() {
                 </div>
                 <div className="u-32" />
                 <div data-scroll-reveal="ctn" className="btn-list">
-                  <a aria-label={t.motto.przycisk} hover-btn="" data-wf--btn--variant="med" href={t.motto.link} target="_blank" className="btn w-inline-block">
+                  <a aria-label={t.motto.przycisk} hover-btn="" data-wf--btn--variant="med" href={t.motto.link} className="btn w-inline-block">
                     <div hover="label" className="btn_label">
                       <div className="btn_label_text">
                         <div hover="text" className="p6 text-light">

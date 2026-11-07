@@ -12,7 +12,7 @@ export function Lokalizacja() {
             <div className="grid">
               <div id="w-node-_7f2bd78c-88fc-d632-a4a9-cde3ece97582-a640d032" className="location-s_title">
                 <h2 data-scroll-reveal="h" className="h2 text-dark rg-tytul">
-                  {t.lokalizacja.naglowek1} {t.lokalizacja.naglowek2} {t.lokalizacja.naglowek3} {t.lokalizacja.naglowek4}
+                  {t.lokalizacja.naglowek}
                 </h2>
               </div>
             </div>
@@ -200,7 +200,6 @@ export function Lokalizacja() {
                     <div className="img-w">
                       <img src="/assets/media/cms-15-960.webp" srcSet="/assets/media/cms-15-800.webp 800w, /assets/media/cms-15-960.webp 960w" loading="lazy" sizes="(max-width: 991px) 100vw, 42vw" alt="Ferma Kogut" className="img" />
                     </div>
-                    <figcaption className="p6 rg-spec_podpis">[ Ferma Kogut ]</figcaption>
                   </figure>
                   <div className="rg-spec_karta theme_on-light">
                     <div className="rg-spec_top">

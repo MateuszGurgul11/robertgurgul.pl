@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* Panel CMS (Tailwind + shadcn/ui) w motywie strony: paleta „Zielone pastwisko”, Bodoni Moda + Manrope,
+/* Panel CMS (Tailwind + shadcn/ui) w motywie strony: paleta „Zielone pastwisko”, Archivo + Source Sans 3,
    ostre narożniki. Strona publiczna nie używa Tailwinda — ma własne style w public/assets/css. */
 
 @theme {
@@ -30,8 +30,8 @@
   --color-slate-800: #1e2b24;
   --color-slate-900: #141d18;
 
-  --font-heading: var(--font-bodoni), "Bodoni Moda", Didot, Georgia, serif;
-  --font-body: var(--font-manrope), "Manrope", Arial, sans-serif;
+  --font-heading: var(--font-naglowki), "Archivo", Arial, sans-serif;
+  --font-body: var(--font-tekst), "Source Sans 3", Arial, sans-serif;
   --font-sans: var(--font-body);
 }
 
@@ -104,7 +104,7 @@
   }
 }
 
-/* Nagłówki stron panelu: jak na stronie — Bodoni Moda, wersaliki, bez pogrubienia */
+/* Nagłówki stron panelu: jak na stronie — Archivo, wersaliki */
 main h1.font-heading {
   font-weight: 400;
   text-transform: uppercase;

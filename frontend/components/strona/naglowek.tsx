@@ -10,7 +10,7 @@ export function Naglowek({ podstrona = false }: { podstrona?: boolean }) {
     <div className="theme_on-dark">
       <nav className="header reference-header" aria-label="Menu główne">
         <div className="reference-nav-shell">
-          <a href={podstrona ? "/" : "#hero"} className="reference-brand" aria-label="Robert Gurgul — strona główna">
+          <a href={podstrona ? "/" : "#hero"} className="reference-brand" aria-label="Robert Gurgul, strona główna">
             <span className="reference-monogram" aria-hidden="true">
               {"rg"}
               <span>
@@ -49,7 +49,7 @@ export function Naglowek({ podstrona = false }: { podstrona?: boolean }) {
                 </a>
             ))}
           </div>
-          <a href="#" className="reference-contact" modal-cta-open="cta" modal-menu-close="menu" aria-label="Konsultacja">
+          <a href="#" className="reference-contact" modal-cta-open="cta" modal-menu-close="menu" aria-label={t.naglowek.cta}>
             <span>
               {t.naglowek.cta}
             </span>

@@ -70,7 +70,7 @@ export default function AdminDocsPage() {
             Dokumenty
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Dokumenty na podstronie /docs i (3 pierwsze) w sekcji materiałów na stronie głównej — plik PDF lub link zewnętrzny.
+            Dokumenty na podstronie /docs i (3 pierwsze) w sekcji materiałów na stronie głównej: plik PDF lub link zewnętrzny.
           </p>
         </div>
         <Button onClick={openCreate} className="gap-2 bg-navy-deep text-offwhite hover:bg-navy-mid">

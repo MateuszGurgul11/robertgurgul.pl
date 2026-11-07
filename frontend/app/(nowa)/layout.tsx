@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { bodoni, manrope } from "@/lib/czcionki";
+import { naglowkowa, tekstowa } from "@/lib/czcionki";
 
 // Główny układ strony głównej i podstron galerii (/photos, /videos, /docs). Bez Tailwinda i bez układu poprzedniej strony — style i skrypty
 // animacji pochodzą z szablonu (public/assets), treść z components/strona + content/strona-glowna.ts.
 // Czcionki: lib/czcionki.ts (next/font).
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://robertgurgul.pl";
-const title = "Robert Gurgul — Doradztwo zootechniczne dla ferm drobiu";
+const title = "Robert Gurgul: Doradztwo zootechniczne dla ferm drobiu";
 const description =
   "Profesjonalne doradztwo żywieniowe i zootechniczne dla ferm drobiu: żywienie, mikroklimat, wyposażenie ferm i stała opieka nad stadem.";
 
@@ -55,7 +55,7 @@ export default function NowaLayout({ children }: { children: React.ReactNode }) 
       data-wf-domain="robertgurgul.pl"
       data-wf-page="6940a0abd735a1e3a640d032"
       data-wf-site="6940a0abd735a1e3a640d042"
-      className={`${bodoni.variable} ${manrope.variable}`}
+      className={`${naglowkowa.variable} ${tekstowa.variable}`}
       suppressHydrationWarning
     >
       <head>

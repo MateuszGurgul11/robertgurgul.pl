@@ -3,7 +3,7 @@ import { Foto } from "./foto";
 import { Linia, LinkTekst } from "./szablon-ui";
 
 // Hub /media: trzy działy (zdjęcia, filmy, dokumenty) z licznikami i podglądem najnowszych pozycji z CMS.
-// Klocki szablonu: podwójna linia, nagłówek Bodoni, link z podkreśleniem. Style: podstrony.css (.rgp-hub).
+// Klocki szablonu: podwójna linia, nagłówek, link z podkreśleniem. Style: podstrony.css (.rgp-hub).
 
 export type DzialMediow = {
   klucz: "zdjecia" | "filmy" | "dokumenty";
@@ -58,7 +58,7 @@ export function HubMediow({ dzialy }: { dzialy: DzialMediow[] }) {
         return (
           <li key={dzial.klucz} hover-divider="" className="rgp-hub_wiersz">
             {i === 0 ? <Linia /> : null}
-            <a href={tekst.href} className="rgp-hub_link" aria-label={`${tekst.tytul} — ${m.zobacz}`} />
+            <a href={tekst.href} className="rgp-hub_link" aria-label={`${tekst.tytul}: ${m.zobacz}`} />
             <div className="rgp-hub_siatka">
               <div className="rgp-hub_nr">
                 <span className="p4 text-dark">{nr(i + 1)}</span>

@@ -101,7 +101,9 @@ export function Podejscie() {
                       </div>
                     </div>
                   </div>
-                  <div className="dev-s_card_top" />
+                  <div className="rg-portret">
+                    {t.podejscie.portret ? <img src={t.podejscie.portret} loading="lazy" alt={t.podejscie.portretAlt} /> : null}
+                  </div>
                   <div className="dev-s_card_top">
                     <div className="u-48" />
                     <div className="dev-s_card_top_info">

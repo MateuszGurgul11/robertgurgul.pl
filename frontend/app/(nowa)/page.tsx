@@ -50,15 +50,15 @@ export default async function HomePage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Robert Gurgul — Profesjonalne Doradztwo Zootechniczne",
+    name: "Robert Gurgul: Profesjonalne Doradztwo Zootechniczne",
     description: "Profesjonalne doradztwo żywieniowe i zootechniczne dla ferm drobiu.",
     url: "https://www.robertgurgul.pl/",
     telephone: t.kontakt.telefonHref.replace("tel:", ""),
     email: t.kontakt.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Wolica Kozia 48",
-      addressLocality: "Nowe Miasto nad Wartą",
+      streetAddress: "Klęka 18A",
+      addressLocality: "Klęka",
       postalCode: "63-040",
       addressCountry: "PL",
     },

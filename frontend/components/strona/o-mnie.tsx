@@ -74,20 +74,6 @@ export function OMnie() {
               </div>
               <div className="rg-about_foot">
                 <div className="rg-about_foot-l">
-                  <p className="p6 text-gray">
-                    {t.oMnie.specjalizacjaEtykieta}
-                  </p>
-                  <div className="u-16" />
-                  <div data-scroll-reveal="ctn" className="rg-about_tags">
-                    {t.oMnie.gatunki.map((g, i) => (
-                        <div key={i} className="tag rg-tag">
-                          <p className="p6 text-dark">
-                            {g.nazwa}
-                          </p>
-                        </div>
-                    ))}
-                  </div>
-                  <div className="u-32" />
                   <div data-scroll-reveal="ctn" className="btn-list">
                     <div modal-cta-open="cta" className="modal-trigger">
                       <a aria-label={t.oMnie.przycisk} hover-btn="" data-wf--btn--variant="med" href="#" className="btn w-inline-block">
